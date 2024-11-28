@@ -9,10 +9,38 @@ export default function Navbar(): JSX.Element {
           Andrew Li
         </h1>
         <ul className="flex space-x-4 font-bold">
-          <li><a href="/">Home</a></li>
-          <li><a href="/projects">Projects</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/contact">Contact</a></li>
+          <li>
+            <a
+              href="/"
+              className="px-3 py-2 rounded hover:bg-purple-300 hover:text-gray-800 transition-colors duration-300"
+            >
+              Home
+            </a>
+          </li>
+          <li>
+            <a
+              href="/projects"
+              className="px-3 py-2 rounded hover:bg-purple-300 hover:text-gray-800 transition-colors duration-300"
+            >
+              Projects
+            </a>
+          </li>
+          <li>
+            <a
+              href="/about"
+              className="px-3 py-2 rounded hover:bg-purple-300 hover:text-gray-800 transition-colors duration-300"
+            >
+              About
+            </a>
+          </li>
+          <li>
+            <a
+              href="/contact"
+              className="px-3 py-2 rounded hover:bg-purple-300 hover:text-gray-800 transition-colors duration-300"
+            >
+              Contact
+            </a>
+          </li>
         </ul>
       </div>
     </nav>

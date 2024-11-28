@@ -1,8 +1,9 @@
+// pages/projects.tsx or your ProjectsPage file
 import Link from 'next/link';
 
 export default function ProjectsPage(): JSX.Element {
   return (
-    <div className="container mx-auto p-6">
+    <div className="p-6">
       <h1 className="text-3xl font-bold mb-6">Projects</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Short-Term Projects Box */}
@@ -50,4 +51,3 @@ export default function ProjectsPage(): JSX.Element {
     </div>
   );
 }
-    

@@ -34,7 +34,7 @@ const ContactPage = () => {
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-16">
           <h1 className="text-4xl font-bold mb-4 font-[family-name:var(--font-geist-sans)]">
-            Get in Touch
+            Get in Touch!
           </h1>
           <p className="text-lg text-gray-400">
             Feel free to connect with me on any of these platforms

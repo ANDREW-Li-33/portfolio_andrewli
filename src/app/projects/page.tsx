@@ -17,7 +17,7 @@ export default function ProjectsPage(): JSX.Element {
           />
           <h2 className="text-xl font-semibold mb-2">Short-Term Projects</h2>
           <p className="mb-4">
-            Explore projects completed over shorter timeframes, showcasing quick innovations and experimental designs.
+            Explore projects that took one week or less!
           </p>
           <Link
             href="/projects/short-term"
@@ -38,7 +38,7 @@ export default function ProjectsPage(): JSX.Element {
           />
           <h2 className="text-xl font-semibold mb-2">Long-Term Projects</h2>
           <p className="mb-4">
-            Dive into in-depth, multi-phase projects that highlight sustained effort and detailed development processes.
+            Explore projects that took several weeks or longer!
           </p>
           <Link
             href="/projects/long-term"

@@ -20,7 +20,7 @@ export default function Home() {
           href="/projects"
           className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-full transition-colors"
         >
-          Project Showcase
+          Project Gallery
         </a>
       </div>
     </div>

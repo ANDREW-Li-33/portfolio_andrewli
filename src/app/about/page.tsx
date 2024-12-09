@@ -9,79 +9,58 @@ export default function AboutPage(): JSX.Element {
             <section id="about-me">
         <h1 className="text-4xl font-bold mb-4">About Me</h1>
         <p className="text-lg">
-          Hello! I’m <span className="font-semibold">Andrew Li</span>, a robotics enthusiast and computer science student at Georgia Institute of Technology. My passion lies in blending cutting-edge technology and innovation to solve real-world problems through robotics and automation.
+          Hi, I’m <span className="font-semibold">Andrew Li</span>, a robotics enthusiast and computer science student attending Georgia Tech!
+          <br /> On this website, I hope to share some of my personal projects and provide some info about myself.
         </p>
       </section>
 
-      
+
       <nav className="mb-6">
         <h2 className="text-2xl font-bold mb-2">Table of Contents</h2>
         <ul className="list-inside list-disc space-y-1">
         <li>
-            <a href="#about-me" className="text-white-600 hover:underline inline-flex items-center">
+            <a href="#about-me" className="text-white-600 hover:underline inline-flex items-center text-lg">
               Vex Robotics Competition
               <LinkIcon className="ml-2" size={16} />
             </a>
+            <p className="text-sm text-gray-400 mt-1 ml-6">Overview of vex robotics journey</p>
           </li>
           <li>
-            <a href="#my-journey" className="text-white-600 hover:underline inline-flex items-center">
+            <a href="#boston-university" className="text-white-600 hover:underline inline-flex items-center text-lg">
               Boston University
               <LinkIcon className="ml-2" size={16} />
             </a>
+            <p className="text-sm text-gray-400 mt-1 ml-6">Overview of Boston University Experience</p>
           </li>
           <li>
-            <a href="#key-experiences" className="text-white-600 hover:underline inline-flex items-center">
+            <a href="#key-experiences" className="text-white-600 hover:underline inline-flex items-center text-lg">
               Georgia Tech Robowrestling
               <LinkIcon className="ml-2" size={16} />
             </a>
+            <p className="text-sm text-gray-400 mt-1 ml-6">Overview of Georgia Tech Robowrestling</p>
           </li>
           <li>
-            <a href="#skills-and-interests" className="text-white-600 hover:underline inline-flex items-center">
+            <a href="#skills-and-interests" className="text-white-600 hover:underline inline-flex items-center text-lg">
               Flowers Invention Studio
               <LinkIcon className="ml-2" size={16} />
             </a>
+            <p className="text-sm text-gray-400 mt-1 ml-6">Overview of Flowers Invention Studio</p>
           </li>
         </ul>
       </nav>
 
 
-
-      <hr className="bg-red-500 h-1" />
+      <hr className="h-1 bg-[#444] border-0" />
 
       {/* My Journey */}
       <section id="my-journey">
-        <h2 className="text-2xl font-bold mb-2">My Journey</h2>
+        <h2 className="text-2xl font-bold mb-2">Vex Robotics Competition</h2>
         <p className="text-lg">
           From my early days competing in the VEX Robotics Competition to advancing my skills through internships and collaborative projects, I’ve cultivated a deep appreciation for both hardware and software. My experience includes developing autonomous navigation systems, working with soft robotics, and contributing to teams in sumo robotics competitions.
         </p>
       </section>
 
-      <hr className="bg-red-500 h-1" />
-
-      {/* Key Experiences */}
-      <section id="key-experiences">
-        <h2 className="text-2xl font-bold mb-2">Key Experiences</h2>
-        <ul className="list-disc list-inside space-y-2">
-          <li>
-            <span className="font-semibold">VEX Robotics (2019–2023)</span>: 
-            Led autonomous routine development, securing 7 tournament championships and representing my team at the world championships.
-          </li>
-          <li>
-            <span className="font-semibold">Georgia Tech RoboWrestling</span>: 
-            Integrated sensor data for sumo robot competitions, achieving 1st place in in-house events and mentoring new members.
-          </li>
-          <li>
-            <span className="font-semibold">Boston University Morphable Biorobotics Lab</span>: 
-            Designed and fabricated a pick-and-place machine using innovative stacked balloon actuators.
-          </li>
-          <li>
-            <span className="font-semibold">Flowers Invention Studio</span>: 
-            Staffed a makerspace, assisting users with equipment like 3D printers, waterjets, and mills while honing my fabrication skills.
-          </li>
-        </ul>
-      </section>
-
-      <hr className="bg-red-500 h-1" />
+      <hr className="h-1 bg-[#444] border-0" />
 
       {/* Skills and Interests */}
       <section id="skills-and-interests">

@@ -37,7 +37,7 @@ const ContactPage = () => {
             Get in Touch!
           </h1>
           <p className="text-lg text-gray-400">
-            Connect with me on any of these platforms
+            Connect with me on any of these platforms :)
           </p>
         </div>
 

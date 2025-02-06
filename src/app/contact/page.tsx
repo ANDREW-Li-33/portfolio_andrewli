@@ -10,6 +10,12 @@ const ContactPage = () => {
       color: 'hover:text-blue-400'
     },
     {
+      platform: 'Twitter',
+      icon: <Twitter size={28} />,
+      link: 'https://x.com/li_03_li_03',
+      color: 'hover:text-blue-400'
+    },
+    {
       platform: 'YouTube',
       icon: <Youtube size={28} />,
       link: 'https://www.youtube.com/@andrewli1745',
@@ -21,12 +27,6 @@ const ContactPage = () => {
       link: 'ali497@gatech.edu',
       color: 'hover:text-green-400'
     },
-    {
-      platform: 'Twitter',
-      icon: <Twitter size={28} />,
-      link: 'https://x.com/li_andrew43943',
-      color: 'hover:text-blue-400'
-    }
   ];
 
   return (

@@ -1,8 +1,14 @@
 import React from 'react';
-import { Mail, Linkedin, Youtube, Twitter } from 'lucide-react';
+import { Mail, Linkedin, Youtube, Twitter, Github } from 'lucide-react';
 
 const ContactPage = () => {
   const contacts = [
+    {
+      platform: 'GitHub',
+      icon: <Github size={28} />,
+      link: 'https://github.com/ANDREW-Li-33',
+      color: 'hover:text-purple-400'
+    },
     {
       platform: 'LinkedIn',
       icon: <Linkedin size={28} />,
@@ -32,7 +38,7 @@ const ContactPage = () => {
   return (
     <div className="py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <h1 className="text-4xl font-bold mb-4 font-[family-name:var(--font-geist-sans)]">
             Get in Touch!
           </h1>

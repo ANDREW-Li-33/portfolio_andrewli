@@ -44,7 +44,7 @@ const BedframeHolder = () => {
                 download
               >
                 <FileDown size={24} />
-                Phone Holder Model (STL)
+                phone holder model (STL)
               </a>
               <a 
                 href="/downloadables/bedframe_phone_holder_example.stl" 
@@ -52,7 +52,7 @@ const BedframeHolder = () => {
                 download
               >
                 <FileDown size={24} />
-                Example Assembly Model (STL)
+                example application model (STL)
               </a>
               <a 
                 href="/downloadables/bedframe_phone_holder.zip" 
@@ -60,7 +60,7 @@ const BedframeHolder = () => {
                 download
               >
                 <FileDown size={24} />
-                Download All Files (ZIP)
+                download both files (ZIP)
               </a>
             </div>
           </div>

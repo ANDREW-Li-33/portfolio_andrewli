@@ -92,7 +92,10 @@ const PrinterUpgrades = () => {
                   Magnetic Bed
                 </a>
                 <div className="w-full h-48 bg-gray-700 rounded-lg overflow-hidden">
-                  <img src="/images/printer/bed.png" alt="Magnetic Bed" className="w-full h-full object-cover"/>
+                  <img 
+                  src="/images/printer/bed.png" 
+                  alt="Magnetic Bed" 
+                  className="w-full h-full object-cover"/>
                 </div>
               </div>
 
@@ -159,7 +162,7 @@ const PrinterUpgrades = () => {
       <hr className='mt-7'/>
       <div className='text-white mt-5'>
           <h2 className='text-3xl font-bold pb-4'>Final Results</h2>
-          Although there's room for improvement, I'm really happy with the results! Below are some of the final results in action.
+          Although there&apos;s room for improvement, I&apos;m really happy with the results! Below are some of the final results in action.
           <div className="flex items-center gap-10 my-5">
             <img src="/images/printer/final_cat.jpeg" className="w-80 h-64 object-cover" alt="final printer upgrade result cat 3d print benchmark" />
             <video src="/images/printer/final_results.mp4" className="w-80 h-64 object-cover" autoPlay muted loop playsInline/>

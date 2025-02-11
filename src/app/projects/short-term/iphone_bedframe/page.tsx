@@ -8,7 +8,7 @@ const BedframeHolder = () => {
         <div>
           <h1 className="text-4xl font-bold mb-6">Bedframe Phone Holder</h1>
           <ul className="mb-8 text-lg leading-relaxed list-disc pl-6 space-y-4">
-            <li>Traditional phone holders often require modification to furniture or don't work well with bed frames, leading to unstable mounting solutions.</li>
+            <li>Traditional phone holders often require modification to furniture or don&apos;t work well with bed frames, leading to unstable mounting solutions.</li>
             <li>This custom-designed phone holder clamps securely to bedframe posts without any permanent modifications, providing a stable viewing experience.</li>
             <li>The design features adjustable positioning and can accommodate various phone sizes while maintaining a strong grip on the bedframe.</li>
           </ul>

@@ -10,7 +10,7 @@ const VexGUI = () => {
           <ul className="mb-8 text-lg leading-relaxed list-disc pl-6 space-y-4">
             <li>During my time in the VEX Robotics Competition, debugging sensors and motors was always a problem due to having connect extra cables in cramped spaces.</li>
             <li>Switching through prewritten programs required either choosing different separate programs through the controller, using a physical mechanism, or re-uploading programs.</li>
-            <li>To fix this problem, which could waste valuable time during competitions, I wrote a GUI that utilized the VEX V5 brain's touchscreen.</li>
+            <li>To fix this problem, which could waste valuable time during competitions, I wrote a GUI that utilized the VEX V5 brain&apos;s touchscreen.</li>
           </ul>
           
           <h2 className="text-3xl font-bold mb-4">Features</h2>

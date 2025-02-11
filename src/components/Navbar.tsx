@@ -1,23 +1,23 @@
-import { Bot } from 'lucide-react';
+import { Bot, Link } from 'lucide-react';
 
 export default function Navbar(): JSX.Element {
   return (
     <nav className="p-4 bg-gray-800 text-white">
       <div className="container mx-auto flex justify-between">
-        <a href="/">
+        <Link href="/">
           <h1 className="text-lg font-bold flex items-center gap-2">
             <Bot size={24} />
             andrewli.info
           </h1>
-        </a>
+        </Link>
         <ul className="flex space-x-4 font-bold">
           <li>
-            <a
+            <Link
               href="/"
               className="px-3 py-2 rounded hover:bg-purple-300 hover:text-gray-800 transition-colors duration-300"
             >
               Home
-            </a>
+            </Link>
           </li>
           <li>
             <a

@@ -30,7 +30,7 @@ const ContactPage = () => {
     {
       platform: 'Email',
       icon: <Mail size={28} />,
-      link: 'ali497@gatech.edu',
+      link: 'ali497@gatech.edu',  // Note: Removed "mailto:" so it doesn't become clickable.
       color: 'hover:text-green-400'
     },
   ];
@@ -48,27 +48,52 @@ const ContactPage = () => {
         </div>
 
         <div className="grid gap-6">
-          {contacts.map((contact) => (
-            <a
-              key={contact.platform}
-              href={contact.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`flex items-center p-4 rounded-lg border border-white/[.145] transition-colors hover:bg-[#1a1a1a] ${contact.color} group`}
-            >
-              <div className="p-2 mr-4">
-                {contact.icon}
-              </div>
-              <div className="flex-grow">
-                <h2 className="text-xl font-semibold font-[family-name:var(--font-geist-sans)] group-hover:text-gray-100">
-                  {contact.platform}
-                </h2>
-                <p className="text-gray-400 text-sm mt-1 font-[family-name:var(--font-geist-mono)]">
-                  {contact.link.replace('mailto:', '')}
-                </p>
-              </div>
-            </a>
-          ))}
+          {contacts.map((contact) => {
+            // Check if the contact is for Email. If so, render a non-clickable element.
+            if (contact.platform === 'Email') {
+              return (
+                <div
+                  key={contact.platform}
+                  className={`flex items-center p-4 rounded-lg border border-white/[.145] transition-colors hover:bg-[#1a1a1a] ${contact.color} group`}
+                >
+                  <div className="p-2 mr-4">
+                    {contact.icon}
+                  </div>
+                  <div className="flex-grow">
+                    <h2 className="text-xl font-semibold font-[family-name:var(--font-geist-sans)] group-hover:text-gray-100">
+                      {contact.platform}
+                    </h2>
+                    <p className="text-gray-400 text-sm mt-1 font-[family-name:var(--font-geist-mono)]">
+                      {contact.link}
+                    </p>
+                  </div>
+                </div>
+              );
+            }
+
+            // For all other contacts, render a clickable link.
+            return (
+              <a
+                key={contact.platform}
+                href={contact.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`flex items-center p-4 rounded-lg border border-white/[.145] transition-colors hover:bg-[#1a1a1a] ${contact.color} group`}
+              >
+                <div className="p-2 mr-4">
+                  {contact.icon}
+                </div>
+                <div className="flex-grow">
+                  <h2 className="text-xl font-semibold font-[family-name:var(--font-geist-sans)] group-hover:text-gray-100">
+                    {contact.platform}
+                  </h2>
+                  <p className="text-gray-400 text-sm mt-1 font-[family-name:var(--font-geist-mono)]">
+                    {contact.link.replace('mailto:', '')}
+                  </p>
+                </div>
+              </a>
+            );
+          })}
         </div>
       </div>
     </div>

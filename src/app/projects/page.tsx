@@ -93,7 +93,7 @@ export default function ProjectsPage(): JSX.Element {
             <ProjectGrid
                 projects={longTermProjects}
                 title="Long-Term Projects"
-                description="Detailed and in-depth projects that required significant development time"
+                description="In progress. Check back on February 18, 2025 for posts about my stair climbing robot and NBA bet predictor!"
             />
             
             <ProjectGrid

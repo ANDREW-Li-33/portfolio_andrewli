@@ -9,16 +9,16 @@ export default function AboutPage(): JSX.Element {
           <section id="about-me">
             <h1 className="text-4xl font-bold mb-4">About Me</h1>
             <p className="text-lg">
-              Hi, I’m <span className="font-semibold">Andrew Li</span>, a robotics enthusiast and computer science student attending Georgia Tech!
-              <br /> On this website, I hope to share some of my personal projects and provide some info about myself.
+              Hi, I’m <span className="font-semibold">Andrew Li</span>, a machine learning / robotics enthusiast and CS student at Georgia Tech from Long Island, New York! <br/>
+              In my free time I enjoy playing basketball (big Spurs fan), working out, and playing the piano!
             </p>
           </section>
           
           {/* Photos Section */}
           <section id="photos">
-            <div className="flex space-x-4">
-              <img src="/images/test image 2.webp" alt="Description of image 1" className="w-1/2 object-cover" />
-              <img src="/images/test image 3.jpeg" alt="Description of image 2" className="w-1/2 object-cover" />
+            <div className="flex space-x-4 h-80">
+              <img src="/images/self_img1.JPG" alt="Me with Georgia Tech's mascot, Buzz" className="w-1/2 h-full object-cover" />
+              <img src="/images/self_img2.png" alt="Me standing on a mountain in Hong Kong" className="w-1/2 h-full object-cover" />
             </div>
           </section>
 
@@ -62,15 +62,138 @@ export default function AboutPage(): JSX.Element {
 
       <hr className="h-1 bg-[#444] border-0" />
 
-      {/* Vex Robotics */}
-      <section id="vex-robotics">
-        <h2 className="text-2xl font-bold mb-2">Vex Robotics Competition</h2>
+{/* Vex Robotics */}
+<section id="vex-robotics">
+  <div className="grid grid-cols-2 gap-4">
+    <div>
+      <h2 className="text-2xl font-bold mb-4">Vex Robotics Competition</h2>
+      
+      <div className="space-y-4">
         <p className="text-lg">
-          From my early days competing in the VEX Robotics Competition to advancing my skills through internships and collaborative projects, I’ve cultivated a deep appreciation for both hardware and software. My experience includes developing autonomous navigation systems, working with soft robotics, and contributing to teams in sumo robotics competitions.
+          Starting our freshman year of high school, my two best friends and I formed a team to compete in the Vex Robotics Competition, a robotics competition in which teams face off in 2v2 matches to complete scoring objectives.
         </p>
-      </section>
+        
+        <p className="text-lg">
+          Struggling to compete against the experienced veterans, we eventually left our organization and formed our own team, 55645X Arsenal. It was in my teammate's basement where we spent our days after school, spending countless hours solving problem after problem. As we put the work in, our efforts started to show in our results.
+        </p>
+
+        <p className="text-lg font-semibold">Here's a recap of what we accomplished:</p>
+        
+        <ul className="list-disc pl-6 space-y-2 text-lg">
+          <li>New York State Champions</li>
+          <li>6x Tournament Champions</li>
+          <li>5x Robot Skills Champions</li>
+          <li>6 Judged Awards</li>
+          <li>3x World Championship Qualification</li>
+          <li>High ranking in national events in Wisconsin, California, and Massachusetts</li>
+        </ul>
+        
+      </div>
+      <div className="mt-5">
+        <img 
+          src="/images/about_vex/vaughn.png" 
+          alt="Team with awards" 
+          className="w-full h-96 object-cover rounded-lg"
+        />
+      </div>
+    </div>
+
+    <div>
+      {/* Social Links */}
+      <div className="flex items-center space-x-4 mt-6">
+        <a 
+          href="https://www.youtube.com/channel/UCqrfxe9OyJTMkMEitrIjS9A" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="flex items-center space-x-2 text-lg hover:underline"
+        >
+          <LinkIcon size={20} />
+          <span>Team YouTube Channel</span>
+        </a>
+        <a 
+          href="https://www.instagram.com/55645x/" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="flex items-center space-x-2 text-lg hover:underline"
+        >
+          <LinkIcon size={20} />
+          <span>Team Instagram</span>
+        </a>
+      </div>
+
+      <div className="grid grid-cols-2 gap-6 mt-6">
+        {/* Image 1 */}
+        <div className="space-y-2">
+          <img 
+            src="/images/about_vex/stairs.png" 
+            alt="Competition robot at States" 
+            className="w-full h-64 object-cover rounded-lg"
+          />
+          <p className="text-sm text-gray-400 text-center">Our competition robot that won States</p>
+        </div>
+
+        {/* Image 2 */}
+        <div className="space-y-2">
+          <img 
+            src="/images/about_vex/states.png" 
+            alt="Team at World Championships" 
+            className="w-full h-64 object-cover rounded-lg"
+          />
+          <p className="text-sm text-gray-400 text-center">Team 55645X at VEX Worlds 2019</p>
+        </div>
+
+        {/* Image 3 */}
+        <div className="space-y-2">
+          <img 
+            src="/images/about_vex/fdale.png" 
+            alt="Robot skills run" 
+            className="w-full h-64 object-cover rounded-lg"
+          />
+          <p className="text-sm text-gray-400 text-center">Robot performing autonomous skills routine</p>
+        </div>
+
+        {/* Image 4 */}
+        <div className="space-y-2">
+          <img 
+            src="/images/about_vex/cata.png" 
+            alt="Tournament victory" 
+            className="w-full h-64 object-cover rounded-lg"
+          />
+          <p className="text-sm text-gray-400 text-center">Celebrating our tournament victory in Massachusetts</p>
+        </div>
+
+        {/* Image 6 */}
+        <div className="space-y-2">
+          <img 
+            src="/images/about_vex/states2.png" 
+            alt="Robot CAD" 
+            className="w-full h-64 object-cover rounded-lg"
+          />
+          <p className="text-sm text-gray-400 text-center">CAD model of our winning robot design</p>
+        </div>
+
+        {/* Image 7 */}
+        <div className="space-y-2">
+          <img 
+            src="/images/about_vex/wildcats.png" 
+            alt="Team with awards" 
+            className="w-full h-64 object-cover rounded-lg"
+          />
+          <p className="text-sm text-gray-400 text-center">Team with Excellence and Tournament Champion awards</p>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</section>
+
 
       <hr className="h-1 bg-[#444] border-0" />
+
+
+
+
 
       <section id="boston-university">
         <h2 className="text-2xl font-bold mb-2">Boston University Morphable Biorobotics Lab</h2>
@@ -81,12 +204,33 @@ export default function AboutPage(): JSX.Element {
 
       <hr className="h-1 bg-[#444] border-0"/>
 
+
+
+
+
+
+
+
+
+
+
       <section id="robowrestling">
         <h2 className="text-2xl font-bold mb-2">Georgia Tech Robowrestling</h2>
         <p className="text-lg">
           Hello again.
         </p>
       </section>
+
+
+
+
+
+
+
+
+
+
+
 
       <hr className="h-1 bg-[#444] border-0"/>
 

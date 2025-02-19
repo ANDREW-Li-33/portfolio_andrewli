@@ -86,6 +86,7 @@ export default function AboutPage(): JSX.Element {
           <li>6 Judged Awards</li>
           <li>3x World Championship Qualification</li>
           <li>High ranking in national events in Wisconsin, California, and Massachusetts</li>
+          <li>High ranking in international World Championship</li>
         </ul>
         
       </div>
@@ -129,7 +130,7 @@ export default function AboutPage(): JSX.Element {
             alt="Competition robot at States" 
             className="w-full h-64 object-cover rounded-lg"
           />
-          <p className="text-sm text-gray-400 text-center">Our competition robot that won States</p>
+          <p className="text-sm text-gray-400 text-center">Tourney Champs, Skills, and Design Awards!</p>
         </div>
 
         {/* Image 2 */}
@@ -139,7 +140,7 @@ export default function AboutPage(): JSX.Element {
             alt="Team at World Championships" 
             className="w-full h-64 object-cover rounded-lg"
           />
-          <p className="text-sm text-gray-400 text-center">Team 55645X at VEX Worlds 2019</p>
+          <p className="text-sm text-gray-400 text-center">55645X becomes State Champions</p>
         </div>
 
         {/* Image 3 */}
@@ -149,17 +150,17 @@ export default function AboutPage(): JSX.Element {
             alt="Robot skills run" 
             className="w-full h-64 object-cover rounded-lg"
           />
-          <p className="text-sm text-gray-400 text-center">Robot performing autonomous skills routine</p>
+          <p className="text-sm text-gray-400 text-center">Winning the Farmingdale Qualifier!</p>
         </div>
 
         {/* Image 4 */}
         <div className="space-y-2">
           <img 
-            src="/images/about_vex/cata.png" 
+            src="/images/about_vex/overclock.png" 
             alt="Tournament victory" 
             className="w-full h-64 object-cover rounded-lg"
           />
-          <p className="text-sm text-gray-400 text-center">Celebrating our tournament victory in Massachusetts</p>
+          <p className="text-sm text-gray-400 text-center">Winning the Wildcats Qualifier!</p>
         </div>
 
         {/* Image 6 */}
@@ -169,7 +170,7 @@ export default function AboutPage(): JSX.Element {
             alt="Robot CAD" 
             className="w-full h-64 object-cover rounded-lg"
           />
-          <p className="text-sm text-gray-400 text-center">CAD model of our winning robot design</p>
+          <p className="text-sm text-gray-400 text-center">Posing with the state champ banners</p>
         </div>
 
         {/* Image 7 */}
@@ -179,7 +180,7 @@ export default function AboutPage(): JSX.Element {
             alt="Team with awards" 
             className="w-full h-64 object-cover rounded-lg"
           />
-          <p className="text-sm text-gray-400 text-center">Team with Excellence and Tournament Champion awards</p>
+          <p className="text-sm text-gray-400 text-center">Another win at the Malverne Qualifier!</p>
         </div>
       </div>
     </div>

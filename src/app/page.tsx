@@ -17,6 +17,7 @@ export default function Home() {
           src="/videos/landing_page_video.mp4"
           loop
           muted
+          autoPlay
           playsInline
           controls={false}
         />

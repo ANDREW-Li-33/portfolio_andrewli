@@ -1,7 +1,6 @@
-'use client'
-
 import { Link as LinkIcon } from 'lucide-react';
 import { useState, useEffect } from 'react';
+
 
 export default function AboutPage(): JSX.Element {
   const [isMounted, setIsMounted] = useState(false);
@@ -445,6 +444,5 @@ export default function AboutPage(): JSX.Element {
 
       </section>
 
-    </div>
   );
 }

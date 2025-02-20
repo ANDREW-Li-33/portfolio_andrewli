@@ -1,15 +1,17 @@
-import { Link as LinkIcon } from 'lucide-react';
-import { useState, useEffect } from 'react';
+'use client'
 
+import { Link as LinkIcon } from 'lucide-react'
+import { useState, useEffect } from 'react'
 
-export default function AboutPage(): JSX.Element {
-  const [isMounted, setIsMounted] = useState(false);
+const AboutPage = (): JSX.Element => {
+  const [isMounted, setIsMounted] = useState<boolean>(false)
 
   useEffect(() => {
-    setIsMounted(true);
-  }, []);
+    setIsMounted(true)
+  }, [])
 
   return (
+    <>
     <div className="container mx-auto p-6 space-y-6">
       <div className="flex items-start space-x-8 mt-3">
         <div className="flex-1 space-y-6">
@@ -17,7 +19,7 @@ export default function AboutPage(): JSX.Element {
           <section id="about-me">
             <h1 className="text-4xl font-bold mb-4">About Me</h1>
             <p className="text-lg">
-              Hi, I’m <span className="font-semibold">Andrew Li</span>, a machine learning / robotics enthusiast and CS student at Georgia Tech from Long Island, New York! <br/>
+              Hi, I&apos;m <span className="font-semibold">Andrew Li</span>, a machine learning / robotics enthusiast and CS student at Georgia Tech from Long Island, New York! <br/>
               In my free time I enjoy playing basketball (big Spurs fan), working out, and playing the piano!
             </p>
           </section>
@@ -83,7 +85,7 @@ export default function AboutPage(): JSX.Element {
         </p>
         
         <p className="text-lg">
-          Struggling to compete against the experienced veterans, we eventually left our organization and formed our own team, 55645X Arsenal. It was in my teammate's basement where we spent our days after school, spending countless hours solving problem after problem. As we put the work in, our efforts started to show in our results.
+          Struggling to compete against the experienced veterans, we eventually left our organization and formed our own team, 55645X Arsenal. It was in my teammate&apos;s basement where we spent our days after school, spending countless hours solving problem after problem. As we put the work in, our efforts started to show in our results.
         </p>
 
         <img 
@@ -92,7 +94,7 @@ export default function AboutPage(): JSX.Element {
           className="w-full h-96 object-cover rounded-lg"
         />
 
-        <p className="text-lg font-semibold">Here's a recap of what we accomplished:</p>
+        <p className="text-lg font-semibold">Here&apos;s a recap of what we accomplished:</p>
         
         <ul className="list-disc pl-6 space-y-2 text-lg">
           <li>New York State Champions</li>
@@ -286,7 +288,7 @@ export default function AboutPage(): JSX.Element {
             <h2 className="text-2xl font-bold mb-4">Georgia Tech Robowrestling</h2>
             <div className="space-y-4">
               <p className="text-lg">
-                In my freshman and sophomore year of college, I joined GT Robowrestling, Georgia Tech's robot sumo team.
+                In my freshman and sophomore year of college, I joined GT Robowrestling, Georgia Tech&apos;s robot sumo team.
                 Meeting twice weekly at the Student Competition Center, we worked on our robots for the 500 gram and 3 kilogram weight classes to compete against other robots from around the world.
               </p>
 
@@ -416,7 +418,7 @@ export default function AboutPage(): JSX.Element {
             <h2 className="text-2xl font-bold mb-4">Flowers Invention Studio</h2>
             <div className="space-y-4">
               <p className="text-lg">
-                The moment I found out about Georgia Tech's renowned student-run makerspace I knew that I wanted to get myself involved. 
+                The moment I found out about Georgia Tech&apos;s renowned student-run makerspace I knew that I wanted to get myself involved. 
                 The Invention Studio at Georgia Tech allows students to use hundreds of thousands of dollars worth of machinery, including CNC mills, industrial waterjets, laser cutters, 3D printers, and more!
               </p>
 
@@ -444,5 +446,9 @@ export default function AboutPage(): JSX.Element {
 
       </section>
 
-  );
+    </div>
+    </>
+  )
 }
+
+export default AboutPage

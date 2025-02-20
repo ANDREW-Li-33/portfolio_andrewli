@@ -382,7 +382,7 @@ const AboutPage = (): JSX.Element => {
                 alt="Tournament victory" 
                 className="w-full h-64 object-cover rounded-lg"
               />
-              <p className="text-sm text-gray-400 text-center">A lightbox made for my friend's birthday</p>
+              <p className="text-sm text-gray-400 text-center">A lightbox made for my friend&apos;s birthday</p>
             </div>
 
             <div className="space-y-2">
@@ -408,7 +408,7 @@ const AboutPage = (): JSX.Element => {
                 alt="Team with awards" 
                 className="w-full h-64 object-cover rounded-lg"
               />
-              <p className="text-sm text-gray-400 text-center">The Studio's bike shop</p>
+              <p className="text-sm text-gray-400 text-center">The Studio&apos;s bike shop</p>
             </div>
 
           </div>

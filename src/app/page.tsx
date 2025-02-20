@@ -15,7 +15,6 @@ export default function Home() {
         <video
           className="absolute top-0 left-0 w-full h-full object-cover"
           src="/videos/landing_page_video.mp4"
-          autoPlay
           loop
           muted
           playsInline

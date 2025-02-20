@@ -1,6 +1,15 @@
+'use client'
+
 import { Link as LinkIcon } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 export default function AboutPage(): JSX.Element {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <div className="container mx-auto p-6 space-y-6">
       <div className="flex items-start space-x-8 mt-3">
@@ -62,9 +71,10 @@ export default function AboutPage(): JSX.Element {
 
       <hr className="h-1 bg-[#444] border-0" />
 
-{/* Vex Robotics */}
 <section id="vex-robotics">
   <div className="grid grid-cols-2 gap-4">
+
+    {/* text column */}
     <div>
       <h2 className="text-2xl font-bold mb-4">Vex Robotics Competition</h2>
       
@@ -77,6 +87,12 @@ export default function AboutPage(): JSX.Element {
           Struggling to compete against the experienced veterans, we eventually left our organization and formed our own team, 55645X Arsenal. It was in my teammate's basement where we spent our days after school, spending countless hours solving problem after problem. As we put the work in, our efforts started to show in our results.
         </p>
 
+        <img 
+          src="/images/about_vex/vaughn.png" 
+          alt="Team with awards" 
+          className="w-full h-96 object-cover rounded-lg"
+        />
+
         <p className="text-lg font-semibold">Here's a recap of what we accomplished:</p>
         
         <ul className="list-disc pl-6 space-y-2 text-lg">
@@ -85,20 +101,16 @@ export default function AboutPage(): JSX.Element {
           <li>5x Robot Skills Champions</li>
           <li>6 Judged Awards</li>
           <li>3x World Championship Qualification</li>
-          <li>High ranking in national events in Wisconsin, California, and Massachusetts</li>
-          <li>High ranking in international World Championship</li>
+          <li>High ranking in national events in Wisconsin, California, Massachusetts, and the international World Championship</li>
         </ul>
         
       </div>
       <div className="mt-5">
-        <img 
-          src="/images/about_vex/vaughn.png" 
-          alt="Team with awards" 
-          className="w-full h-96 object-cover rounded-lg"
-        />
+
       </div>
     </div>
 
+    {/* image / links column */}
     <div>
       {/* Social Links */}
       <div className="flex items-center space-x-4 mt-6">
@@ -122,8 +134,9 @@ export default function AboutPage(): JSX.Element {
         </a>
       </div>
 
+      {/* images */}
       <div className="grid grid-cols-2 gap-6 mt-6">
-        {/* Image 1 */}
+
         <div className="space-y-2">
           <img 
             src="/images/about_vex/stairs.png" 
@@ -133,7 +146,6 @@ export default function AboutPage(): JSX.Element {
           <p className="text-sm text-gray-400 text-center">Tourney Champs, Skills, and Design Awards!</p>
         </div>
 
-        {/* Image 2 */}
         <div className="space-y-2">
           <img 
             src="/images/about_vex/states.png" 
@@ -143,7 +155,6 @@ export default function AboutPage(): JSX.Element {
           <p className="text-sm text-gray-400 text-center">55645X becomes State Champions</p>
         </div>
 
-        {/* Image 3 */}
         <div className="space-y-2">
           <img 
             src="/images/about_vex/fdale.png" 
@@ -153,7 +164,6 @@ export default function AboutPage(): JSX.Element {
           <p className="text-sm text-gray-400 text-center">Winning the Farmingdale Qualifier!</p>
         </div>
 
-        {/* Image 4 */}
         <div className="space-y-2">
           <img 
             src="/images/about_vex/overclock.png" 
@@ -163,7 +173,6 @@ export default function AboutPage(): JSX.Element {
           <p className="text-sm text-gray-400 text-center">Winning the Wildcats Qualifier!</p>
         </div>
 
-        {/* Image 6 */}
         <div className="space-y-2">
           <img 
             src="/images/about_vex/states2.png" 
@@ -173,7 +182,6 @@ export default function AboutPage(): JSX.Element {
           <p className="text-sm text-gray-400 text-center">Posing with the state champ banners</p>
         </div>
 
-        {/* Image 7 */}
         <div className="space-y-2">
           <img 
             src="/images/about_vex/wildcats.png" 
@@ -185,61 +193,256 @@ export default function AboutPage(): JSX.Element {
       </div>
     </div>
 
-
   </div>
 </section>
 
 
       <hr className="h-1 bg-[#444] border-0" />
 
-
-
-
-
       <section id="boston-university">
-        <h2 className="text-2xl font-bold mb-2">Boston University Morphable Biorobotics Lab</h2>
-        <p className='text-lg'>
-          Hello.
-        </p>
+        <div className='grid grid-cols-2 gap-4'>
+
+          {/* image column */}
+          <div className='grid grid-cols-2 gap-4'>
+            <div className="space-y-2">
+              <img 
+                src="/images/about_bu/bu_1.jpg" 
+                alt="Robot skills run" 
+                className="w-full h-64 object-cover rounded-lg"
+              />
+              <p className="text-sm text-gray-400 text-center">My pick-and-place machine grabbing a penny!</p>
+            </div>
+
+            
+            <div className="space-y-2">
+              <img 
+                src="/images/about_bu/bu_5.jpg" 
+                alt="Tournament victory" 
+                className="w-full h-64 object-cover rounded-lg"
+              />
+              <p className="text-sm text-gray-400 text-center">Force testing the SBA</p>
+            </div>
+
+            
+            <div className="space-y-2">
+              <img 
+                src="/images/about_bu/bu_4.jpg" 
+                alt="Robot CAD" 
+                className="w-full h-64 object-cover rounded-lg"
+              />
+              <p className="text-sm text-gray-400 text-center">Deflated SBA</p>
+            </div>
+
+            
+            <div className="space-y-2">
+              <img 
+                src="/images/about_bu/bu_2.jpg" 
+                alt="Team with awards" 
+                className="w-full h-64 object-cover rounded-lg"
+              />
+              <p className="text-sm text-gray-400 text-center">Inflated SBA</p>
+            </div>
+          </div>
+
+          {/* text column */}
+          <div> 
+            <h2 className="text-2xl font-bold mb-4">Boston University Morphable Biorobotics Lab</h2>
+            <div className="space-y-4">
+              <p className="text-lg">
+                During my junior year of high school, I spent 6 weeks discovering the world of soft robotics, meeting new friends, and exploring the avenues of Boston.
+                This was all part of the Boston University RISE (Research In Science and Engineering) summer program, in which students are immersed in hands-on projects and given the opportunity to learn from leading experts.
+              </p>
+              
+              <p className="text-lg">
+                For 6 weeks, I worked in the Morphable Biorobotics lab under PI Tommaso Ranzani and PhD student Jacob Rogatinsky, investigating applications of SBAs (Stacked Balloon Actuators) in minimally invasive heart surgery.
+              </p>
+
+              <p className="text-lg font-semibold">This work involved:</p>
+              
+              <ul className="list-disc pl-6 space-y-2 text-lg">
+                <li>Fabricating SBAs using a laser cutter, heat press, and a Teflon layering methodology</li>
+                <li>Conducting strength testing and fabrication on SBAs</li>
+                <li>Designing, fabricating, and programming a pick-and-place machine featuring an SBA end effector</li>
+                <li>Programming SBA control using a Wii nunchuck</li>
+              </ul>
+
+              <p className="text-lg">
+                Along the way, I made like-minded and talented friends that I will always remember, and I will always look back at my time in BU fondly.
+              </p>
+            </div>
+          </div>
+
+        </div>
       </section>
 
       <hr className="h-1 bg-[#444] border-0"/>
 
 
 
-
-
-
-
-
-
-
-
       <section id="robowrestling">
-        <h2 className="text-2xl font-bold mb-2">Georgia Tech Robowrestling</h2>
-        <p className="text-lg">
-          Hello again.
-        </p>
+        <div className='grid grid-cols-2 gap-4'>
+
+          {/* text column */}
+          <div>
+            <h2 className="text-2xl font-bold mb-4">Georgia Tech Robowrestling</h2>
+            <div className="space-y-4">
+              <p className="text-lg">
+                In my freshman and sophomore year of college, I joined GT Robowrestling, Georgia Tech's robot sumo team.
+                Meeting twice weekly at the Student Competition Center, we worked on our robots for the 500 gram and 3 kilogram weight classes to compete against other robots from around the world.
+              </p>
+
+              <p className="text-lg">
+                These robots eventually competed in the Robogames competition and at an in-house competition, in which my 500g subteam won!
+              </p>
+
+              <p className="text-lg font-semibold">My contributions included:</p>
+
+              <ul className="list-disc pl-6 space-y-2 text-lg">
+                <li>Developing C++ firmware on the Arduino Nano and Teensy microcontrollers for real-time sensor integration and motion control</li>
+                <li>Coordinating with the electrical and mechanical teams to optimize performance under design constraints</li>
+                <li>Providing software onboarding to first-year 500g teams</li>
+                <li>Operation of waterjet and mills to manufacture steel / aluminum baseplates</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* image column */}
+          <div className='grid grid-cols-2 gap-4'>
+            <div className="space-y-2">
+              <img 
+                src="/images/about_rw/robo_1.png" 
+                alt="Competition robot at States" 
+                className="w-full h-64 object-cover rounded-lg"
+              />
+              <p className="text-sm text-gray-400 text-center">Our 2023-2024 500g bots!</p>
+            </div>
+
+            <div className="space-y-2">
+              <img 
+                src="/images/about_rw/robo_2.png" 
+                alt="Team at World Championships" 
+                className="w-full h-64 object-cover rounded-lg"
+              />
+              <p className="text-sm text-gray-400 text-center">On the way to RoboGames</p>
+            </div>
+
+            <div className="space-y-2">
+              <img 
+                src="/images/about_rw/robo_3.png" 
+                alt="Robot skills run" 
+                className="w-full h-64 object-cover rounded-lg"
+              />
+              <p className="text-sm text-gray-400 text-center">At Robogames!</p>
+            </div>
+
+            <div className="space-y-2">
+              {isMounted ? (
+                <video
+                  src="/videos/about/robosumo_testing.mp4"
+                  className="w-full h-64 object-cover rounded-lg"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  controls={false}
+                />
+              ) : (
+                <div className="w-full h-64 bg-gray-800 rounded-lg" />
+              )}
+              <p className="text-sm text-gray-400 text-center">Testing the 500g Frankii</p>
+            </div>
+
+          </div>
+
+        </div>
+
       </section>
-
-
-
-
-
-
-
-
-
-
 
 
       <hr className="h-1 bg-[#444] border-0"/>
 
       <section id="invention-studio">
-        <h2 className="text-2xl font-bold mb-2">Flowers Invention Studio</h2>
-        <p className="text-lg">
-          Hello again again.
-        </p>
+        <div className='grid grid-cols-2 gap-4'>
+
+          {/* image column */}
+          <div className='grid grid-cols-2 gap-4'>
+            <div className="space-y-2">
+              <img 
+                src="/images/about_is/is_1.jpg" 
+                alt="Robot skills run" 
+                className="w-full h-64 object-cover rounded-lg"
+              />
+              <p className="text-sm text-gray-400 text-center">The Invention Studio print farm!</p>
+            </div>
+
+            <div className="space-y-2">
+              <img 
+                src="/images/about_is/is_2.jpg" 
+                alt="Tournament victory" 
+                className="w-full h-64 object-cover rounded-lg"
+              />
+              <p className="text-sm text-gray-400 text-center">A lightbox made for my friend's birthday</p>
+            </div>
+
+            <div className="space-y-2">
+              {isMounted ? (
+                <video
+                  src="/videos/about/is_3.mp4"
+                  className="w-full h-64 object-cover rounded-lg"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  controls={false}
+                />
+              ) : (
+                <div className="w-full h-64 bg-gray-800 rounded-lg" />
+              )}
+              <p className="text-sm text-gray-400 text-center">Trying out the laser cutter!</p>
+            </div>
+
+            <div className="space-y-2">
+              <img 
+                src="/images/about_is/is_4.jpg" 
+                alt="Team with awards" 
+                className="w-full h-64 object-cover rounded-lg"
+              />
+              <p className="text-sm text-gray-400 text-center">The Studio's bike shop</p>
+            </div>
+
+          </div>
+
+          {/* text column */}
+          <div> 
+            <h2 className="text-2xl font-bold mb-4">Flowers Invention Studio</h2>
+            <div className="space-y-4">
+              <p className="text-lg">
+                The moment I found out about Georgia Tech's renowned student-run makerspace I knew that I wanted to get myself involved. 
+                The Invention Studio at Georgia Tech allows students to use hundreds of thousands of dollars worth of machinery, including CNC mills, industrial waterjets, laser cutters, 3D printers, and more!
+              </p>
+
+              <p className="text-lg">
+                From tablesaws to sewing machines, I went through numerous trainings and testings on various equipment during my freshman year.
+                After finally becoming a Provisional PI (Prototyping Instructor) at the Invention Studio, I began staffing the space.
+              </p>
+
+              <p className="text-lg">
+                My responsibilities included supervising general users 3 hours per week to ensure safe use of equipment, as well as administering machine trainings to those also looking to staff the space. 
+                In exchange, I gained 24/7 access to the Invention Studio!
+              </p>
+              
+              <p className="text-lg">
+                I then worked my way up to becoming a Full PI, meaning I could also administer testing and training to those trying to become provisional PIs!
+              </p>
+
+              <p className="text-lg">
+                As a computer science major, being at the Invention Studio allowed me to see a different side of Georgia Tech, giving me a more complete experience during my time in college. 
+              </p>
+            </div>
+          </div>
+
+        </div>
+
       </section>
 
     </div>

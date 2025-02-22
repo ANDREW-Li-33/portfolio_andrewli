@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
+import CloudinaryImage from '@/components/CloudinaryImage';
 
 interface Project {
     title: string;
@@ -28,29 +28,27 @@ export default function ProjectsPage(): JSX.Element {
         {
             title: "3D printer upgrades!",
             description: "Upgrades for my Ender 3",
-            imageUrl: "/images/short_printer_upgrades.png",
+            imageUrl: "short_printer_upgrades_ldeimh.png", // We'll update this with the correct ID
             link: "/projects/short-term/printer_upgrades",
             date: "Dec 28, 2024",
         },
         {
             title: "Bed frame phone holder",
             description: "A bedfame holder for my airpods and iphone",
-            imageUrl: "/images/short_iphone_bedframe_holder.png",
+            imageUrl: "short_iphone_bedframe_holder_wgnm1a.png",
             link: "/projects/short-term/iphone_bedframe",
             date: "Sep 28, 2024",
         },
         {
             title: "Telemetry GUI",
             description: "GUI displaying VEX motor and sensor telemetry",
-            imageUrl: "/images/short_vex_gui.png",
+            imageUrl: "short_vex_gui_zwkf1p.png", // We'll update this with the correct ID
             link: "/projects/short-term/vex_gui",
             date: "Jan 29, 2023",
         },
     ];
 
-    const longTermProjects: Project[] = [
-        // Add your long-term projects in the same format
-    ];
+    const longTermProjects: Project[] = [];
 
     const ProjectGrid = ({ projects, title, description }: ProjectGridProps): JSX.Element => (
         <div className="mb-16">
@@ -69,11 +67,13 @@ export default function ProjectsPage(): JSX.Element {
                             </div>
                             <p className="text-gray-400 mb-4">{project.description}</p>
                             <div className="relative flex justify-center items-center mb-4 w-64 h-40">
-                                <Image
-                                    className="object-cover rounded-lg"
+                                <CloudinaryImage
                                     src={project.imageUrl}
                                     alt={project.title}
-                                    fill
+                                    width={256}
+                                    height={160}
+                                    className="object-cover rounded-lg"
+                                    priority={index < 2}
                                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                 />
                             </div>
@@ -84,7 +84,6 @@ export default function ProjectsPage(): JSX.Element {
         </div>
     );
 
-    // Handle initial render gracefully
     if (!mounted) {
         return <div className="container mx-auto p-6">Loading...</div>;
     }

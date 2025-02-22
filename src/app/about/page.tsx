@@ -2,6 +2,7 @@
 
 import { Link as LinkIcon } from 'lucide-react'
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 
 const AboutPage = (): JSX.Element => {
   const [isMounted, setIsMounted] = useState<boolean>(false)
@@ -27,8 +28,24 @@ const AboutPage = (): JSX.Element => {
           {/* Photos Section */}
           <section id="photos">
             <div className="flex space-x-4 h-80">
-              <img src="/images/self_img1.JPG" alt="Me with Georgia Tech's mascot, Buzz" className="w-1/2 h-full object-cover" />
-              <img src="/images/self_img2.png" alt="Me standing on a mountain in Hong Kong" className="w-1/2 h-full object-cover" />
+              <div className="relative w-1/2 h-full">
+                <Image 
+                  src="/images/self_img1.JPG"
+                  alt="Me with Georgia Tech's mascot, Buzz"
+                  fill
+                  className="object-cover"
+                  sizes="50vw"
+                />
+              </div>
+              <div className="relative w-1/2 h-full">
+                <Image 
+                  src="/images/self_img2.png"
+                  alt="Me standing on a mountain in Hong Kong"
+                  fill
+                  className="object-cover"
+                  sizes="50vw"
+                />
+              </div>
             </div>
           </section>
 
@@ -88,11 +105,15 @@ const AboutPage = (): JSX.Element => {
           Struggling to compete against the experienced veterans, we eventually left our organization and formed our own team, 55645X Arsenal. It was in my teammate&apos;s basement where we spent our days after school, spending countless hours solving problem after problem. As we put the work in, our efforts started to show in our results.
         </p>
 
-        <img 
-          src="/images/about_vex/vaughn.png" 
-          alt="Team with awards" 
-          className="w-full h-96 object-cover rounded-lg"
-        />
+        <div className="relative w-full h-96">
+          <Image 
+            src="/images/about_vex/vaughn.png"
+            alt="Team with awards"
+            fill
+            className="object-cover rounded-lg"
+            sizes="100vw"
+          />
+        </div>
 
         <p className="text-lg font-semibold">Here&apos;s a recap of what we accomplished:</p>
         
@@ -111,88 +132,111 @@ const AboutPage = (): JSX.Element => {
       </div>
     </div>
 
-    {/* image / links column */}
-    <div>
-      {/* Social Links */}
-      <div className="flex items-center space-x-4 mt-6">
-        <a 
-          href="https://www.youtube.com/channel/UCqrfxe9OyJTMkMEitrIjS9A" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          className="flex items-center space-x-2 text-lg hover:underline"
-        >
-          <LinkIcon size={20} />
-          <span>Team YouTube Channel</span>
-        </a>
-        <a 
-          href="https://www.instagram.com/55645x/" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          className="flex items-center space-x-2 text-lg hover:underline"
-        >
-          <LinkIcon size={20} />
-          <span>Team Instagram</span>
-        </a>
+{/* image / links column */}
+<div>
+  {/* Social Links */}
+  <div className="flex items-center space-x-4 mt-6">
+    <a 
+      href="https://www.youtube.com/channel/UCqrfxe9OyJTMkMEitrIjS9A" 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      className="flex items-center space-x-2 text-lg hover:underline"
+    >
+      <LinkIcon size={20} />
+      <span>Team YouTube Channel</span>
+    </a>
+    <a 
+      href="https://www.instagram.com/55645x/" 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      className="flex items-center space-x-2 text-lg hover:underline"
+    >
+      <LinkIcon size={20} />
+      <span>Team Instagram</span>
+    </a>
+  </div>
+
+  {/* images */}
+  <div className="grid grid-cols-2 gap-6 mt-6">
+    <div className="space-y-2">
+      <div className="relative w-full h-64">
+        <Image 
+          src="/images/about_vex/stairs.png"
+          alt="Competition robot at States"
+          fill
+          className="object-cover rounded-lg"
+          sizes="(max-width: 768px) 100vw, 50vw"
+        />
       </div>
-
-      {/* images */}
-      <div className="grid grid-cols-2 gap-6 mt-6">
-
-        <div className="space-y-2">
-          <img 
-            src="/images/about_vex/stairs.png" 
-            alt="Competition robot at States" 
-            className="w-full h-64 object-cover rounded-lg"
-          />
-          <p className="text-sm text-gray-400 text-center">Tourney Champs, Skills, and Design Awards!</p>
-        </div>
-
-        <div className="space-y-2">
-          <img 
-            src="/images/about_vex/states.png" 
-            alt="Team at World Championships" 
-            className="w-full h-64 object-cover rounded-lg"
-          />
-          <p className="text-sm text-gray-400 text-center">55645X becomes State Champions</p>
-        </div>
-
-        <div className="space-y-2">
-          <img 
-            src="/images/about_vex/fdale.png" 
-            alt="Robot skills run" 
-            className="w-full h-64 object-cover rounded-lg"
-          />
-          <p className="text-sm text-gray-400 text-center">Winning the Farmingdale Qualifier!</p>
-        </div>
-
-        <div className="space-y-2">
-          <img 
-            src="/images/about_vex/overclock.png" 
-            alt="Tournament victory" 
-            className="w-full h-64 object-cover rounded-lg"
-          />
-          <p className="text-sm text-gray-400 text-center">Winning the Wildcats Qualifier!</p>
-        </div>
-
-        <div className="space-y-2">
-          <img 
-            src="/images/about_vex/states2.png" 
-            alt="Robot CAD" 
-            className="w-full h-64 object-cover rounded-lg"
-          />
-          <p className="text-sm text-gray-400 text-center">Posing with the state champ banners</p>
-        </div>
-
-        <div className="space-y-2">
-          <img 
-            src="/images/about_vex/wildcats.png" 
-            alt="Team with awards" 
-            className="w-full h-64 object-cover rounded-lg"
-          />
-          <p className="text-sm text-gray-400 text-center">Another win at the Malverne Qualifier!</p>
-        </div>
-      </div>
+      <p className="text-sm text-gray-400 text-center">Tourney Champs, Skills, and Design Awards!</p>
     </div>
+
+    <div className="space-y-2">
+      <div className="relative w-full h-64">
+        <Image 
+          src="/images/about_vex/states.png"
+          alt="Picture with our bot after winning the state championship"
+          fill
+          className="object-cover rounded-lg"
+          sizes="(max-width: 768px) 100vw, 50vw"
+        />
+      </div>
+      <p className="text-sm text-gray-400 text-center">55645X becomes State Champions</p>
+    </div>
+
+    <div className="space-y-2">
+      <div className="relative w-full h-64">
+        <Image 
+          src="/images/about_vex/fdale.png"
+          alt="Team posing after winning the Farmingdale Qualifier"
+          fill
+          className="object-cover rounded-lg"
+          sizes="(max-width: 768px) 100vw, 50vw"
+        />
+      </div>
+      <p className="text-sm text-gray-400 text-center">Winning the Farmingdale Qualifier!</p>
+    </div>
+
+    <div className="space-y-2">
+      <div className="relative w-full h-64">
+        <Image 
+          src="/images/about_vex/overclock.png"
+          alt="Team posing after winning the Wildcats Qualifier"
+          fill
+          className="object-cover rounded-lg"
+          sizes="(max-width: 768px) 100vw, 50vw"
+        />
+      </div>
+      <p className="text-sm text-gray-400 text-center">Winning the Wildcats Qualifier!</p>
+    </div>
+
+    <div className="space-y-2">
+      <div className="relative w-full h-64">
+        <Image 
+          src="/images/about_vex/states2.png"
+          alt="Team posing with awards after becoming New York state champions"
+          fill
+          className="object-cover rounded-lg"
+          sizes="(max-width: 768px) 100vw, 50vw"
+        />
+      </div>
+      <p className="text-sm text-gray-400 text-center">Posing with the state champ banners</p>
+    </div>
+
+    <div className="space-y-2">
+      <div className="relative w-full h-64">
+        <Image 
+          src="/images/about_vex/wildcats.png"
+          alt="Team posing after winning the Malverne Qualifier"
+          fill
+          className="object-cover rounded-lg"
+          sizes="(max-width: 768px) 100vw, 50vw"
+        />
+      </div>
+      <p className="text-sm text-gray-400 text-center">Another win at the Malverne Qualifier!</p>
+    </div>
+  </div>
+</div>
 
   </div>
 </section>
@@ -206,41 +250,57 @@ const AboutPage = (): JSX.Element => {
           {/* image column */}
           <div className='grid grid-cols-2 gap-4'>
             <div className="space-y-2">
-              <img 
-                src="/images/about_bu/bu_1.jpg" 
-                alt="Robot skills run" 
-                className="w-full h-64 object-cover rounded-lg"
-              />
+              <div className='relative w-full h-64'>
+                <Image
+                  src="/images/about_bu/bu_1.jpg"
+                  alt="Pick and place machine picking grabbing a penny"
+                  fill
+                  className="object-cover rounded-lg"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+              </div>
               <p className="text-sm text-gray-400 text-center">My pick-and-place machine grabbing a penny!</p>
             </div>
 
             
             <div className="space-y-2">
-              <img 
-                src="/images/about_bu/bu_5.jpg" 
-                alt="Tournament victory" 
-                className="w-full h-64 object-cover rounded-lg"
-              />
+              <div className='relative w-full h-64'>
+                <Image
+                  src="images/about_bu/bu_5.jpg"
+                  alt="force testing an SBA"
+                  fill
+                  className="object-cover rounded-lg"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
               <p className="text-sm text-gray-400 text-center">Force testing the SBA</p>
             </div>
 
             
             <div className="space-y-2">
-              <img 
-                src="/images/about_bu/bu_4.jpg" 
-                alt="Robot CAD" 
-                className="w-full h-64 object-cover rounded-lg"
-              />
+              <div className='relative w-full h-64'>
+                  <Image
+                    src="images/about_bu/bu_4.jpg"
+                    alt="A deflated SBA"
+                    fill
+                    className="object-cover rounded-lg"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
               <p className="text-sm text-gray-400 text-center">Deflated SBA</p>
             </div>
 
             
             <div className="space-y-2">
-              <img 
-                src="/images/about_bu/bu_2.jpg" 
-                alt="Team with awards" 
-                className="w-full h-64 object-cover rounded-lg"
-              />
+              <div className='relative w-full h-64'>
+                <Image
+                  src="images/about_bu/bu_2.jpg"
+                  alt="An inflated SBA"
+                  fill
+                  className="object-cover rounded-lg"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
               <p className="text-sm text-gray-400 text-center">Inflated SBA</p>
             </div>
           </div>
@@ -310,29 +370,41 @@ const AboutPage = (): JSX.Element => {
           {/* image column */}
           <div className='grid grid-cols-2 gap-4'>
             <div className="space-y-2">
-              <img 
-                src="/images/about_rw/robo_1.png" 
-                alt="Competition robot at States" 
-                className="w-full h-64 object-cover rounded-lg"
-              />
+              <div className='relative w-full h-64'>
+                  <Image
+                    src="images/about_rw/robo_1.png"
+                    alt="Line up of GT Robowrestling's 500g bots for the 2023-2024 season"
+                    fill
+                    className="object-cover rounded-lg"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
               <p className="text-sm text-gray-400 text-center">Our 2023-2024 500g bots!</p>
             </div>
 
             <div className="space-y-2">
-              <img 
-                src="/images/about_rw/robo_2.png" 
-                alt="Team at World Championships" 
-                className="w-full h-64 object-cover rounded-lg"
-              />
-              <p className="text-sm text-gray-400 text-center">On the way to RoboGames</p>
+              <div className='relative w-full h-64'>
+                  <Image
+                    src="images/about_rw/robo_2.png"
+                    alt="Team picture at the airport on the way to RoboGames 2024"
+                    fill
+                    className="object-cover rounded-lg"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
+              <p className="text-sm text-gray-400 text-center">On the way to RoboGames 2024</p>
             </div>
 
             <div className="space-y-2">
-              <img 
-                src="/images/about_rw/robo_3.png" 
-                alt="Robot skills run" 
-                className="w-full h-64 object-cover rounded-lg"
-              />
+              <div className='relative w-full h-64'>
+                  <Image
+                    src="images/about_rw/robo_3.png"
+                    alt="A picture of the Robogames venue"
+                    fill
+                    className="object-cover rounded-lg"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
               <p className="text-sm text-gray-400 text-center">At Robogames!</p>
             </div>
 
@@ -345,7 +417,6 @@ const AboutPage = (): JSX.Element => {
                   loop
                   muted
                   playsInline
-                  controls={false}
                 />
               ) : (
                 <div className="w-full h-64 bg-gray-800 rounded-lg" />
@@ -368,20 +439,28 @@ const AboutPage = (): JSX.Element => {
           {/* image column */}
           <div className='grid grid-cols-2 gap-4'>
             <div className="space-y-2">
-              <img 
-                src="/images/about_is/is_1.jpg" 
-                alt="Robot skills run" 
-                className="w-full h-64 object-cover rounded-lg"
-              />
+              <div className='relative w-full h-64'>
+                <Image
+                  src="images/about_is/is_1.jpg"
+                  alt="The 3D printer farm at the Invention Studio"
+                  fill
+                  className="object-cover rounded-lg"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
               <p className="text-sm text-gray-400 text-center">The Invention Studio print farm!</p>
             </div>
 
             <div className="space-y-2">
-              <img 
-                src="/images/about_is/is_2.jpg" 
-                alt="Tournament victory" 
-                className="w-full h-64 object-cover rounded-lg"
-              />
+              <div className='relative w-full h-64'>
+                <Image
+                  src="images/about_is/is_2.jpg"
+                  alt="A lightbox birthday gift project made by me at the Invention Studio"
+                  fill
+                  className="object-cover rounded-lg"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
               <p className="text-sm text-gray-400 text-center">A lightbox made for my friend&apos;s birthday</p>
             </div>
 
@@ -394,7 +473,6 @@ const AboutPage = (): JSX.Element => {
                   loop
                   muted
                   playsInline
-                  controls={false}
                 />
               ) : (
                 <div className="w-full h-64 bg-gray-800 rounded-lg" />
@@ -403,11 +481,15 @@ const AboutPage = (): JSX.Element => {
             </div>
 
             <div className="space-y-2">
-              <img 
-                src="/images/about_is/is_4.jpg" 
-                alt="Team with awards" 
-                className="w-full h-64 object-cover rounded-lg"
-              />
+              <div className='relative w-full h-64'>
+                <Image
+                  src="images/about_is/is_4.jpg"
+                  alt="The Invention Studio bike shop"
+                  fill
+                  className="object-cover rounded-lg"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
               <p className="text-sm text-gray-400 text-center">The Studio&apos;s bike shop</p>
             </div>
 

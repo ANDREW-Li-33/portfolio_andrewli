@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'lucide-react';
+import Image from 'next/image'; // Add ImageProps type
 
-const PrinterUpgrades = () => {
+const PrinterUpgrades = (): JSX.Element => {
   return (
     <div className="container mx-auto px-4 md:px-16 py-6 bg-black text-white min-h-screen mt-12">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -79,6 +80,7 @@ const PrinterUpgrades = () => {
           </section>
         </div>
 
+        {/* images column */}
         <div className="space-y-8">
           <div className="bg-gray-800 p-6 rounded-lg">
             <h2 className="text-xl font-semibold mb-4">Installed Upgrades:</h2>
@@ -91,11 +93,14 @@ const PrinterUpgrades = () => {
                   <Link size={24} />
                   Magnetic Bed
                 </a>
-                <div className="w-full h-48 bg-gray-700 rounded-lg overflow-hidden">
-                  <img 
-                  src="/images/printer/bed.png" 
-                  alt="Magnetic Bed" 
-                  className="w-full h-full object-cover"/>
+                <div className="relative w-full h-48 bg-gray-700 rounded-lg overflow-hidden">
+                  <Image 
+                    src="/images/printer/bed.png"
+                    alt="Magnetic Bed"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
                 </div>
               </div>
 
@@ -107,8 +112,14 @@ const PrinterUpgrades = () => {
                   <Link size={24} />
                   Metal Extruder Module
                 </a>
-                <div className="w-full h-48 bg-gray-700 rounded-lg overflow-hidden">
-                  <img src="/images/printer/metal_extruder_installed.png" alt="Metal Extruder" className="w-full h-full object-cover"/>
+                <div className="relative w-full h-48 bg-gray-700 rounded-lg overflow-hidden">
+                  <Image 
+                    src="/images/printer/metal_extruder_installed.png"
+                    alt="Metal Extruder"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
                 </div>
               </div>
 
@@ -120,8 +131,14 @@ const PrinterUpgrades = () => {
                   <Link size={24} />
                   Hotend with Silicone Cover
                 </a>
-                <div className="w-full h-48 bg-gray-700 rounded-lg overflow-hidden">
-                  <img src="/images/printer/hotend_replacement_1.jpeg" alt="New Hotend" className="w-full h-full object-cover"/>
+                <div className="relative w-full h-48 bg-gray-700 rounded-lg overflow-hidden">
+                  <Image 
+                    src="/images/printer/hotend_replacement_1.jpeg"
+                    alt="New Hotend"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
                 </div>
               </div>
 
@@ -133,8 +150,14 @@ const PrinterUpgrades = () => {
                   <Link size={24} />
                   Auto Bed-Leveling Kit
                 </a>
-                <div className="w-full h-48 bg-gray-700 rounded-lg overflow-hidden">
-                  <img src="/images/printer/CRTouch_1.png" alt="Auto Bed-Leveling" className="w-full h-full object-cover"/>
+                <div className="relative w-full h-48 bg-gray-700 rounded-lg overflow-hidden">
+                  <Image 
+                    src="/images/printer/CRTouch_1.png"
+                    alt="Auto Bed-Leveling"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
                 </div>
               </div>
 
@@ -146,30 +169,53 @@ const PrinterUpgrades = () => {
                   <Link size={24} />
                   SKR Mini Mainboard
                 </a>
-                <div className="w-full h-48 bg-gray-700 rounded-lg overflow-hidden">
-                  <img src="/images/printer/SKR_mini_installed.png" alt="New Mainboard" className="w-full h-full object-cover"/>
+                <div className="relative w-full h-48 bg-gray-700 rounded-lg overflow-hidden">
+                  <Image 
+                    src="/images/printer/SKR_mini_installed.png"
+                    alt="New Mainboard"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
                 </div>
               </div>
             </div>
           </div>
         </div>
-
-
-
-
       </div>
 
       <hr className='mt-7'/>
       <div className='text-white mt-5'>
-          <h2 className='text-3xl font-bold pb-4'>Final Results</h2>
-          Although there&apos;s room for improvement, I&apos;m really happy with the results! Below are some of the final results in action.
-          <div className="flex items-center gap-10 my-5">
-            <img src="/images/printer/final_cat.jpeg" className="w-80 h-64 object-cover" alt="final printer upgrade result cat 3d print benchmark" />
-            <video src="/images/printer/final_results.mp4" className="w-80 h-64 object-cover" autoPlay muted loop playsInline/>
-            <video src="/images/printer/metal extruder.mp4" className="w-80 h-64 object-cover" muted autoPlay loop playsInline></video>
-
+        <h2 className='text-3xl font-bold pb-4'>Final Results</h2>
+        Although there&apos;s room for improvement, I&apos;m really happy with the results! Below are some of the final results in action.
+        <div className="flex items-center gap-10 my-5">
+          <div className="relative w-80 h-64">
+            <Image 
+              src="/images/printer/final_cat.jpeg"
+              alt="final printer upgrade result cat 3d print benchmark"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 33vw"
+            />
           </div>
+          <video 
+            src="/images/printer/final_results.mp4" 
+            className="w-80 h-64 object-cover" 
+            autoPlay 
+            muted 
+            loop 
+            playsInline
+          />
+          <video 
+            src="/images/printer/metal extruder.mp4" 
+            className="w-80 h-64 object-cover" 
+            muted 
+            autoPlay 
+            loop 
+            playsInline
+          />
         </div>
+      </div>
       <hr />
     </div>
   );

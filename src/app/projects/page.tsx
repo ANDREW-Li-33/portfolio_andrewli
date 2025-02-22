@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 interface Project {
     title: string;
@@ -67,11 +68,13 @@ export default function ProjectsPage(): JSX.Element {
                                 <span className="text-gray-400 text-sm">{project.date}</span>
                             </div>
                             <p className="text-gray-400 mb-4">{project.description}</p>
-                            <div className="flex justify-center items-center mb-4">
-                                <img
-                                    className="w-64 h-40 object-cover rounded-lg"
+                            <div className="relative flex justify-center items-center mb-4 w-64 h-40">
+                                <Image
+                                    className="object-cover rounded-lg"
                                     src={project.imageUrl}
                                     alt={project.title}
+                                    fill
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                 />
                             </div>
                         </a>

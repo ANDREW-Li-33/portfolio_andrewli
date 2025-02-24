@@ -21,9 +21,9 @@ const StairBot = (): JSX.Element => {
             <h3 className="text-2xl font-bold mb-6">Introduction</h3>
             <ul className="space-y-4 text-lg leading-relaxed list-disc pl-6">
               <li>
-                During my time in Georgia Tech's China Summer Program, I was
-                located in Shenzhen, often nicknamed "The Silicon Valley of
-                Hardware"
+                During my time in Georgia Tech&apos;s China Summer Program, I was
+                located in Shenzhen, often nicknamed &ldquo;The Silicon Valley of
+                Hardware&rdquo;
               </li>
               <li>
                 To encourage students to take advantage of the cheap and
@@ -36,7 +36,7 @@ const StairBot = (): JSX.Element => {
               </li>
               <li>
                 To aid in the fabrication process, students are given access to
-                Gerogia Tech Shenzhen's makerspace, featuring 3D printers, a
+                Gerogia Tech Shenzhen&apos;s makerspace, featuring 3D printers, a
                 laser cutter, and many more prototyping machines
               </li>
               <li>
@@ -422,7 +422,7 @@ const StairBot = (): JSX.Element => {
           <h2 className="text-3xl font-bold pb-4">Lessons Learned</h2>
           <ul className="space-y-4 text-lg leading-relaxed list-disc pl-6">
             <li>
-              I'm a little unhappy with the final results, as the robot was not
+              I&apos;m a little unhappy with the final results, as the robot was not
               completely autonomous and had trouble driving
             </li>
             <li>

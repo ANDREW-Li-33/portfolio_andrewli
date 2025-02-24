@@ -42,13 +42,21 @@ export default function ProjectsPage(): JSX.Element {
         {
             title: "Telemetry GUI",
             description: "GUI displaying VEX motor and sensor telemetry",
-            imageUrl: "short_vex_gui_zwkf1p.png", // We'll update this with the correct ID
+            imageUrl: "short_vex_gui_zwkf1p.png", 
             link: "/projects/short-term/vex_gui",
             date: "Jan 29, 2023",
         },
     ];
 
-    const longTermProjects: Project[] = [];
+    const longTermProjects: Project[] = [
+        {
+            title: "Stair Climbing Robot",
+            description: "A robot that climbs stairs!",
+            imageUrl: "completed_chassis_uti0xi.png",
+            link: "/projects/long-term/stair_bot",
+            date: "Jul 2024",
+        },
+    ];
 
     const ProjectGrid = ({ projects, title, description }: ProjectGridProps): JSX.Element => (
         <div className="mb-16">
@@ -95,7 +103,7 @@ export default function ProjectsPage(): JSX.Element {
             <ProjectGrid
                 projects={longTermProjects}
                 title="Long-Term Projects"
-                description="In progress. Check back on February 22, 2025 for posts about my stair climbing robot and NBA bet predictor!"
+                description="Projects that took one week or longer"
             />
             
             <ProjectGrid

@@ -37,6 +37,9 @@ const BedframeHolder = () => {
           
           <div className="bg-gray-800 text-white p-6 rounded-lg">
             <h3 className="text-xl font-semibold mb-2">Download STL Files:</h3>
+            <div className="grid grid-cols-3">
+              
+            </div>
             <div className="space-y-2">
               <a 
                 href="/downloadables/bedframe_phone_holder_only.stl" 

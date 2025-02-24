@@ -1,6 +1,5 @@
 'use client';
 
-// components/CloudinaryImage.tsx
 import { CldImage } from 'next-cloudinary';
 import { useState } from 'react';
 

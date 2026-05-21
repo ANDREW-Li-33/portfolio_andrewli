@@ -1,0 +1,23 @@
+# Netlify build configuration for the Vite + React portfolio.
+# Replaces the previous Next.js build config — this repo is now a fully
+# static SPA built by Vite, served from /dist.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  # Vite 6 requires Node 18+, but 20 is the current LTS so use that.
+  NODE_VERSION = "20"
+
+# SPA fallback so any unknown route still serves index.html (lets React
+# decide what to render). The site uses React state for navigation
+# rather than URL routing, so deep links don't really exist, but this
+# is harmless and keeps things working if anyone ever does land on
+# something like /foo by mistake. Status 200 = rewrite, not a redirect,
+# so the browser URL is preserved. Only fires when no static file
+# matches the request path.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

@@ -1,4 +1,5 @@
 import { img } from '../data/media';
+import { useDocMeta } from '../hooks/useDocMeta';
 
 /**
  * Research page — lab + research-team affiliations, reverse-chronological.
@@ -7,6 +8,13 @@ import { img } from '../data/media';
  * there are enough entries to justify it.
  */
 export default function Research() {
+  useDocMeta({
+    title: 'Research — Andrew Li',
+    description:
+      "Andrew Li's research affiliations — Humanoid Robotics @ Georgia Tech, Lunar Lab, BU Morphable Biorobotics.",
+    path: '/research',
+  });
+
   return (
     <div className="section">
       <div className="container">

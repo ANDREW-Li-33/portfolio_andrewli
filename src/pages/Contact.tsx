@@ -1,7 +1,14 @@
 import { useState } from 'react';
 import { CONTACTS } from '../data/contacts';
+import { useDocMeta } from '../hooks/useDocMeta';
 
 export default function Contact() {
+  useDocMeta({
+    title: 'Contact — Andrew Li',
+    description: 'Get in touch with Andrew Li — GitHub, LinkedIn, YouTube, email.',
+    path: '/contact',
+  });
+
   // Tracks which non-link contact's handle was last copied, so we can show
   // a transient "Copied!" label on the matching button.
   const [copied, setCopied] = useState<string | null>(null);

@@ -1,4 +1,5 @@
 import type { ProjectCard } from '../types';
+import { useDocMeta } from '../hooks/useDocMeta';
 import JohnStockbotDetail from './details/JohnStockbotDetail';
 import StairBotDetail from './details/StairBotDetail';
 import PrinterUpgradesDetail from './details/PrinterUpgradesDetail';
@@ -28,6 +29,12 @@ const DETAILS: Record<string, () => JSX.Element> = {
 
 export default function ProjectDetail({ project, onBack }: Props) {
   const Body = DETAILS[project.id];
+
+  useDocMeta({
+    title: `${project.title} — Andrew Li`,
+    description: project.description,
+    path: `/projects/${project.id}`,
+  });
 
   return (
     <div className="section project-detail">

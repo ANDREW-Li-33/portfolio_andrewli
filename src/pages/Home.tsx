@@ -1,9 +1,18 @@
+import { useDocMeta } from '../hooks/useDocMeta';
+
 interface HomeProps {
   onProjects: () => void;
   onAbout: () => void;
 }
 
 export default function Home({ onProjects, onAbout }: HomeProps) {
+  useDocMeta({
+    title: 'Andrew Li — CS & Robotics @ Georgia Tech',
+    description:
+      'B.S./M.S. Computer Science at Georgia Tech. AI for autonomy at Sandia National Labs, software lead at Humanoid Robotics @ GT, real-to-sim vision research at the Lunar Lab.',
+    path: '/',
+  });
+
   return (
     <div className="hero">
       {/* Blurred copy fills the hero area so the side bars look like a soft

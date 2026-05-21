@@ -1,5 +1,6 @@
 import Embed from '../components/Embed';
 import { img } from '../data/media';
+import { useDocMeta } from '../hooks/useDocMeta';
 
 /**
  * Experience page — paid roles + competition leadership, reverse-chronological.
@@ -8,6 +9,13 @@ import { img } from '../data/media';
  * there are enough entries to justify it.
  */
 export default function Experience() {
+  useDocMeta({
+    title: 'Experience — Andrew Li',
+    description:
+      "Andrew Li's work and competition experience — Sandia National Labs, Invention Studio, GT RoboWrestling, VEX Robotics.",
+    path: '/experience',
+  });
+
   return (
     <div className="section">
       <div className="container">

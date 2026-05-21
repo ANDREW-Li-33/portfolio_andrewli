@@ -13,8 +13,8 @@ export const CONTACTS: Contact[] = [
   },
   {
     platform: 'LinkedIn',
-    handle: 'linkedin.com/in/andrew-li-87865a209',
-    link: 'https://www.linkedin.com/in/andrew-li-87865a209/',
+    handle: 'linkedin.com/in/andrewli033',
+    link: 'https://www.linkedin.com/in/andrewli033/',
   },
   {
     platform: 'YouTube',

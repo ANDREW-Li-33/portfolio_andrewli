@@ -9,6 +9,12 @@
 [build.environment]
   # Vite 6 requires Node 18+, but 20 is the current LTS so use that.
   NODE_VERSION = "20"
+  # Tell Netlify's Next.js auto-runtime to skip itself. This site's
+  # previous Next.js framework setting persists at the site level
+  # even after the repo no longer contains Next.js — these env vars
+  # force the runtime to no-op so our plain `npm run build` runs.
+  NEXT_PRIVATE_SKIP_SIZE_LIMIT_CHECK = "true"
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"
 
 # SPA fallback so any unknown route still serves index.html (lets React
 # decide what to render). The site uses React state for navigation

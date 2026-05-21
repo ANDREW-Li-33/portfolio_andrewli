@@ -24,7 +24,7 @@ body,
 body {
   background: #0d0f12;
   color: #ecedef;
-  font-family: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
+  font-family: 'Lato', -apple-system, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -52,9 +52,12 @@ body {
     linear-gradient(180deg, rgba(13, 15, 18, 0.0) 60%, var(--bg) 100%);
   --nav-bg:           rgba(13, 15, 18, 0.85);
 
-  /* === Typography (theme-independent) === */
+  /* === Typography (theme-independent) ===
+     Source Serif 4 — sharp transitional serif for headlines & decorative
+     italic taglines. Lato — humanist sans with warm/round letterforms
+     for body prose and UI. JetBrains Mono for code-detail metadata. */
   --serif:  'Source Serif 4', 'Iowan Old Style', 'Apple Garamond', Georgia, serif;
-  --sans:   'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
+  --sans:   'Lato', -apple-system, system-ui, sans-serif;
   --mono:   'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
   /* === Spacing scale === */
@@ -425,15 +428,18 @@ body {
 }
 
 .about-bio {
-  font-family: var(--serif);
-  font-size: 18px;
-  line-height: 1.65;
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.7;
   color: var(--text-secondary);
 }
 
 .about-bio p { margin-bottom: var(--space-4); }
 .about-bio p:last-child { margin-bottom: 0; }
-.about-bio strong { color: var(--text); font-weight: 500; }
+/* Lato has no 500 weight (it goes 100 / 300 / 400 / 700 / 900). Use 700
+   here so the inline emphasis in the bio actually reads as bolder than
+   the surrounding body — 500 would substitute down to 400 (regular). */
+.about-bio strong { color: var(--text); font-weight: 700; }
 
 /* Section divider — editorial style */
 .divider {
@@ -482,9 +488,9 @@ body {
 }
 
 .subsection p {
-  font-family: var(--serif);
-  font-size: 17px;
-  line-height: 1.65;
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.7;
   color: var(--text-secondary);
   margin-bottom: var(--space-4);
 }
@@ -1282,10 +1288,10 @@ section > .image-grid {
 }
 
 .detail-lede {
-  font-family: var(--serif);
+  font-family: var(--sans);
   color: var(--text-secondary);
-  font-size: 17px;
-  line-height: 1.65;
+  font-size: 16px;
+  line-height: 1.7;
   margin-bottom: var(--space-5);
 }
 

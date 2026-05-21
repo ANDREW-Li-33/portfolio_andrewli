@@ -1,6 +1,7 @@
 import type { Tab } from '../types';
 import { ResumeIcon } from '../components/Icons';
 import { img } from '../data/media';
+import { useDocMeta } from '../hooks/useDocMeta';
 
 interface AboutProps {
   onNav: (tab: Tab) => void;
@@ -12,6 +13,13 @@ interface AboutProps {
  * "Research" route to those tabs via the onNav callback.
  */
 export default function About({ onNav }: AboutProps) {
+  useDocMeta({
+    title: 'About — Andrew Li',
+    description:
+      "Master's student in Computer Science at Georgia Tech interested in real2sim / sim2real transfer and robotic 3D vision.",
+    path: '/about',
+  });
+
   return (
     <div className="section">
       <div className="container">

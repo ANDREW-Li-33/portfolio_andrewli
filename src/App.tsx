@@ -1,5 +1,6 @@
-import { useState, useLayoutEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import type { Tab } from './types';
+import { useRoute } from './hooks/useRoute';
 import Layout from './layout/Layout';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
@@ -9,23 +10,24 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 
 /**
- * Top-level router. Owns the current tab and renders the matching page
- * inside the shared Layout (nav + footer + theme).
- *
- * Also owns `selectedProjectId` (lifted out of <Projects />) so that
- * clicking the Projects nav tab can clear it — returning the user to
- * the grid view from inside a project detail page.
+ * Top-level router. The current tab + selected project both live in
+ * the URL (see useRoute), so deep links like /about and
+ * /projects/john-stockbot resolve correctly on first paint and the
+ * browser back/forward buttons just work.
  */
 export default function App() {
-  const [tab, setTab] = useState<Tab>('home');
-  const [selectedProjectId, setSelectedProjectId] = useState<string | null>(null);
+  const { route, navigate } = useRoute();
+  const { tab, projectId } = route;
 
-  // Wrap setTab so clicking the Projects nav button always returns to
-  // the grid view, even when the user is already on the Projects tab
-  // inside a detail page.
+  // Nav handler: jumping to "projects" from anywhere always lands on
+  // the grid (drop any selected detail).
   const handleSetTab = (next: Tab) => {
-    if (next === 'projects') setSelectedProjectId(null);
-    setTab(next);
+    if (next === 'projects') navigate('projects', null);
+    else navigate(next, null);
+  };
+
+  const setSelectedId = (id: string | null) => {
+    navigate('projects', id);
   };
 
   // Reset the .site scroll container to the top whenever the visible
@@ -39,7 +41,7 @@ export default function App() {
   useLayoutEffect(() => {
     const root = document.querySelector('.site');
     if (root) root.scrollTop = 0;
-  }, [tab, selectedProjectId]);
+  }, [tab, projectId]);
 
   return (
     <Layout tab={tab} setTab={handleSetTab}>
@@ -51,8 +53,8 @@ export default function App() {
       )}
       {tab === 'projects'   && (
         <Projects
-          selectedId={selectedProjectId}
-          setSelectedId={setSelectedProjectId}
+          selectedId={projectId}
+          setSelectedId={setSelectedId}
         />
       )}
       {tab === 'experience' && <Experience />}

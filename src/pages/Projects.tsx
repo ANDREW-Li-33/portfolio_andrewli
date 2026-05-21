@@ -2,6 +2,7 @@ import type { ProjectCard } from '../types';
 import { PROJECTS, MINI_PROJECTS, ALL_PROJECTS } from '../data/projects';
 import { img } from '../data/media';
 import ProjectDetail from '../projects/ProjectDetail';
+import { useDocMeta } from '../hooks/useDocMeta';
 
 interface ProjectsProps {
   selectedId: string | null;
@@ -24,6 +25,17 @@ export default function Projects({ selectedId, setSelectedId }: ProjectsProps) {
       return <ProjectDetail project={project} onBack={() => setSelectedId(null)} />;
     }
   }
+
+  return <ProjectsGrid setSelectedId={setSelectedId} />;
+}
+
+function ProjectsGrid({ setSelectedId }: { setSelectedId: (id: string | null) => void }) {
+  useDocMeta({
+    title: 'Projects — Andrew Li',
+    description:
+      'Robotics and software projects by Andrew Li — basketball rebounding robot, 3D printer upgrades, stair-climbing robot, telemetry GUI.',
+    path: '/projects',
+  });
 
   return (
     <div className="section">

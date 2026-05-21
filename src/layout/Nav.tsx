@@ -24,7 +24,7 @@ export default function Nav({ tab, setTab, theme, toggleTheme }: NavProps) {
           {/* Andy (one of Snoopy's siblings) — small mark to the left of
               the wordmark. Also used as the site's favicon. */}
           <img className="brand-mark" src="/images/andy.png" alt="" />
-          Andrew Li
+          <span className="brand-text">Andrew Li</span>
         </button>
         <ul className="nav-links">
           {TABS.map((t) => (

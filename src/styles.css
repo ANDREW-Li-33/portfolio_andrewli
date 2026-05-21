@@ -1016,27 +1016,117 @@ section > .image-grid {
 }
 .site::-webkit-scrollbar-thumb:hover { background: var(--text-tertiary); }
 
-/* === Responsive === */
+/* === Responsive ===
+   Three breakpoints:
+   - 900px : tablet / narrow desktop — collapse 2-column rows to stacked
+   - 640px : phones — stack everything, shrink nav, fluid hero type
+   - 400px : compact phones — drop brand wordmark, tighten nav further
+   The site stays usable down to ~320px (iPhone SE). */
 @media (max-width: 900px) {
+  .nav-container { padding: var(--space-3) var(--space-4); }
+  .brand-mark { width: 44px; height: 44px; }
+  .brand { font-size: 17px; }
+
   .about-top,
   .subsection,
   .subsection.reverse {
     grid-template-columns: 1fr;
+    gap: var(--space-6);
   }
   .project-grid { grid-template-columns: 1fr 1fr; }
+  .image-grid.cols-3 { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 640px) {
-  .section { padding: var(--space-7) var(--space-4); }
-  .hero { padding: var(--space-7) var(--space-4); }
-  .section-title { font-size: 32px; }
-  .subsection h2 { font-size: 24px; }
-  .project-grid { grid-template-columns: 1fr; }
-  .image-grid { grid-template-columns: 1fr; }
-  .contact-row { grid-template-columns: 1fr; gap: var(--space-1); }
-  .contact-handle { font-size: 12px; }
+  /* Nav — keep one row, shrink everything, tighten gaps */
+  .nav-container { padding: var(--space-2) var(--space-3); }
+  .brand { font-size: 15px; gap: var(--space-1); }
+  .brand-mark { width: 36px; height: 36px; }
   .nav-links { gap: 0; }
-  .nav-link { padding: var(--space-2); font-size: 12px; }
+  .nav-link {
+    padding: var(--space-2) var(--space-2);
+    font-size: 12px;
+    letter-spacing: 0;
+  }
+  .theme-toggle {
+    width: 30px;
+    height: 30px;
+    margin-left: var(--space-1);
+  }
+
+  /* Sections — pull padding in, smaller titles */
+  .section { padding: var(--space-7) var(--space-4); }
+  .section-title { font-size: 28px; }
+  .section-eyebrow { font-size: 10.5px; margin-bottom: var(--space-3); }
+
+  /* Hero — let the name shrink further than the default clamp floor */
+  .hero {
+    padding: var(--space-7) var(--space-4);
+    min-height: calc(100vh - 56px);
+  }
+  .hero-name { font-size: clamp(40px, 13vw, 60px); }
+  .hero-tagline {
+    font-size: clamp(17px, 4.5vw, 22px);
+    margin-bottom: var(--space-6);
+  }
+  .hero-eyebrow { font-size: 11px; letter-spacing: 0.18em; }
+  .hero-actions { width: 100%; gap: var(--space-2); }
+  .hero-actions .cta {
+    flex: 1;
+    justify-content: center;
+    padding: var(--space-3) var(--space-3);
+  }
+
+  /* Subsection (experience / research entries) */
+  .subsection h2 { font-size: 22px; }
+  .subsection p { font-size: 16px; }
+  .subsection ul li { font-size: 14px; }
+
+  /* Project grids — single column on phones */
+  .project-grid { grid-template-columns: 1fr; gap: var(--space-4); }
+  .project-section { margin-bottom: var(--space-7); }
+  .project-title { font-size: 22px; }
+  .project-card { padding: var(--space-4); }
+  .project-card-title { font-size: 17px; }
+
+  /* Image / download grids — single column */
+  .image-grid,
+  .image-grid.cols-3 { grid-template-columns: 1fr; }
+  .download-list { grid-template-columns: 1fr; }
+
+  /* Contact — stack each row; arrow can't add meaning when it sits below */
+  .contact-row {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+    padding: var(--space-4) 0;
+  }
+  .contact-row:hover { padding-left: 0; }
+  .contact-platform { font-size: 19px; }
+  .contact-handle { font-size: 12px; word-break: break-all; }
+  .contact-arrow { display: none; }
+
+  /* Project detail typography */
+  .detail-h2 { font-size: 22px; }
+  .detail-h3 { font-size: 18px; }
+  .detail-lede { font-size: 16px; }
+  .back-link { margin-bottom: var(--space-4); }
+
+  /* About bio reads as a column block */
+  .about-bio { font-size: 17px; }
+
+  /* Footer breathing room */
+  .footer { padding: var(--space-5) var(--space-4); }
+}
+
+@media (max-width: 400px) {
+  /* Drop the "Andrew Li" wordmark — Andy mark alone identifies the brand,
+     and nav-links + theme toggle reclaim the horizontal space. */
+  .brand-text { display: none; }
+  .nav-link {
+    padding: 6px var(--space-1);
+    font-size: 11.5px;
+  }
+  .section-title { font-size: 26px; }
 }
 
 /* === Project-detail typography utilities ===

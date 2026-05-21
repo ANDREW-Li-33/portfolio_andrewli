@@ -46,53 +46,58 @@ export default function Nav({ tab, setTab, theme, toggleTheme }: NavProps) {
   };
 
   return (
-    <nav className="nav">
-      <div className="nav-container">
-        <button className="brand" onClick={() => goTo('home')}>
-          {/* Andy (one of Snoopy's siblings) — small mark to the left of
-              the wordmark. Also used as the site's favicon. */}
-          <img className="brand-mark" src="/images/andy.png" alt="" />
-          <span className="brand-text">Andrew Li</span>
-        </button>
+    <>
+      <nav className="nav">
+        <div className="nav-container">
+          <button className="brand" onClick={() => goTo('home')}>
+            {/* Andy (one of Snoopy's siblings) — small mark to the left of
+                the wordmark. Also used as the site's favicon. */}
+            <img className="brand-mark" src="/images/andy.png" alt="" />
+            <span className="brand-text">Andrew Li</span>
+          </button>
 
-        {/* Desktop / wide-screen nav — hidden under ≤768px via CSS. */}
-        <ul className="nav-links nav-desktop">
-          {TABS.map((t) => (
-            <li key={t.id}>
+          {/* Desktop / wide-screen nav — hidden under ≤768px via CSS. */}
+          <ul className="nav-links nav-desktop">
+            {TABS.map((t) => (
+              <li key={t.id}>
+                <button
+                  className={`nav-link${tab === t.id ? ' active' : ''}`}
+                  onClick={() => setTab(t.id)}
+                >
+                  {t.label}
+                </button>
+              </li>
+            ))}
+            <li>
               <button
-                className={`nav-link${tab === t.id ? ' active' : ''}`}
-                onClick={() => setTab(t.id)}
+                className="theme-toggle"
+                onClick={toggleTheme}
+                title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+                aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
               >
-                {t.label}
+                {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
               </button>
             </li>
-          ))}
-          <li>
-            <button
-              className="theme-toggle"
-              onClick={toggleTheme}
-              title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-              aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-            >
-              {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
-            </button>
-          </li>
-        </ul>
+          </ul>
 
-        {/* Mobile hamburger — hidden above 768px via CSS. */}
-        <button
-          className="nav-mobile-toggle"
-          onClick={() => setMenuOpen(true)}
-          aria-label="Open menu"
-          aria-expanded={menuOpen}
-          aria-controls="mobile-nav-drawer"
-        >
-          <MenuIcon />
-        </button>
-      </div>
+          {/* Mobile hamburger — hidden above 768px via CSS. */}
+          <button
+            className="nav-mobile-toggle"
+            onClick={() => setMenuOpen(true)}
+            aria-label="Open menu"
+            aria-expanded={menuOpen}
+            aria-controls="mobile-nav-drawer"
+          >
+            <MenuIcon />
+          </button>
+        </div>
+      </nav>
 
-      {/* Mobile drawer — full-viewport overlay with a slide-in panel on
-          the right. Inert when closed (pointer-events: none, aria-hidden). */}
+      {/* Mobile drawer — must live OUTSIDE <nav>. The nav uses
+          `backdrop-filter: blur(12px)`, which establishes a containing
+          block for `position: fixed` descendants and would clip the
+          drawer to the nav's 60px height. Sibling-of-nav placement
+          lets `position: fixed; inset: 0` actually pin to the viewport. */}
       <div
         id="mobile-nav-drawer"
         className={`nav-drawer${menuOpen ? ' open' : ''}`}
@@ -137,6 +142,6 @@ export default function Nav({ tab, setTab, theme, toggleTheme }: NavProps) {
           </ul>
         </div>
       </div>
-    </nav>
+    </>
   );
 }

@@ -50,13 +50,14 @@ export default function About({ onNav }: AboutProps) {
             </p>
 
             <p>
-              Feel free to check out the rest of this site, or download my resume for a quick summary of my work:
+              Feel free to check out the rest of this site, or open my resume for a quick summary of my work:
               <a
                 className="resume-icon-link"
                 href="/downloadables/andrew_li_resume.pdf"
-                download
-                title="Download resume (PDF)"
-                aria-label="Download resume (PDF)"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Open resume (PDF)"
+                aria-label="Open resume (PDF) in a new tab"
               >
                 <ResumeIcon />
               </a>

@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Projects from './pages/Projects';
 import Experience from './pages/Experience';
 import Research from './pages/Research';
+import Resume from './pages/Resume';
 import About from './pages/About';
 import Contact from './pages/Contact';
 
@@ -17,10 +18,10 @@ import Contact from './pages/Contact';
  */
 export default function App() {
   const { route, navigate } = useRoute();
-  const { tab, projectId } = route;
+  const { tab, projectId, hash } = route;
 
   // Nav handler: jumping to "projects" from anywhere always lands on
-  // the grid (drop any selected detail).
+  // the grid (drop any selected detail). Clears any hash.
   const handleSetTab = (next: Tab) => {
     if (next === 'projects') navigate('projects', null);
     else navigate(next, null);
@@ -30,18 +31,42 @@ export default function App() {
     navigate('projects', id);
   };
 
-  // Reset the .site scroll container to the top whenever the visible
-  // page changes (tab nav OR opening/closing a project detail). Without
-  // this, the persistent .site scroll position carries over between
-  // pages — e.g. scroll down on the tall John-Stockbot detail, click
-  // "About", and the browser shows you the bottom of About because it
-  // tried to keep the same scrollTop. useLayoutEffect runs after the
-  // DOM swaps but before paint, so there's no visible flash of the
-  // old scroll position on the new page.
+  // Used by the Resume page to deep-link into a named section on
+  // Experience or Research (e.g. ('experience', 'sandia') → scrolls
+  // the Experience page to <section id="sandia">).
+  const handleNavToSection = (next: Tab, anchor: string | null = null) => {
+    navigate(next, null, anchor);
+  };
+
+  // Resume → project detail page (e.g. opens /projects/john-stockbot).
+  const handleNavToProject = (id: string) => {
+    navigate('projects', id);
+  };
+
+  // Scroll behavior on navigation:
+  //  - If the route has a hash, find <#id> and scroll the .site
+  //    container so the section sits at the top.
+  //  - Otherwise reset .site scrollTop to 0 (existing behavior — keeps
+  //    page changes from inheriting the previous page's scroll).
+  // useLayoutEffect runs after the new page's DOM is mounted but before
+  // paint, so getElementById finds the just-rendered section.
   useLayoutEffect(() => {
-    const root = document.querySelector('.site');
-    if (root) root.scrollTop = 0;
-  }, [tab, projectId]);
+    const root = document.querySelector('.site') as HTMLElement | null;
+    if (!root) return;
+
+    if (hash) {
+      const el = document.getElementById(hash);
+      if (el) {
+        // The .site container is the actual scroll context, not window.
+        // offsetTop is measured against the offsetParent — for our
+        // sticky-nav + flex layout, that lines up with the .site
+        // scrollable area for elements deep inside the page.
+        root.scrollTop = el.offsetTop;
+        return;
+      }
+    }
+    root.scrollTop = 0;
+  }, [tab, projectId, hash]);
 
   return (
     <Layout tab={tab} setTab={handleSetTab}>
@@ -59,6 +84,12 @@ export default function App() {
       )}
       {tab === 'experience' && <Experience />}
       {tab === 'research'   && <Research />}
+      {tab === 'resume'     && (
+        <Resume
+          onNavToSection={handleNavToSection}
+          onNavToProject={handleNavToProject}
+        />
+      )}
       {tab === 'about'      && <About onNav={handleSetTab} />}
       {tab === 'contact'    && <Contact />}
     </Layout>

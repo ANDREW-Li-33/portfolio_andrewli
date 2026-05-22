@@ -1,4 +1,4 @@
-export type Tab = 'home' | 'projects' | 'experience' | 'research' | 'about' | 'contact';
+export type Tab = 'home' | 'projects' | 'experience' | 'research' | 'resume' | 'about' | 'contact';
 
 export type Theme = 'dark' | 'light';
 

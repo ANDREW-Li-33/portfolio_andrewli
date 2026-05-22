@@ -1165,6 +1165,272 @@ section > .image-grid {
   transform: translateX(4px);
 }
 
+/* === Resume page ===
+   Editorial "alternate" rendering of the PDF resume. Uses the site's
+   typography (Source Serif headings, Lato body) and adds resume-only
+   primitives: a section heading with an accent eyebrow + rule line,
+   a row-style entry with a logo placeholder + body, and a two-column
+   skill row. Most rules collapse to single column at ≤768px. */
+
+.resume-contact {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--text-tertiary);
+  margin-bottom: var(--space-5);
+}
+
+/* Inline Copy button next to the email. Reuses the existing
+   .contact-copy-btn (Copy / Copied! state) from the Contact page; just
+   tweaks margin + baseline so it sits cleanly inline with the mono
+   contact text. */
+.resume-contact .contact-copy-btn {
+  margin-left: var(--space-2);
+  vertical-align: 1px;
+  padding: 2px 8px;
+  font-size: 10px;
+}
+
+/* Sits between the "Resume" eyebrow and the page title — a subtle
+   sentence pointing to the original PDF, with the same .resume-icon-link
+   chip used on the About page tucked inline at the end. */
+.resume-pdf-note {
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-tertiary);
+  margin: 0 0 var(--space-4);
+  max-width: 560px;
+}
+
+.resume-section {
+  margin-bottom: var(--space-7);
+}
+
+.resume-section-heading {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--accent);
+  margin-bottom: var(--space-5);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--border);
+}
+
+.resume-entry {
+  display: flex;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.resume-entry:last-child {
+  margin-bottom: 0;
+}
+
+/* Logo chip — 56px square. Placeholder variant (default) has a diagonal
+   hatched fill and the first letter of the company name. Pass a `logo`
+   prop to <ResumeEntry> to swap in an <img>; .has-logo flattens the
+   background so the hatch doesn't bleed through transparent PNG edges. */
+.resume-entry-logo {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background:
+    repeating-linear-gradient(
+      135deg,
+      var(--surface-2),
+      var(--surface-2) 8px,
+      var(--surface) 8px,
+      var(--surface) 16px
+    );
+  color: var(--accent);
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  user-select: none;
+  overflow: hidden;
+}
+
+.resume-entry-logo.has-logo {
+  background: var(--surface);
+  padding: 6px;
+}
+
+.resume-entry-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.resume-entry-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.resume-entry-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-1);
+}
+
+.resume-entry-name {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin: 0;
+}
+
+/* Tappable variant — used when the name links into a section/project. */
+button.resume-entry-name-link {
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.15s;
+}
+
+button.resume-entry-name-link:hover {
+  color: var(--accent);
+}
+
+.resume-entry-meta {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.resume-entry-meta-sep {
+  opacity: 0.55;
+}
+
+.resume-entry-role {
+  font-family: var(--sans);
+  font-size: 14.5px;
+  font-style: italic;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-3);
+}
+
+.resume-entry-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.resume-entry-bullets li {
+  position: relative;
+  padding-left: var(--space-4);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.resume-entry-bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 9px;
+  height: 1px;
+  background: var(--border-strong);
+}
+
+.resume-entry-bullets li strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+/* "See on site →" link button under the bullets when an entry is
+   linkable. Sits flush left in the body column. */
+.resume-entry-cta {
+  margin-top: var(--space-3);
+  background: none;
+  border: 0;
+  padding: 0;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  transition: color 0.15s, padding-left 0.15s;
+}
+
+.resume-entry-cta:hover {
+  color: var(--accent);
+  padding-left: var(--space-1);
+}
+
+.resume-entry-cta .arrow {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  margin-left: 2px;
+  display: inline-block;
+  transition: transform 0.15s;
+}
+
+.resume-entry-cta:hover .arrow {
+  transform: translateX(3px);
+}
+
+/* Skills section — two-column grid: category label, then comma list. */
+.resume-skills {
+  display: flex;
+  flex-direction: column;
+}
+
+.resume-skill-row {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: var(--space-4);
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.resume-skill-row:last-child {
+  border-bottom: none;
+}
+
+.resume-skill-category {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.resume-skill-list {
+  font-family: var(--sans);
+  font-size: 14.5px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
 /* === Responsive ===
    Two main breakpoints:
    - 900px : tablet / narrow desktop — collapse 2-column rows to stacked
@@ -1255,6 +1521,20 @@ section > .image-grid {
 
   /* About bio reads as a column block */
   .about-bio { font-size: 17px; }
+
+  /* Resume — collapse to single column, smaller logo, lighter spacing */
+  .resume-entry { gap: var(--space-3); }
+  .resume-entry-logo { width: 44px; height: 44px; font-size: 20px; }
+  .resume-entry-head { gap: var(--space-1); }
+  .resume-entry-name { font-size: 19px; }
+  .resume-entry-meta { font-size: 11px; }
+  .resume-entry-role { font-size: 14px; }
+  .resume-entry-bullets li { font-size: 14.5px; }
+  .resume-skill-row {
+    grid-template-columns: 1fr;
+    gap: var(--space-1);
+    padding: var(--space-3) 0;
+  }
 
   /* Footer breathing room */
   .footer { padding: var(--space-5) var(--space-4); }

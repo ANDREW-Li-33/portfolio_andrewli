@@ -3,7 +3,7 @@ import type { Tab } from '../types';
 import { ALL_PROJECTS } from '../data/projects';
 
 /**
- * Tiny URL router built on the History API. The site has six tabs and
+ * Tiny URL router built on the History API. The site has seven tabs and
  * a per-project detail page; everything else is a SPA that doesn't
  * need react-router-dom's full surface (links, nested routes, loaders).
  *
@@ -14,8 +14,11 @@ import { ALL_PROJECTS } from '../data/projects';
  *   /projects/:id           → projects (detail for known id)
  *   /experience             → experience
  *   /research               → research
+ *   /resume                 → resume
  *   /contact                → contact
  *
+ * URLs can also include a hash (e.g. /experience#sandia) — the Resume
+ * page links into named sections on Experience/Research this way.
  * Unknown paths fall through to home (after Netlify's SPA rewrite has
  * already served index.html for them).
  */
@@ -23,6 +26,8 @@ import { ALL_PROJECTS } from '../data/projects';
 export type Route = {
   tab: Tab;
   projectId: string | null;
+  /** Hash fragment without the leading '#', or null. */
+  hash: string | null;
 };
 
 const TAB_PATHS: Record<Exclude<Tab, 'home'>, string> = {
@@ -30,6 +35,7 @@ const TAB_PATHS: Record<Exclude<Tab, 'home'>, string> = {
   projects:   '/projects',
   experience: '/experience',
   research:   '/research',
+  resume:     '/resume',
   contact:    '/contact',
 };
 
@@ -39,32 +45,36 @@ const PATH_TO_TAB: Record<string, Tab> = {
   '/projects':   'projects',
   '/experience': 'experience',
   '/research':   'research',
+  '/resume':     'resume',
   '/contact':    'contact',
 };
 
 const VALID_PROJECT_IDS = new Set(ALL_PROJECTS.map((p) => p.id));
 
-export function parseRoute(pathname: string): Route {
+export function parseRoute(pathname: string, hashString: string = ''): Route {
   // Normalize trailing slash (treat /about/ same as /about, except root)
   const path = pathname.length > 1 && pathname.endsWith('/')
     ? pathname.slice(0, -1)
     : pathname;
 
+  const hash = hashString.startsWith('#') ? hashString.slice(1) : hashString;
+  const hashOrNull = hash.length > 0 ? hash : null;
+
   // /projects/:id — only resolve when :id matches a known project
   if (path.startsWith('/projects/')) {
     const id = path.slice('/projects/'.length);
     if (VALID_PROJECT_IDS.has(id)) {
-      return { tab: 'projects', projectId: id };
+      return { tab: 'projects', projectId: id, hash: hashOrNull };
     }
-    return { tab: 'projects', projectId: null };
+    return { tab: 'projects', projectId: null, hash: hashOrNull };
   }
 
   const tab = PATH_TO_TAB[path];
-  if (tab) return { tab, projectId: null };
+  if (tab) return { tab, projectId: null, hash: hashOrNull };
 
   // Unknown path → home (Netlify rewrites everything to index.html
   // anyway, so this is the in-app 404 fallback).
-  return { tab: 'home', projectId: null };
+  return { tab: 'home', projectId: null, hash: hashOrNull };
 }
 
 export function buildPath(tab: Tab, projectId: string | null = null): string {
@@ -80,21 +90,30 @@ export function buildPath(tab: Tab, projectId: string | null = null): string {
  */
 export function useRoute() {
   const [route, setRoute] = useState<Route>(() =>
-    parseRoute(typeof window === 'undefined' ? '/' : window.location.pathname)
+    typeof window === 'undefined'
+      ? { tab: 'home', projectId: null, hash: null }
+      : parseRoute(window.location.pathname, window.location.hash)
   );
 
   useEffect(() => {
-    const onPop = () => setRoute(parseRoute(window.location.pathname));
+    const onPop = () =>
+      setRoute(parseRoute(window.location.pathname, window.location.hash));
     window.addEventListener('popstate', onPop);
     return () => window.removeEventListener('popstate', onPop);
   }, []);
 
-  const navigate = (tab: Tab, projectId: string | null = null) => {
+  const navigate = (
+    tab: Tab,
+    projectId: string | null = null,
+    hash: string | null = null,
+  ) => {
     const path = buildPath(tab, projectId);
-    if (path !== window.location.pathname) {
-      window.history.pushState({}, '', path);
+    const url = hash ? `${path}#${hash}` : path;
+    const currentUrl = window.location.pathname + window.location.hash;
+    if (url !== currentUrl) {
+      window.history.pushState({}, '', url);
     }
-    setRoute({ tab, projectId });
+    setRoute({ tab, projectId, hash });
   };
 
   return { route, navigate };

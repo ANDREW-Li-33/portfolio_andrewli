@@ -17,8 +17,8 @@ export function MoonIcon() {
   );
 }
 
-// Document with a folded corner + text lines. Used as the resume download
-// affordance on the About page.
+// Document with a folded corner + text lines. Used as the "open resume"
+// affordance on the About page (opens the PDF in a new tab).
 export function ResumeIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden>

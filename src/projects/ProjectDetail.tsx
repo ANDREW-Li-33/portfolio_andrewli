@@ -1,10 +1,16 @@
+import { lazy, Suspense, type ComponentType } from 'react';
 import type { ProjectCard } from '../types';
 import { useDocMeta } from '../hooks/useDocMeta';
-import JohnStockbotDetail from './details/JohnStockbotDetail';
-import StairBotDetail from './details/StairBotDetail';
-import PrinterUpgradesDetail from './details/PrinterUpgradesDetail';
-import BedframeHolderDetail from './details/BedframeHolderDetail';
-import VexGuiDetail from './details/VexGuiDetail';
+
+// Per-project detail bodies are large enough (image grids, embeds,
+// long prose) to be worth splitting out of the main bundle — the user
+// only sees them after clicking a card, and the parent header / back
+// link / title render immediately while the body chunk streams in.
+const JohnStockbotDetail    = lazy(() => import('./details/JohnStockbotDetail'));
+const StairBotDetail        = lazy(() => import('./details/StairBotDetail'));
+const PrinterUpgradesDetail = lazy(() => import('./details/PrinterUpgradesDetail'));
+const BedframeHolderDetail  = lazy(() => import('./details/BedframeHolderDetail'));
+const VexGuiDetail          = lazy(() => import('./details/VexGuiDetail'));
 
 /**
  * Full-page project detail view that takes over the Projects tab when
@@ -18,8 +24,11 @@ interface Props {
   onBack: () => void;
 }
 
-// Map of project id → detail body component. Add new project writeups here.
-const DETAILS: Record<string, () => JSX.Element> = {
+// Map of project id → detail body component. Add new project writeups
+// here. The type accepts both eager components and lazy(() => import())
+// results so individual detail bodies can be split out of the main
+// bundle.
+const DETAILS: Record<string, ComponentType> = {
   'john-stockbot':     JohnStockbotDetail,
   'stair-bot':         StairBotDetail,
   'printer-upgrades':  PrinterUpgradesDetail,
@@ -55,7 +64,12 @@ export default function ProjectDetail({ project, onBack }: Props) {
 
         <hr className="divider" />
 
-        {Body && <Body />}
+        {/* Suspense fallback is null — the header above is already
+            visible so the page is never blank; the body fades in once
+            its chunk arrives (sub-100ms on a warm connection). */}
+        <Suspense fallback={null}>
+          {Body && <Body />}
+        </Suspense>
       </div>
     </div>
   );

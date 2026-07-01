@@ -166,30 +166,11 @@ body {
   border: none;
   padding: 0;
   cursor: pointer;
-  /* inline-flex so the Andy mark sits centered with the wordmark
-     without the typical baseline-misalignment between a block <img>
-     and surrounding text. */
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
-}
-
-/* Andy mark next to the wordmark. Sized larger than the cap-height of
-   the brand text so the character reads as a small portrait next to
-   the name, not as an inline glyph. The nav-container padding leaves
-   plenty of room before this starts pushing the nav taller. */
-.brand-mark {
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
-  display: block;
-  /* Smooth scale-up on hover signals to the user that Andy is part of
-     the same clickable region as the wordmark (both navigate home). */
-  transition: transform 0.15s;
 }
 
 .brand:hover { color: var(--accent); }
-.brand:hover .brand-mark { transform: scale(1.05); }
 
 .nav-links {
   display: flex;
@@ -1439,7 +1420,6 @@ button.resume-entry-name-link:hover {
    The site stays usable down to ~320px (iPhone SE). */
 @media (max-width: 900px) {
   .nav-container { padding: var(--space-3) var(--space-4); }
-  .brand-mark { width: 44px; height: 44px; }
   .brand { font-size: 17px; }
 
   .about-top,
@@ -1459,8 +1439,7 @@ button.resume-entry-name-link:hover {
 
   /* Tighter nav header on phones */
   .nav-container { padding: var(--space-2) var(--space-4); }
-  .brand { font-size: 16px; gap: var(--space-2); }
-  .brand-mark { width: 38px; height: 38px; }
+  .brand { font-size: 16px; }
 
   /* Sections — pull padding in, smaller titles */
   .section { padding: var(--space-7) var(--space-4); }
@@ -1543,7 +1522,6 @@ button.resume-entry-name-link:hover {
 @media (max-width: 400px) {
   .section-title { font-size: 26px; }
   .brand-text { font-size: 14px; }
-  .brand-mark { width: 34px; height: 34px; }
 }
 
 /* === Project-detail typography utilities ===

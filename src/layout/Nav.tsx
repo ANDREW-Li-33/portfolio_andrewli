@@ -51,9 +51,6 @@ export default function Nav({ tab, setTab, theme, toggleTheme }: NavProps) {
       <nav className="nav">
         <div className="nav-container">
           <button className="brand" onClick={() => goTo('home')}>
-            {/* Andy (one of Snoopy's siblings) — small mark to the left of
-                the wordmark. Also used as the site's favicon. */}
-            <img className="brand-mark" src="/images/andy.png" alt="" />
             <span className="brand-text">Andrew Li</span>
           </button>
 

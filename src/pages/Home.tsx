@@ -7,7 +7,7 @@ interface HomeProps {
 
 export default function Home({ onProjects, onAbout }: HomeProps) {
   useDocMeta({
-    title: 'Andrew Li — CS & Robotics @ Georgia Tech',
+    title: 'Andrew Li',
     description:
       'B.S./M.S. Computer Science at Georgia Tech. AI for autonomy at Sandia National Labs, software lead at Humanoid Robotics @ GT, real-to-sim vision research at the Lunar Lab.',
     path: '/',

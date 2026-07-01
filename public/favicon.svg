@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- "A" monogram favicon. Site design tokens: dark bg (#0d0f12),
+       accent gold (#d8a93a), serif face matching the site's fallback
+       stack (Georgia is in the serif token's fallbacks; web fonts
+       can't load inside favicon SVGs). -->
+  <rect width="64" height="64" rx="12" fill="#0d0f12"/>
+  <text x="32" y="46" text-anchor="middle"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-size="42" font-weight="500" fill="#d8a93a">A</text>
+</svg>

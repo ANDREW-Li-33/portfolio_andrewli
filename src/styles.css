@@ -1041,6 +1041,9 @@ section > .image-grid {
   display: flex;
   align-items: center;
   justify-content: center;
+  /* Arrows are in-flow flex siblings of the figure on desktop, so this
+     gap is the space between each arrow and the image. */
+  gap: 20px;
 }
 
 .lightbox-backdrop {
@@ -1062,9 +1065,13 @@ section > .image-grid {
 .lightbox-figure {
   position: relative;
   z-index: 1;
-  max-width: min(1100px, 90vw);
+  /* Shrink-to-fit the image so the in-flow arrows hug its actual edges
+     (works for both landscape and portrait). The cap leaves room for a
+     ~48px arrow + 20px gap on each side without overflowing the viewport. */
+  flex: 0 1 auto;
+  max-width: min(1000px, calc(96vw - 160px));
   max-height: 88vh;
-  margin: 0 64px;
+  margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1112,11 +1119,13 @@ section > .image-grid {
 
 .lightbox-close svg { width: 18px; height: 18px; display: block; }
 
+/* In-flow flex siblings of the figure (desktop) so they sit right next
+   to the image rather than pinned to the viewport edges. flex-shrink: 0
+   keeps them from squishing when the image is wide. */
 .lightbox-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  position: relative;
   z-index: 2;
+  flex-shrink: 0;
   width: 48px;
   height: 48px;
   display: inline-flex;
@@ -1137,9 +1146,6 @@ section > .image-grid {
 
 .lightbox-nav svg { width: 22px; height: 22px; display: block; }
 
-.lightbox-prev { left: 24px; }
-.lightbox-next { right: 24px; }
-
 .lightbox-counter {
   position: absolute;
   bottom: 24px;
@@ -1153,11 +1159,21 @@ section > .image-grid {
 }
 
 @media (max-width: 640px) {
-  .lightbox-figure { margin: 0 32px; }
-  .lightbox-nav { width: 40px; height: 40px; }
+  /* On phones there isn't room for in-flow arrows without shrinking the
+     image too much, so overlay them absolutely at the viewport edges and
+     let the image use the full width. */
+  .lightbox { gap: 0; }
+  .lightbox-figure { max-width: 92vw; margin: 0; }
+  .lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+  }
   .lightbox-nav svg { width: 18px; height: 18px; }
-  .lightbox-prev { left: 12px; }
-  .lightbox-next { right: 12px; }
+  .lightbox-prev { left: 10px; }
+  .lightbox-next { right: 10px; }
   .lightbox-close { top: 12px; right: 12px; width: 36px; height: 36px; }
 }
 

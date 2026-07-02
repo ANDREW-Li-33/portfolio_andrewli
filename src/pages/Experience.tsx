@@ -1,6 +1,17 @@
+import { useState } from 'react';
 import Embed from '../components/Embed';
+import Lightbox from '../components/Lightbox';
 import { img } from '../data/media';
 import { useDocMeta } from '../hooks/useDocMeta';
+
+// Arsenal (Vex Robotics) gallery images — shared between the clickable
+// thumbnails and the Lightbox so the two stay in sync by index.
+const ARSENAL_IMAGES = [
+  { src: img('stairs_agaukz'),  alt: 'Tourney Champs',       caption: 'Tourney Champs, Skills, and Design Awards' },
+  { src: img('states_l33zoh'),  alt: 'State champs',         caption: 'State Champions' },
+  { src: img('overclock_mddomf'), alt: 'Wildcats Qualifier', caption: 'Tournament Champions' },
+  { src: img('states2_k2glij'), alt: 'State champ banners',  caption: 'State Champions Banners!!!' },
+];
 
 /**
  * Experience page — paid roles + competition leadership, reverse-chronological.
@@ -15,6 +26,9 @@ export default function Experience() {
       "Andrew Li's work and competition experience — Sandia National Labs, Invention Studio, GT RoboWrestling, VEX Robotics.",
     path: '/experience',
   });
+
+  // Arsenal gallery lightbox — index into ARSENAL_IMAGES, or null when closed.
+  const [arsenalLightboxIndex, setArsenalLightboxIndex] = useState<number | null>(null);
 
   return (
     <div className="section">
@@ -248,25 +262,26 @@ export default function Experience() {
             </ul>
           </div>
           <div className="image-grid">
-            <figure>
-              <img src={img('stairs_agaukz')} alt="Tourney Champs" />
-              <figcaption>Tourney Champs, Skills, and Design Awards</figcaption>
-            </figure>
-            <figure>
-              <img src={img('states_l33zoh')} alt="State champs" />
-              <figcaption>State Champions</figcaption>
-            </figure>
-            <figure>
-              <img src={img('overclock_mddomf')} alt="Wildcats Qualifier" />
-              <figcaption>Tournament Champions</figcaption>
-            </figure>
-            <figure>
-              <img src={img('states2_k2glij')} alt="State champ banners" />
-              <figcaption>State Champions Banners!!!</figcaption>
-            </figure>
+            {/* Clickable thumbnails — each opens the Lightbox at its own
+                index so Prev/Next steps through the same 4 images. */}
+            {ARSENAL_IMAGES.map((image, i) => (
+              <figure key={image.src} className="lightbox-figure-trigger">
+                <button type="button" onClick={() => setArsenalLightboxIndex(i)}>
+                  <img src={image.src} alt={image.alt} />
+                </button>
+                <figcaption>{image.caption}</figcaption>
+              </figure>
+            ))}
           </div>
         </section>
       </div>
+
+      <Lightbox
+        images={ARSENAL_IMAGES}
+        index={arsenalLightboxIndex}
+        onClose={() => setArsenalLightboxIndex(null)}
+        onNavigate={setArsenalLightboxIndex}
+      />
     </div>
   );
 }

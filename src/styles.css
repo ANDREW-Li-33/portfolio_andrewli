@@ -1008,6 +1008,159 @@ section > .image-grid {
 
 .contact-row.no-link .contact-arrow { display: none; }
 
+/* === Lightbox-enabled image grid thumbnails ===
+   Wraps a figure's <img> in a <button> so it's keyboard-focusable and
+   opens the Lightbox on click. Kept purely presentational — reset the
+   button chrome so it looks identical to a plain <img>, plus a subtle
+   hover treatment (dim + scale) that signals "click to enlarge". */
+.image-grid figure.lightbox-figure-trigger button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+.image-grid figure.lightbox-figure-trigger button img {
+  transition: transform 0.2s, filter 0.2s;
+}
+
+.image-grid figure.lightbox-figure-trigger button:hover img {
+  transform: scale(1.03);
+  filter: var(--photo-filter) brightness(0.92);
+}
+
+/* === Lightbox === */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+}
+
+/* NOTE: this overlay is rendered via a React portal straight into
+   document.body (see Lightbox.tsx), so it sits OUTSIDE the .site
+   element — and every design-token custom property (--space-*,
+   --radius-*, --mono, --accent, etc.) is declared scoped to .site,
+   not :root. Referencing var(--space-5) etc. here would silently
+   resolve to nothing. So this block intentionally uses literal
+   px/rgba/font-stack values instead of the site's custom properties.
+   The overlay is also intentionally theme-independent (always a dark
+   scrim regardless of light/dark site theme) — standard lightbox UX,
+   since photos read best against black either way. */
+.lightbox-figure {
+  position: relative;
+  z-index: 1;
+  max-width: min(1100px, 90vw);
+  max-height: 88vh;
+  margin: 0 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lightbox-figure img {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 3px;
+  display: block;
+}
+
+.lightbox-figure figcaption {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: 12px;
+  text-align: center;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 3px;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.lightbox-close svg { width: 18px; height: 18px; display: block; }
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 48px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.lightbox-nav:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.lightbox-nav svg { width: 22px; height: 22px; display: block; }
+
+.lightbox-prev { left: 24px; }
+.lightbox-next { right: 24px; }
+
+.lightbox-counter {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+@media (max-width: 640px) {
+  .lightbox-figure { margin: 0 32px; }
+  .lightbox-nav { width: 40px; height: 40px; }
+  .lightbox-nav svg { width: 18px; height: 18px; }
+  .lightbox-prev { left: 12px; }
+  .lightbox-next { right: 12px; }
+  .lightbox-close { top: 12px; right: 12px; width: 36px; height: 36px; }
+}
+
 /* === Footer === */
 .footer {
   margin-top: auto;

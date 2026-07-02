@@ -52,6 +52,23 @@ export function CloseIcon() {
   );
 }
 
+// Chevron pointing left/right — lightbox prev/next controls.
+export function ChevronLeftIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <polyline points="15 18 9 12 15 6" />
+    </svg>
+  );
+}
+
+export function ChevronRightIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <polyline points="9 18 15 12 9 6" />
+    </svg>
+  );
+}
+
 // Standard GitHub mark — solid single-path silhouette. Used as the repo
 // link on project detail pages.
 export function GithubIcon() {

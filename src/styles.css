@@ -351,6 +351,32 @@ body {
 
 .hero-tagline strong { font-style: normal; color: var(--text); font-weight: 500; }
 
+/* Inline hero tagline links (Sandia / Humanoid Robotics / Lunar Lab) —
+   deep-link into their matching section on Experience or Research.
+   Keeps the same non-italic bold-white look as .hero-tagline strong so
+   the hero doesn't visually change; a subtle underline + accent hover
+   is the only tell that these are clickable. */
+.hero-tagline-link {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  font-style: normal;
+  font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color 0.15s, text-decoration-color 0.15s;
+}
+
+.hero-tagline-link:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
+
 .hero-actions {
   display: flex;
   gap: var(--space-3);

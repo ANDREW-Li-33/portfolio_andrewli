@@ -1,15 +1,20 @@
+import type { Tab } from '../types';
 import { useDocMeta } from '../hooks/useDocMeta';
 
 interface HomeProps {
   onProjects: () => void;
   onAbout: () => void;
+  /** Navigate to (tab, anchor) — used by the hero tagline's inline
+      mentions to deep-link into their matching section on
+      Experience / Research. */
+  onNavToSection: (tab: Tab, anchor?: string | null) => void;
 }
 
-export default function Home({ onProjects, onAbout }: HomeProps) {
+export default function Home({ onProjects, onAbout, onNavToSection }: HomeProps) {
   useDocMeta({
     title: 'Andrew Li',
     description:
-      'B.S./M.S. Computer Science at Georgia Tech. AI for autonomy at Sandia National Labs, software lead at Humanoid Robotics @ GT, real-to-sim vision research at the Lunar Lab.',
+      "B.S./M.S. Computer Science at Georgia Tech. AI for autonomy at Sandia National Labs, software lead at Humanoid Robotics @ GT, real-to-sim vision research at Georgia Tech's Lunar Lab.",
     path: '/',
   });
 
@@ -42,9 +47,31 @@ export default function Home({ onProjects, onAbout }: HomeProps) {
         <p className="hero-tagline">
           B.S./M.S. Computer Science at Georgia Tech.
           <br />
-          AI for autonomy at <strong>Sandia National Labs</strong>, software lead at{' '}
-          <strong>Humanoid Robotics @ GT</strong>, real‑to‑sim vision research at the{' '}
-          <strong>Lunar Lab</strong>.
+          AI for autonomy at{' '}
+          <button
+            type="button"
+            className="hero-tagline-link"
+            onClick={() => onNavToSection('experience', 'sandia')}
+          >
+            Sandia National Labs
+          </button>
+          , software lead at{' '}
+          <button
+            type="button"
+            className="hero-tagline-link"
+            onClick={() => onNavToSection('experience', 'humanoid')}
+          >
+            Humanoid Robotics @ GT
+          </button>
+          , real‑to‑sim vision research at{' '}
+          <button
+            type="button"
+            className="hero-tagline-link"
+            onClick={() => onNavToSection('research', 'lunar-lab')}
+          >
+            Georgia Tech's Lunar Lab
+          </button>
+          .
         </p>
         <div className="hero-actions">
           <button className="cta" onClick={onProjects}>

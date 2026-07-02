@@ -45,7 +45,7 @@ export default function App() {
 
   // Scroll behavior on navigation:
   //  - If the route has a hash, find <#id> and scroll the .site
-  //    container so the section sits at the top.
+  //    container so the section's title clears the sticky nav.
   //  - Otherwise reset .site scrollTop to 0 (existing behavior — keeps
   //    page changes from inheriting the previous page's scroll).
   // useLayoutEffect runs after the new page's DOM is mounted but before
@@ -57,11 +57,15 @@ export default function App() {
     if (hash) {
       const el = document.getElementById(hash);
       if (el) {
-        // The .site container is the actual scroll context, not window.
-        // offsetTop is measured against the offsetParent — for our
-        // sticky-nav + flex layout, that lines up with the .site
-        // scrollable area for elements deep inside the page.
-        root.scrollTop = el.offsetTop;
+        // .nav is position: sticky inside this same .site scroll
+        // container, so scrolling straight to el.offsetTop parks the
+        // section title directly underneath the floating nav bar.
+        // Subtract the nav's rendered height (it varies by breakpoint)
+        // plus a little breathing room so the title is fully visible
+        // just below the nav.
+        const nav = document.querySelector('.nav') as HTMLElement | null;
+        const navHeight = nav?.getBoundingClientRect().height ?? 0;
+        root.scrollTop = Math.max(0, el.offsetTop - navHeight - 16);
         return;
       }
     }
@@ -74,6 +78,7 @@ export default function App() {
         <Home
           onProjects={() => handleSetTab('projects')}
           onAbout={() => handleSetTab('about')}
+          onNavToSection={handleNavToSection}
         />
       )}
       {tab === 'projects'   && (

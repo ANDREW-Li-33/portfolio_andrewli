@@ -1,17 +1,55 @@
 import { useState } from 'react';
 import Embed from '../components/Embed';
-import Lightbox from '../components/Lightbox';
+import Lightbox, { type LightboxImage } from '../components/Lightbox';
 import { img } from '../data/media';
 import { useDocMeta } from '../hooks/useDocMeta';
 
-// Arsenal (Vex Robotics) gallery images — shared between the clickable
-// thumbnails and the Lightbox so the two stay in sync by index.
-const ARSENAL_IMAGES = [
+// Photo galleries — each array is shared between the clickable thumbnails
+// and the Lightbox so the two stay in sync by index.
+const INVENTION_STUDIO_IMAGES: LightboxImage[] = [
+  { src: img('is_1_ybizxa'), alt: 'Invention Studio print farm', caption: 'The Invention Studio print farm' },
+  { src: img('is_2_wmbzwz'), alt: 'Lightbox birthday gift',      caption: "Lightbox made for a friend's birthday" },
+  { src: img('is_4_cdhlvy'), alt: 'Invention Studio bike shop',  caption: "The Studio's bike shop" },
+  { src: '/images/waterjet.png', alt: 'Invention Studio waterjet', caption: 'Waterjet parts for my robot' },
+];
+
+const ROBOWRESTLING_IMAGES: LightboxImage[] = [
+  { src: img('robo_1_sabeaa'), alt: '500g bots line-up',                        caption: '2023-2024 500g bots' },
+  { src: img('robo_2_uyom3p'), alt: 'Team at airport en route to Robogames 2024', caption: 'Traveling with the team!' },
+  { src: img('robo_3_if1dpv'), alt: 'Robogames venue',                          caption: 'RoboGames 2024!' },
+];
+
+const ARSENAL_IMAGES: LightboxImage[] = [
   { src: img('stairs_agaukz'),  alt: 'Tourney Champs',       caption: 'Tourney Champs, Skills, and Design Awards' },
   { src: img('states_l33zoh'),  alt: 'State champs',         caption: 'State Champions' },
   { src: img('overclock_mddomf'), alt: 'Wildcats Qualifier', caption: 'Tournament Champions' },
   { src: img('states2_k2glij'), alt: 'State champ banners',  caption: 'State Champions Banners!!!' },
 ];
+
+/**
+ * A clickable image grid — thumbnails that open the shared Lightbox at
+ * their own index. Keeps the same .image-grid look as static grids.
+ */
+function GalleryGrid({
+  images,
+  onOpen,
+}: {
+  images: LightboxImage[];
+  onOpen: (index: number) => void;
+}) {
+  return (
+    <div className="image-grid">
+      {images.map((image, i) => (
+        <figure key={image.src} className="lightbox-figure-trigger">
+          <button type="button" onClick={() => onOpen(i)}>
+            <img src={image.src} alt={image.alt} />
+          </button>
+          <figcaption>{image.caption}</figcaption>
+        </figure>
+      ))}
+    </div>
+  );
+}
 
 /**
  * Experience page — paid roles + competition leadership, reverse-chronological.
@@ -27,8 +65,10 @@ export default function Experience() {
     path: '/experience',
   });
 
-  // Arsenal gallery lightbox — index into ARSENAL_IMAGES, or null when closed.
-  const [arsenalLightboxIndex, setArsenalLightboxIndex] = useState<number | null>(null);
+  // Single lightbox state shared across all galleries — holds the active
+  // gallery's images plus the current index (or null when closed).
+  const [lightbox, setLightbox] = useState<{ images: LightboxImage[]; index: number } | null>(null);
+  const openGallery = (images: LightboxImage[]) => (index: number) => setLightbox({ images, index });
 
   return (
     <div className="section">
@@ -150,24 +190,7 @@ export default function Experience() {
 
         {/* === Invention Studio === */}
         <section id="invention-studio" className="subsection reverse">
-          <div className="image-grid">
-            <figure>
-              <img src={img('is_1_ybizxa')} alt="Invention Studio print farm" />
-              <figcaption>The Invention Studio print farm</figcaption>
-            </figure>
-            <figure>
-              <img src={img('is_2_wmbzwz')} alt="Lightbox birthday gift" />
-              <figcaption>Lightbox made for a friend's birthday</figcaption>
-            </figure>
-            <figure>
-              <img src={img('is_4_cdhlvy')} alt="Invention Studio bike shop" />
-              <figcaption>The Studio's bike shop</figcaption>
-            </figure>
-            <figure>
-              <img src='/images/waterjet.png' alt="Invention Studio waterjet" />
-              <figcaption>Waterjet parts for my robot</figcaption>
-            </figure>
-          </div>
+          <GalleryGrid images={INVENTION_STUDIO_IMAGES} onOpen={openGallery(INVENTION_STUDIO_IMAGES)} />
           <div>
             <h2>Flowers Invention Studio</h2>
             <div className="role-eyebrow">Georgia Tech Club</div>
@@ -212,20 +235,7 @@ export default function Experience() {
               <li>Operated waterjet and mills to manufacture steel and aluminum baseplates.</li>
             </ul>
           </div>
-          <div className="image-grid">
-            <figure>
-              <img src={img('robo_1_sabeaa')} alt="500g bots line-up" />
-              <figcaption>2023-2024 500g bots</figcaption>
-            </figure>
-            <figure>
-              <img src={img('robo_2_uyom3p')} alt="Team at airport en route to Robogames 2024" />
-              <figcaption>Traveling with the team!</figcaption>
-            </figure>
-            <figure>
-              <img src={img('robo_3_if1dpv')} alt="Robogames venue" />
-              <figcaption>RoboGames 2024!</figcaption>
-            </figure>
-          </div>
+          <GalleryGrid images={ROBOWRESTLING_IMAGES} onOpen={openGallery(ROBOWRESTLING_IMAGES)} />
         </section>
 
         <hr className="divider" />
@@ -241,7 +251,7 @@ export default function Experience() {
               formed a team to compete in the Vex Robotics Competition. After
               struggling against experienced veterans, we left our original
               orgization and formed our own team, <strong>55645X Arsenal</strong>. We
-              spent our days after school in our teammate's basement. As 
+              spent our days after school in our teammate's basement.
             </p>
             <div className="link-row">
               <a className="link" href="https://www.youtube.com/channel/UCqrfxe9OyJTMkMEitrIjS9A" target="_blank" rel="noopener noreferrer">
@@ -261,26 +271,15 @@ export default function Experience() {
               <li>High ranking in national compeitions, including California, Massachusetts, and Wisconsin</li>
             </ul>
           </div>
-          <div className="image-grid">
-            {/* Clickable thumbnails — each opens the Lightbox at its own
-                index so Prev/Next steps through the same 4 images. */}
-            {ARSENAL_IMAGES.map((image, i) => (
-              <figure key={image.src} className="lightbox-figure-trigger">
-                <button type="button" onClick={() => setArsenalLightboxIndex(i)}>
-                  <img src={image.src} alt={image.alt} />
-                </button>
-                <figcaption>{image.caption}</figcaption>
-              </figure>
-            ))}
-          </div>
+          <GalleryGrid images={ARSENAL_IMAGES} onOpen={openGallery(ARSENAL_IMAGES)} />
         </section>
       </div>
 
       <Lightbox
-        images={ARSENAL_IMAGES}
-        index={arsenalLightboxIndex}
-        onClose={() => setArsenalLightboxIndex(null)}
-        onNavigate={setArsenalLightboxIndex}
+        images={lightbox?.images ?? []}
+        index={lightbox?.index ?? null}
+        onClose={() => setLightbox(null)}
+        onNavigate={(index) => setLightbox((lb) => (lb ? { ...lb, index } : lb))}
       />
     </div>
   );

@@ -68,7 +68,7 @@ export default function Resume({ onNavToSection, onNavToProject }: ResumeProps) 
           >
             {emailCopied ? 'Copied!' : 'Copy'}
           </button>{' '}
-          ·{' '}
+          · andrewli.info ·{' '}
           <a
             className="text-link"
             href="https://github.com/ANDREW-Li-33"
@@ -88,7 +88,7 @@ export default function Resume({ onNavToSection, onNavToProject }: ResumeProps) 
             logo='/images/logos/gatech.png'
             location="Atlanta, GA"
             dates="Aug 2023 — May 2027"
-            role="B.S./M.S. Computer Science · Undergrad GPA: 3.74"
+            role="B.S./M.S. Computer Science · Undergraduate GPA: 3.74"
             bullets={[
               <>
                 <strong>Coursework:</strong> Machine Learning, Computer Vision,
@@ -102,6 +102,36 @@ export default function Resume({ onNavToSection, onNavToProject }: ResumeProps) 
         {/* === Experience === */}
         <section className="resume-section">
           <h2 className="resume-section-heading">Experience</h2>
+
+          <ResumeEntry
+            name="Lunar Lab @ Georgia Tech"
+            logo='/images/logos/lunarlab.png'
+            onClickName={go('research', 'lunar-lab')}
+            customClickLabel="View research"
+            location="Atlanta, GA"
+            dates="Apr 2026 — Present"
+            role="Research Assistant"
+            bullets={[
+              <>
+                Engineering a real2sim pipeline turning a single LiDAR and
+                tri-camera capture into a photorealistic, collision-ready
+                digital twin, implementing SOTA research in SLAM, 3D mesh
+                reconstruction, 3DGS, and asset generation
+              </>,
+              <>
+                Optimized joint mesh + Gaussian-splatting reconstruction of
+                large-scale indoor scenes, improving fine-detail surface
+                coverage by 14%, currently lifting novel-view PSNR by 1.3 dB
+                (19.4 to 20.7) and SSIM from 0.71 to 0.75
+              </>,
+              <>
+                Generating physics-aware manipulable assets from a single
+                capture with YOLO11x-seg + SAM2, feeding image-to-URDF/MJCF
+                generation, eliminating manual simulation asset authoring for
+                downstream tasks
+              </>,
+            ]}
+          />
 
           <ResumeEntry
             name="Sandia National Laboratories"
@@ -138,30 +168,6 @@ export default function Resume({ onNavToSection, onNavToProject }: ResumeProps) 
           />
 
           <ResumeEntry
-            name="Lunar Lab @ Georgia Tech"
-            logo='/images/logos/lunarlab.png'
-            onClickName={go('research', 'lunar-lab')}
-            customClickLabel="View research"
-            location="Atlanta, GA"
-            dates="Apr 2026 — Present"
-            role="Research Assistant"
-            bullets={[
-              <>
-                Building a real2sim2real pipeline with NKSR and 3D Gaussian
-                Splatting to scale high-fidelity scene reconstruction from
-                typical small-room scenes to large environments, facilitating
-                warehouse robot policy training pipelines
-              </>,
-              <>
-                Capturing multi-modal data (LiDAR, dual fisheye, RGB-D) via a
-                handheld GeoScan S1, and tagging reconstructed meshes with
-                material parameters (Young's modulus, friction) for
-                manipulation-ready scenes
-              </>,
-            ]}
-          />
-
-          <ResumeEntry
             name="Humanoid Robotics @ Georgia Tech"
             logo='/images/logos/humanoid.png'
             onClickName={go('experience', 'humanoid')}
@@ -193,21 +199,6 @@ export default function Resume({ onNavToSection, onNavToProject }: ResumeProps) 
               <>
                 Mentored 15+ students on 500g robot sumo teams from design to
                 competition
-              </>,
-            ]}
-          />
-
-          <ResumeEntry
-            name="Flowers Invention Studio Makerspace"
-            logo='/images/logos/inventionstudio.jpg'
-            onClickName={go('experience', 'invention-studio')}
-            location="Atlanta, GA"
-            dates="Mar 2024 — Feb 2025"
-            role="Prototyping Instructor"
-            bullets={[
-              <>
-                Supervised and taught safe operation of machinery for a
-                community of 1,000+ users — e.g., waterjets and 3D printers
               </>,
             ]}
           />
@@ -271,11 +262,11 @@ export default function Resume({ onNavToSection, onNavToProject }: ResumeProps) 
             />
             <SkillRow
               category="AI / Robotics / Sim"
-              items="Isaac Sim/Lab/Gym, MuJoCo, PPO, PyTorch, 3DGS, SLAM, Behavior Trees, ROS2, Nav2, Rviz"
+              items="Isaac Sim/Lab/Gym, MuJoCo, PPO, 3DGS, SLAM, Behavior Trees, ROS2, Rviz, Computer Vision"
             />
             <SkillRow
               category="Hardware"
-              items="Jetson Orin Nano, Boston Dynamics Spot, Teensy 4.1, Arduino, Jackal UGV"
+              items="Jetson Orin Nano, Boston Dynamics Spot, Teensy 4.1, Arduino, Jackal UGV, LiDAR, ZED stereo camera"
             />
             <SkillRow
               category="Tools"

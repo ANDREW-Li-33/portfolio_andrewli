@@ -1,55 +1,62 @@
 import { useState } from 'react';
-import Embed from '../components/Embed';
-import Lightbox, { type LightboxImage } from '../components/Lightbox';
+import Lightbox, { type LightboxMedia } from '../components/Lightbox';
+import GalleryGrid from '../components/GalleryGrid';
 import { img } from '../data/media';
 import { useDocMeta } from '../hooks/useDocMeta';
 
-// Photo galleries — each array is shared between the clickable thumbnails
+// Media galleries — each array is shared between the clickable thumbnails
 // and the Lightbox so the two stay in sync by index.
-const INVENTION_STUDIO_IMAGES: LightboxImage[] = [
+const SANDIA_IMAGES: LightboxMedia[] = [
+  {
+    src: '/images/radiation_mapping_1.png',
+    alt: 'Radiation mapping field trial',
+    caption: 'Radiation mapping trial across Albuquerque',
+  },
+  {
+    src: '/images/radiation_mapping_2.png',
+    alt: 'Radiation mapping field trial locating hot sources',
+    caption: 'Radiation mapping field trial locating hot sources',
+  },
+];
+
+const SPOT_DEMO: LightboxMedia[] = [
+  {
+    kind: 'video',
+    src: '/videos/sandia_vlm_demo.mp4',
+    alt: 'Spot semantic understanding demo video',
+    caption: 'Spot semantic-understanding demo in IsaacSim',
+    aspectRatio: '1920 / 798',
+  },
+];
+
+const HUMANOID_MEDIA: LightboxMedia[] = [
+  {
+    kind: 'video',
+    src: '/videos/rl-video-step-0.mp4',
+    alt: 'RL locomotion training in simulation',
+    caption: 'Beginning steps for locomotion training',
+  },
+];
+
+const INVENTION_STUDIO_IMAGES: LightboxMedia[] = [
   { src: img('is_1_ybizxa'), alt: 'Invention Studio print farm', caption: 'The Invention Studio print farm' },
   { src: img('is_2_wmbzwz'), alt: 'Lightbox birthday gift',      caption: "Lightbox made for a friend's birthday" },
   { src: img('is_4_cdhlvy'), alt: 'Invention Studio bike shop',  caption: "The Studio's bike shop" },
   { src: '/images/waterjet.png', alt: 'Invention Studio waterjet', caption: 'Waterjet parts for my robot' },
 ];
 
-const ROBOWRESTLING_IMAGES: LightboxImage[] = [
+const ROBOWRESTLING_IMAGES: LightboxMedia[] = [
   { src: img('robo_1_sabeaa'), alt: '500g bots line-up',                        caption: '2023-2024 500g bots' },
   { src: img('robo_2_uyom3p'), alt: 'Team at airport en route to Robogames 2024', caption: 'Traveling with the team!' },
   { src: img('robo_3_if1dpv'), alt: 'Robogames venue',                          caption: 'RoboGames 2024!' },
 ];
 
-const ARSENAL_IMAGES: LightboxImage[] = [
+const ARSENAL_IMAGES: LightboxMedia[] = [
   { src: img('stairs_agaukz'),  alt: 'Tourney Champs',       caption: 'Tourney Champs, Skills, and Design Awards' },
   { src: img('states_l33zoh'),  alt: 'State champs',         caption: 'State Champions' },
   { src: img('overclock_mddomf'), alt: 'Wildcats Qualifier', caption: 'Tournament Champions' },
   { src: img('states2_k2glij'), alt: 'State champ banners',  caption: 'State Champions Banners!!!' },
 ];
-
-/**
- * A clickable image grid — thumbnails that open the shared Lightbox at
- * their own index. Keeps the same .image-grid look as static grids.
- */
-function GalleryGrid({
-  images,
-  onOpen,
-}: {
-  images: LightboxImage[];
-  onOpen: (index: number) => void;
-}) {
-  return (
-    <div className="image-grid">
-      {images.map((image, i) => (
-        <figure key={image.src} className="lightbox-figure-trigger">
-          <button type="button" onClick={() => onOpen(i)}>
-            <img src={image.src} alt={image.alt} />
-          </button>
-          <figcaption>{image.caption}</figcaption>
-        </figure>
-      ))}
-    </div>
-  );
-}
 
 /**
  * Experience page — paid roles + competition leadership, reverse-chronological.
@@ -66,9 +73,9 @@ export default function Experience() {
   });
 
   // Single lightbox state shared across all galleries — holds the active
-  // gallery's images plus the current index (or null when closed).
-  const [lightbox, setLightbox] = useState<{ images: LightboxImage[]; index: number } | null>(null);
-  const openGallery = (images: LightboxImage[]) => (index: number) => setLightbox({ images, index });
+  // gallery's media plus the current index (or null when closed).
+  const [lightbox, setLightbox] = useState<{ media: LightboxMedia[]; index: number } | null>(null);
+  const openGallery = (media: LightboxMedia[]) => (index: number) => setLightbox({ media, index });
 
   return (
     <div className="section">
@@ -122,22 +129,21 @@ export default function Experience() {
             </ul>
 
           </div>
-          {/* Single-column image-grid — 2 images stack vertically inside
-              the right .subsection column. */}
-          <div className="image-grid cols-1">
-            <figure>
-              <img src='/images/radiation_mapping_1.png' alt="Radiation mapping field trial" />
-              <figcaption>Radiation mapping trial across Albuquerque</figcaption>
-            </figure>
-            <figure>
-              <img src='/images/radiation_mapping_2.png' alt="Placeholder for second Sandia image" />
-              <figcaption>Radiation mapping field trial locating hot sources</figcaption>
-            </figure>
+          {/* Single-column gallery — 2 images stack vertically inside
+              the right .subsection column; clicking opens the Lightbox. */}
+          <GalleryGrid
+            media={SANDIA_IMAGES}
+            onOpen={openGallery(SANDIA_IMAGES)}
+            variant="cols-1"
+          />
           </div>
-          </div>
-          <Embed
-            src="https://drive.google.com/file/d/1cIa2_Y6-BIrfc9fWXTtDeGM6Hq_Dcpzw/preview"
-            title="Spot semantic understanding demo video"
+          {/* Full-width demo video below the two-column row — autoplays
+              muted as a preview like every other gallery video; click
+              to open the Lightbox and scrub. */}
+          <GalleryGrid
+            media={SPOT_DEMO}
+            onOpen={openGallery(SPOT_DEMO)}
+            variant="cols-1"
           />
         </section>
 
@@ -145,22 +151,15 @@ export default function Experience() {
 
         {/* === Humanoid Robotics @ GT === */}
         <section id="humanoid" className="subsection reverse">
-          {/* Single-column image-grid (cols-1) so the RL training video
-              gets the full subsection column. autoPlay + loop + muted +
-              playsInline mirrors the standard GIF-replacement pattern —
-              required for autoplay to work in modern browsers. */}
-          <div className="image-grid cols-1">
-            <figure>
-              <video
-                src="/videos/rl-video-step-0.mp4"
-                autoPlay
-                loop
-                muted
-                playsInline
-              />
-              <figcaption>Beginning steps for locomotion training</figcaption>
-            </figure>
-          </div>
+          {/* Single-column gallery (cols-1) so the RL training video gets
+              the full subsection column. The thumbnail autoplays muted as
+              a looping preview; clicking opens the Lightbox with native
+              controls so the viewer can scrub through it. */}
+          <GalleryGrid
+            media={HUMANOID_MEDIA}
+            onOpen={openGallery(HUMANOID_MEDIA)}
+            variant="cols-1"
+          />
           <div>
             <h2>Humanoid Robotics @ GT</h2>
             <div className="role-eyebrow">Georgia Tech Club</div>
@@ -190,7 +189,7 @@ export default function Experience() {
 
         {/* === Invention Studio === */}
         <section id="invention-studio" className="subsection reverse">
-          <GalleryGrid images={INVENTION_STUDIO_IMAGES} onOpen={openGallery(INVENTION_STUDIO_IMAGES)} />
+          <GalleryGrid media={INVENTION_STUDIO_IMAGES} onOpen={openGallery(INVENTION_STUDIO_IMAGES)} />
           <div>
             <h2>Flowers Invention Studio</h2>
             <div className="role-eyebrow">Georgia Tech Club</div>
@@ -235,7 +234,7 @@ export default function Experience() {
               <li>Operated waterjet and mills to manufacture steel and aluminum baseplates.</li>
             </ul>
           </div>
-          <GalleryGrid images={ROBOWRESTLING_IMAGES} onOpen={openGallery(ROBOWRESTLING_IMAGES)} />
+          <GalleryGrid media={ROBOWRESTLING_IMAGES} onOpen={openGallery(ROBOWRESTLING_IMAGES)} />
         </section>
 
         <hr className="divider" />
@@ -271,12 +270,12 @@ export default function Experience() {
               <li>High ranking in national compeitions, including California, Massachusetts, and Wisconsin</li>
             </ul>
           </div>
-          <GalleryGrid images={ARSENAL_IMAGES} onOpen={openGallery(ARSENAL_IMAGES)} />
+          <GalleryGrid media={ARSENAL_IMAGES} onOpen={openGallery(ARSENAL_IMAGES)} />
         </section>
       </div>
 
       <Lightbox
-        images={lightbox?.images ?? []}
+        media={lightbox?.media ?? []}
         index={lightbox?.index ?? null}
         onClose={() => setLightbox(null)}
         onNavigate={(index) => setLightbox((lb) => (lb ? { ...lb, index } : lb))}

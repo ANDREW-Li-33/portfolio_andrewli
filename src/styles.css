@@ -957,6 +957,36 @@ section > .image-grid {
   filter: var(--photo-filter);
 }
 
+/* Video placeholder — hatched chip standing in for a result video that
+   hasn't been exported / uploaded yet. Same visual idiom as
+   .project-card-placeholder. Swap the placeholder <div> for a <video>
+   once the file lands in public/videos/; the figcaption can stay. */
+.video-placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background:
+    repeating-linear-gradient(
+      135deg,
+      var(--surface-2),
+      var(--surface-2) 10px,
+      var(--surface-3) 10px,
+      var(--surface-3) 20px
+    );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-4);
+  color: var(--text-tertiary);
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  line-height: 1.6;
+}
+
 /* === Contact === */
 .contact-list {
   display: flex;
@@ -1024,11 +1054,13 @@ section > .image-grid {
   border-radius: var(--radius);
 }
 
-.image-grid figure.lightbox-figure-trigger button img {
+.image-grid figure.lightbox-figure-trigger button img,
+.image-grid figure.lightbox-figure-trigger button video {
   transition: transform 0.2s, filter 0.2s;
 }
 
-.image-grid figure.lightbox-figure-trigger button:hover img {
+.image-grid figure.lightbox-figure-trigger button:hover img,
+.image-grid figure.lightbox-figure-trigger button:hover video {
   transform: scale(1.03);
   filter: var(--photo-filter) brightness(0.92);
 }
@@ -1077,7 +1109,8 @@ section > .image-grid {
   align-items: center;
 }
 
-.lightbox-figure img {
+.lightbox-figure img,
+.lightbox-figure video {
   max-width: 100%;
   max-height: 80vh;
   object-fit: contain;

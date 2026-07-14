@@ -227,7 +227,7 @@ export default function Resume({ onNavToSection, onNavToProject }: ResumeProps) 
 
           <ResumeEntry
             name="Basketball Rebounding Robot"
-            logo='/images/bot_image_1.png'
+            logo='/images/john-stockbot/bot_image_1.png'
             onClickName={() => onNavToProject('john-stockbot')}
             location=""
             dates="Sep 2025 — Present"

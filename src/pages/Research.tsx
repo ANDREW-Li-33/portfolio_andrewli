@@ -11,13 +11,13 @@ import { useDocMeta } from '../hooks/useDocMeta';
 // each source renders uncropped.
 const GEOSCAN_MEDIA: LightboxMedia[] = [
   {
-    src: '/images/taobotics_geoscan.webp',
+    src: '/images/lunar-lab/taobotics_geoscan.webp',
     alt: 'Taobotics GeoScan S1 sensing rig',
     caption: 'Taobotics GeoScan S1 device',
   },
   {
     kind: 'video',
-    src: '/videos/harrison_square_reconstruction.mp4',
+    src: '/videos/lunar-lab/harrison_square_reconstruction.mp4',
     alt: "Rosbag playback in Georgia Tech's Harrison Square Plaza",
     caption: "Rosbag playback in Georgia Tech's Harrison Square Plaza",
     aspectRatio: '2474 / 1042',
@@ -27,13 +27,13 @@ const GEOSCAN_MEDIA: LightboxMedia[] = [
 const PINGS_MEDIA: LightboxMedia[] = [
   {
     kind: 'video',
-    src: '/videos/mesh_street_walkthrough.mp4',
+    src: '/videos/lunar-lab/mesh_street_walkthrough.mp4',
     alt: "PINGS mesh reconstruction along Georgia Tech's Cherry Street",
     caption: "PINGS mesh reconstruction along Georgia Tech's Cherry Street",
     aspectRatio: '2188 / 1422',
   },
   {
-    src: '/images/street_walkthrough_3dgs.png',
+    src: '/images/lunar-lab/street_walkthrough_3dgs.png',
     alt: '3D Gaussian splatting render of a street walkthrough',
     caption: "PINGS 3DGS render along Georgia Tech's Cherry Street",
     aspectRatio: '993 / 568',
@@ -43,7 +43,7 @@ const PINGS_MEDIA: LightboxMedia[] = [
 const TRISPLAT_MEDIA: LightboxMedia[] = [
   {
     kind: 'video',
-    src: '/videos/trisplat_labrandom.mp4',
+    src: '/videos/lunar-lab/trisplat_labrandom.mp4',
     alt: 'TriSplat lab scene reconstruction',
     caption: 'Lab scene reconstruction results',
     aspectRatio: '1452 / 896',
@@ -53,14 +53,14 @@ const TRISPLAT_MEDIA: LightboxMedia[] = [
 const ASSET_GEN_MEDIA: LightboxMedia[] = [
   {
     kind: 'video',
-    src: '/videos/yolo_sam2_capture.mp4',
+    src: '/videos/lunar-lab/yolo_sam2_capture.mp4',
     alt: 'YOLO11x-seg + SAM2 running over a capture',
     caption: 'YOLO11x-seg + SAM2 running over a capture',
     aspectRatio: '1280 / 720',
   },
   {
     kind: 'video',
-    src: '/videos/physxomni_mujoco.mp4',
+    src: '/videos/lunar-lab/physxomni_mujoco.mp4',
     alt: 'PhysX-Omni output assets in MuJoCo',
     caption: 'PhysX-Omni output assets dropped into MuJoCo',
     aspectRatio: '2866 / 998',

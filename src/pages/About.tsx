@@ -72,7 +72,7 @@ export default function About({ onNav }: AboutProps) {
             <div className="about-photo-col">
               <img src={img('self_img1_cx8tzp')} alt="With Georgia Tech mascot Buzz" />
               <img
-                src="/images/hookshot.jpg?v=3"
+                src="/images/about/hookshot.jpg?v=3"
                 alt="Posing with the Kareem Abdul-Jabbar hook-shot statue"
               />
             </div>
@@ -84,7 +84,7 @@ export default function About({ onNav }: AboutProps) {
                 )}
                 alt="Standing on a mountain in Hong Kong"
               />
-              <img src="/images/graduation.jpg" alt="Georgia Tech graduation" />
+              <img src="/images/about/graduation.jpg" alt="Georgia Tech graduation" />
             </div>
           </div>
         </div>

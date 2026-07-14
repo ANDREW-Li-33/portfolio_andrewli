@@ -64,8 +64,8 @@ export default function JohnStockbotDetail() {
 
 
         <div className="image-grid contain">
-          <img src="/images/bot_image_1.png" alt="" />
-          <img src="/images/bot_image_3.png" alt="" />
+          <img src="/images/john-stockbot/bot_image_1.png" alt="" />
+          <img src="/images/john-stockbot/bot_image_3.png" alt="" />
         </div>
 
         <div className="label">Parts</div>
@@ -185,11 +185,11 @@ export default function JohnStockbotDetail() {
         <div className="subsection reverse">
           <div className="image-grid contain">
             <figure>
-              <img src="/images/drivetrain_cad.png" alt="Drivetrain CAD render" />
+              <img src="/images/john-stockbot/drivetrain_cad.png" alt="Drivetrain CAD render" />
               <figcaption>Drivetrain CAD render</figcaption>
             </figure>
             <figure>
-              <img src="/images/drivetrain_only.png" alt="X-drive assembly" />
+              <img src="/images/john-stockbot/drivetrain_only.png" alt="X-drive assembly" />
               <figcaption>X-drive assembly</figcaption>
             </figure>
           </div>
@@ -221,11 +221,11 @@ export default function JohnStockbotDetail() {
           </div>
           <div className="image-grid contain">
             <figure>
-              <img src="/images/flywheel_cad.png" alt="Flywheel CAD render" />
+              <img src="/images/john-stockbot/flywheel_cad.png" alt="Flywheel CAD render" />
               <figcaption>Flywheel CAD render</figcaption>
             </figure>
             <figure>
-              <img src="/images/test_firing.jpg" alt="Test firing" />
+              <img src="/images/john-stockbot/test_firing.jpg" alt="Test firing" />
               <figcaption>Test firing</figcaption>
             </figure>
           </div>
@@ -239,11 +239,11 @@ export default function JohnStockbotDetail() {
         <div className="subsection reverse">
           <div className="image-grid contain">
             <figure>
-              <img src="/images/staging_cad.png" alt="Staging mechanism CAD" />
+              <img src="/images/john-stockbot/staging_cad.png" alt="Staging mechanism CAD" />
               <figcaption>Staging mechanism CAD</figcaption>
             </figure>
             <figure>
-              <img src="/images/servo_real_closeup.png" alt="Staging mechanism assembly" />
+              <img src="/images/john-stockbot/servo_real_closeup.png" alt="Staging mechanism assembly" />
               <figcaption>Staging mechanism assembly</figcaption>
             </figure>
           </div>
@@ -278,19 +278,19 @@ export default function JohnStockbotDetail() {
         </p>
         <div className="image-grid contain">
           <figure>
-            <img src="/images/power_block_diagram.png" alt="Power block diagram" />
+            <img src="/images/john-stockbot/power_block_diagram.png" alt="Power block diagram" />
             <figcaption>Original Power block diagram, does not include fuse box</figcaption>
           </figure>
           <figure>
-            <img src="/images/logic_block_diagram.png" alt="Logic block diagram" />
+            <img src="/images/john-stockbot/logic_block_diagram.png" alt="Logic block diagram" />
             <figcaption>Logic block diagram</figcaption>
           </figure>
           <figure>
-            <img src="/images/fuse_box_wiring.png" alt="Fuse box wiring" />
+            <img src="/images/john-stockbot/fuse_box_wiring.png" alt="Fuse box wiring" />
             <figcaption>Fuse box wiring</figcaption>
           </figure>
           <figure>
-            <img src="/images/CAN_communication_block_diagram.png" alt="CAN communication wiring for one motor" />
+            <img src="/images/john-stockbot/CAN_communication_block_diagram.png" alt="CAN communication wiring for one motor" />
             <figcaption>CAN communication wiring</figcaption>
           </figure>
         </div>

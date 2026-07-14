@@ -8,12 +8,12 @@ import { useDocMeta } from '../hooks/useDocMeta';
 // and the Lightbox so the two stay in sync by index.
 const SANDIA_IMAGES: LightboxMedia[] = [
   {
-    src: '/images/radiation_mapping_1.png',
+    src: '/images/sandia/radiation_mapping_1.png',
     alt: 'Radiation mapping field trial',
     caption: 'Radiation mapping trial across Albuquerque',
   },
   {
-    src: '/images/radiation_mapping_2.png',
+    src: '/images/sandia/radiation_mapping_2.png',
     alt: 'Radiation mapping field trial locating hot sources',
     caption: 'Radiation mapping field trial locating hot sources',
   },
@@ -22,7 +22,7 @@ const SANDIA_IMAGES: LightboxMedia[] = [
 const SPOT_DEMO: LightboxMedia[] = [
   {
     kind: 'video',
-    src: '/videos/sandia_vlm_demo.mp4',
+    src: '/videos/sandia/sandia_vlm_demo.mp4',
     alt: 'Spot semantic understanding demo video',
     caption: 'Spot semantic-understanding demo in IsaacSim',
     aspectRatio: '1920 / 798',
@@ -32,7 +32,7 @@ const SPOT_DEMO: LightboxMedia[] = [
 const HUMANOID_MEDIA: LightboxMedia[] = [
   {
     kind: 'video',
-    src: '/videos/rl-video-step-0.mp4',
+    src: '/videos/humanoid/rl-video-step-0.mp4',
     alt: 'RL locomotion training in simulation',
     caption: 'Beginning steps for locomotion training',
   },
@@ -42,7 +42,7 @@ const INVENTION_STUDIO_IMAGES: LightboxMedia[] = [
   { src: img('is_1_ybizxa'), alt: 'Invention Studio print farm', caption: 'The Invention Studio print farm' },
   { src: img('is_2_wmbzwz'), alt: 'Lightbox birthday gift',      caption: "Lightbox made for a friend's birthday" },
   { src: img('is_4_cdhlvy'), alt: 'Invention Studio bike shop',  caption: "The Studio's bike shop" },
-  { src: '/images/waterjet.png', alt: 'Invention Studio waterjet', caption: 'Waterjet parts for my robot' },
+  { src: '/images/invention-studio/waterjet.png', alt: 'Invention Studio waterjet', caption: 'Waterjet parts for my robot' },
 ];
 
 const ROBOWRESTLING_IMAGES: LightboxMedia[] = [

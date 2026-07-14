@@ -22,7 +22,7 @@ export default function PocketItemHolderDetail() {
           </div>
           <div className="image-grid cols-1">
             <figure>
-              <video src="/videos/pocket_item_holder_cad.mp4" autoPlay loop muted playsInline />
+              <video src="/videos/pocket-item-holder/pocket_item_holder_cad.mp4" autoPlay loop muted playsInline />
               <figcaption>CAD model in Fusion 360</figcaption>
             </figure>
           </div>
@@ -40,10 +40,10 @@ export default function PocketItemHolderDetail() {
         <div className="label">Results!</div>
         <div className="image-grid">
           <figure>
-            <img src="/images/pocket_item_holder_close.jpg" alt="Wallet, AirPods, chapstick, and keys sitting in the shelf-mounted holder" />
+            <img src="/images/pocket-item-holder/pocket_item_holder_close.jpg" alt="Wallet, AirPods, chapstick, and keys sitting in the shelf-mounted holder" />
           </figure>
           <figure>
-            <img src="/images/pocket_item_holder_far.jpg" alt="The holder mounted on the corner shelf next to the 3D printer" />
+            <img src="/images/pocket-item-holder/pocket_item_holder_far.jpg" alt="The holder mounted on the corner shelf next to the 3D printer" />
           </figure>
         </div>
       </section>

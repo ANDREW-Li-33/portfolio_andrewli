@@ -28,7 +28,7 @@ export default function MarkerHolderDetail() {
           </div>
           <div className="image-grid cols-1">
             <figure>
-              <video src="/videos/marker_holder_cad.mp4" autoPlay loop muted playsInline />
+              <video src="/videos/marker-holder/marker_holder_cad.mp4" autoPlay loop muted playsInline />
               <figcaption>CAD model in Fusion 360</figcaption>
             </figure>
           </div>
@@ -46,10 +46,10 @@ export default function MarkerHolderDetail() {
         <div className="label">Results!</div>
         <div className="image-grid">
           <figure>
-            <img src="/images/marker_holder_flat.jpg" alt="Marker holder with markers sliding in at an angle" />
+            <img src="/images/marker-holder/marker_holder_flat.jpg" alt="Marker holder with markers sliding in at an angle" />
           </figure>
           <figure>
-            <img src="/images/marker_holder_upright.jpg" alt="Marker holder with markers standing upright" />
+            <img src="/images/marker-holder/marker_holder_upright.jpg" alt="Marker holder with markers standing upright" />
           </figure>
         </div>
       </section>

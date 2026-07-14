@@ -7,9 +7,11 @@
 //      string, inserted between the upload root and the public id.
 //
 //   2. Local files in /public — pass an absolute path starting with '/':
-//        img('/images/bot_image_1.png')
+//        img('/images/john-stockbot/bot_image_1.png')
 //      Returned as-is. Use this for project-specific assets that aren't
-//      worth uploading to Cloudinary.
+//      worth uploading to Cloudinary. Local images/videos live under a
+//      per-project subfolder (e.g. images/john-stockbot/, videos/printer/)
+//      rather than flat in images/ or videos/.
 export const CLD = 'https://res.cloudinary.com/dxshkhibs/image/upload';
 export const img = (id: string, transform?: string) => {
   if (id.startsWith('/')) return id;

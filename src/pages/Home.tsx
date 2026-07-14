@@ -25,7 +25,7 @@ export default function Home({ onProjects, onAbout, onNavToSection }: HomeProps)
           caches the file, so this is one network request, not two. */}
       <video
         className="hero-video-bg"
-        src="/videos/landing_page_video.mp4"
+        src="/videos/home/landing_page_video.mp4"
         autoPlay
         loop
         muted
@@ -34,7 +34,7 @@ export default function Home({ onProjects, onAbout, onNavToSection }: HomeProps)
       />
       <video
         className="hero-video"
-        src="/videos/landing_page_video.mp4"
+        src="/videos/home/landing_page_video.mp4"
         autoPlay
         loop
         muted

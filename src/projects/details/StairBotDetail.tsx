@@ -58,7 +58,7 @@ export default function StairBotDetail() {
             <figcaption>CAD model</figcaption>
           </figure>
           <figure>
-            <video src="/videos/testing_lift.mp4" autoPlay loop muted playsInline />
+            <video src="/videos/stairbot/testing_lift.mp4" autoPlay loop muted playsInline />
             <figcaption>Bench-testing the lift</figcaption>
           </figure>
         </div>
@@ -122,7 +122,7 @@ export default function StairBotDetail() {
             <figcaption>Final CAD</figcaption>
           </figure>
           <figure>
-            <video src="/videos/testing_bot.mp4" autoPlay loop muted playsInline />
+            <video src="/videos/stairbot/testing_bot.mp4" autoPlay loop muted playsInline />
             <figcaption>Testing the robot</figcaption>
           </figure>
           <figure>

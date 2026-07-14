@@ -46,7 +46,7 @@ export default function About({ onNav }: AboutProps) {
               pages!
             </p>
             <p>
-              Outside of robotics, I enjoy watching and playing basketball (I'm a big San Antonio Spurs fan), playing frisbee, and watching movies!
+              Outside of robotics, I enjoy watching and playing basketball (I'm a big San Antonio Spurs fan), brewing coffee, and reading (I'm currently reading The Hobbit)!
             </p>
 
             <p>

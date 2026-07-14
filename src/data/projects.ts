@@ -34,6 +34,14 @@ export const MINI_PROJECTS: ProjectCard[] = [
 
 export const PRINTS: ProjectCard[] = [
   {
+    id: 'pocket-item-holder',
+    title: 'Pocket Item Holder',
+    description: 'A shelf-mounted holder for my wallet, keys, chapstick, and earbuds.',
+    image: '/images/pocket_item_holder_close.jpg',
+    date: 'Jul 2026',
+    tags: ['Fusion 360', '3D print'],
+  },
+  {
     id: 'marker-holder',
     title: 'Custom Marker Holder',
     description: 'A modular, stackable holder for alcohol markers.',

@@ -15,22 +15,6 @@ export const PROJECTS: ProjectCard[] = [
 
 export const MINI_PROJECTS: ProjectCard[] = [
   {
-    id: 'printer-upgrades',
-    title: '3D printer upgrades',
-    description: 'Upgrades for my Ender 3.',
-    image: 'short_printer_upgrades_ldeimh.png',
-    date: 'Dec 2024',
-    tags: ['Ender 3', 'SKR Mini', 'CR-Touch'],
-  },
-  {
-    id: 'bedframe-holder',
-    title: 'Bedframe phone holder',
-    description: 'A bedframe-clamp holder for my AirPods and iPhone.',
-    image: 'short_iphone_bedframe_holder_wgnm1a.png',
-    date: 'Sep 2024',
-    tags: ['Fusion 360', '3D print'],
-  },
-  {
     id: 'stair-bot',
     title: 'Stair Climbing Robot',
     description: 'A robot that climbs stairs.',
@@ -48,4 +32,23 @@ export const MINI_PROJECTS: ProjectCard[] = [
   },
 ];
 
-export const ALL_PROJECTS: ProjectCard[] = [...PROJECTS, ...MINI_PROJECTS];
+export const PRINTS: ProjectCard[] = [
+  {
+    id: 'printer-upgrades',
+    title: '3D printer upgrades',
+    description: 'Upgrades for my Ender 3.',
+    image: 'short_printer_upgrades_ldeimh.png',
+    date: 'Dec 2024',
+    tags: ['Ender 3', 'SKR Mini', 'CR-Touch'],
+  },
+  {
+    id: 'bedframe-holder',
+    title: 'Bedframe phone holder',
+    description: 'A bedframe-clamp holder for my AirPods and iPhone.',
+    image: 'short_iphone_bedframe_holder_wgnm1a.png',
+    date: 'Sep 2024',
+    tags: ['Fusion 360', '3D print'],
+  },
+];
+
+export const ALL_PROJECTS: ProjectCard[] = [...PROJECTS, ...MINI_PROJECTS, ...PRINTS];

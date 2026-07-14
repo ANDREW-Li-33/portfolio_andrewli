@@ -1,5 +1,5 @@
 import type { ProjectCard } from '../types';
-import { PROJECTS, MINI_PROJECTS, ALL_PROJECTS } from '../data/projects';
+import { PROJECTS, MINI_PROJECTS, PRINTS, ALL_PROJECTS } from '../data/projects';
 import { img } from '../data/media';
 import ProjectDetail from '../projects/ProjectDetail';
 import { useDocMeta } from '../hooks/useDocMeta';
@@ -50,6 +50,11 @@ function ProjectsGrid({ setSelectedId }: { setSelectedId: (id: string | null) =>
         <ProjectGrid
           title="Mini Projects"
           items={MINI_PROJECTS}
+          onSelect={setSelectedId}
+        />
+        <ProjectGrid
+          title="3D Prints"
+          items={PRINTS}
           onSelect={setSelectedId}
         />
       </div>

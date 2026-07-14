@@ -5,7 +5,7 @@ export default function VexGuiDetail() {
     <>
       <section className="subsection">
         <div>
-          <div className="label">Why</div>
+          <div className="label">Motivation</div>
           <p>
             Debugging sensors and motors during a VEX Robotics match and switching programs based on opponent 
             strategy was a pain. Switching autonomous

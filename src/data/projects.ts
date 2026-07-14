@@ -34,6 +34,14 @@ export const MINI_PROJECTS: ProjectCard[] = [
 
 export const PRINTS: ProjectCard[] = [
   {
+    id: 'marker-holder',
+    title: 'Custom Marker Holder',
+    description: 'A modular, stackable holder for alcohol markers.',
+    image: '/images/marker_holder_upright.jpg',
+    date: 'Jul 2026',
+    tags: ['Fusion 360', '3D print'],
+  },
+  {
     id: 'printer-upgrades',
     title: '3D printer upgrades',
     description: 'Upgrades for my Ender 3.',

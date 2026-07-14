@@ -6,7 +6,7 @@ export default function BedframeHolderDetail() {
     <>
       <section className="subsection">
         <div>
-          <div className="label">Why</div>
+          <div className="label">Motivation</div>
           <p>
             In my freshman dorm, with heightened beds, 
             there was no convenient place to put my phone before sleeping unless I wanted to sleep directly on my phone.

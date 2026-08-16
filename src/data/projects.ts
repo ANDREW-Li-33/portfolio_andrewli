@@ -34,6 +34,14 @@ export const MINI_PROJECTS: ProjectCard[] = [
 
 export const PRINTS: ProjectCard[] = [
   {
+    id: 'anki-controller-charging-stand',
+    title: 'Anki Controller Charging Stand',
+    description: 'A travel case for my sister\'s 8BitDo controller, made as a birthday gift before she left for med school.',
+    image: '/images/anki-controller-charging-stand/anki_controller_charging_stand_case.jpg',
+    date: 'Aug 2026',
+    tags: ['Fusion 360', '3D print'],
+  },
+  {
     id: 'pocket-item-holder',
     title: 'Pocket Item Holder',
     description: 'A shelf-mounted holder for my wallet, keys, chapstick, and earbuds.',

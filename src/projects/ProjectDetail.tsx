@@ -13,6 +13,7 @@ const BedframeHolderDetail  = lazy(() => import('./details/BedframeHolderDetail'
 const VexGuiDetail          = lazy(() => import('./details/VexGuiDetail'));
 const MarkerHolderDetail    = lazy(() => import('./details/MarkerHolderDetail'));
 const PocketItemHolderDetail = lazy(() => import('./details/PocketItemHolderDetail'));
+const AnkiControllerChargingStandDetail = lazy(() => import('./details/AnkiControllerChargingStandDetail'));
 
 /**
  * Full-page project detail view that takes over the Projects tab when
@@ -38,6 +39,7 @@ const DETAILS: Record<string, ComponentType> = {
   'vex-gui':           VexGuiDetail,
   'marker-holder':     MarkerHolderDetail,
   'pocket-item-holder': PocketItemHolderDetail,
+  'anki-controller-charging-stand': AnkiControllerChargingStandDetail,
 };
 
 export default function ProjectDetail({ project, onBack }: Props) {

@@ -1,11 +1,28 @@
+import { useState } from 'react';
 import type { Tab } from '../types';
 import { ResumeIcon } from '../components/Icons';
 import { img } from '../data/media';
 import { useDocMeta } from '../hooks/useDocMeta';
+import Lightbox, { type LightboxMedia } from '../components/Lightbox';
 
 interface AboutProps {
   onNav: (tab: Tab) => void;
 }
+
+// Shared across both photo columns so clicking any photo opens the
+// Lightbox with prev/next navigation through all four, in on-page order.
+const ABOUT_PHOTOS: LightboxMedia[] = [
+  { src: img('self_img1_cx8tzp'), alt: 'With Georgia Tech mascot Buzz' },
+  {
+    src: '/images/about/hookshot.jpg?v=3',
+    alt: 'Posing with the Kareem Abdul-Jabbar hook-shot statue',
+  },
+  {
+    src: img('self_img2_f0xn7j', 'c_crop,w_2400,h_1800,g_south_west'),
+    alt: 'Standing on a mountain in Hong Kong',
+  },
+  { src: '/images/about/graduation.jpg', alt: 'Georgia Tech graduation' },
+];
 
 /**
  * About page — personal bio on the left, a small contact-sheet grid of
@@ -13,8 +30,10 @@ interface AboutProps {
  * "Research" route to those tabs via the onNav callback.
  */
 export default function About({ onNav }: AboutProps) {
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
   useDocMeta({
-    title: 'About — Andrew Li',
+    title: 'About: Andrew Li',
     description:
       "Master's student in Computer Science at Georgia Tech interested in real2sim / sim2real transfer and robotic 3D vision.",
     path: '/about',
@@ -70,25 +89,39 @@ export default function About({ onNav }: AboutProps) {
               roughly balanced. */}
           <div className="about-photos">
             <div className="about-photo-col">
-              <img src={img('self_img1_cx8tzp')} alt="With Georgia Tech mascot Buzz" />
-              <img
-                src="/images/about/hookshot.jpg?v=3"
-                alt="Posing with the Kareem Abdul-Jabbar hook-shot statue"
-              />
+              {[0, 1].map((i) => (
+                <button
+                  key={ABOUT_PHOTOS[i].src}
+                  type="button"
+                  onClick={() => setLightboxIndex(i)}
+                  aria-label={`Expand ${ABOUT_PHOTOS[i].alt}`}
+                >
+                  <img src={ABOUT_PHOTOS[i].src} alt={ABOUT_PHOTOS[i].alt} />
+                </button>
+              ))}
             </div>
             <div className="about-photo-col">
-              <img
-                src={img(
-                  'self_img2_f0xn7j',
-                  'c_crop,w_2400,h_1800,g_south_west'
-                )}
-                alt="Standing on a mountain in Hong Kong"
-              />
-              <img src="/images/about/graduation.jpg" alt="Georgia Tech graduation" />
+              {[2, 3].map((i) => (
+                <button
+                  key={ABOUT_PHOTOS[i].src}
+                  type="button"
+                  onClick={() => setLightboxIndex(i)}
+                  aria-label={`Expand ${ABOUT_PHOTOS[i].alt}`}
+                >
+                  <img src={ABOUT_PHOTOS[i].src} alt={ABOUT_PHOTOS[i].alt} />
+                </button>
+              ))}
             </div>
           </div>
         </div>
       </div>
+
+      <Lightbox
+        media={ABOUT_PHOTOS}
+        index={lightboxIndex}
+        onClose={() => setLightboxIndex(null)}
+        onNavigate={setLightboxIndex}
+      />
     </div>
   );
 }

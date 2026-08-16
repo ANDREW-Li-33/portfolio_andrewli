@@ -82,9 +82,9 @@ const BU_MEDIA: LightboxMedia[] = [
  */
 export default function Research() {
   useDocMeta({
-    title: 'Research — Andrew Li',
+    title: 'Research: Andrew Li',
     description:
-      "Andrew Li's research affiliations — Humanoid Robotics @ Georgia Tech, Lunar Lab, BU Morphable Biorobotics.",
+      "Andrew Li's research affiliations: Humanoid Robotics @ Georgia Tech, Lunar Lab, BU Morphable Biorobotics.",
     path: '/research',
   });
 
@@ -294,7 +294,7 @@ export default function Research() {
           <GalleryGrid media={BU_MEDIA} onOpen={openGallery(BU_MEDIA)} />
           <div>
             <h2>BU Morphable Biorobotics Lab</h2>
-            <div className="meta">Research Assistant · Jun — Aug 2022</div>
+            <div className="meta">Research Assistant · Jun - Aug 2022</div>
             <p>
             Through Boston University's RISE program, I completed a six-week internship as a 
             research assistant in the Morphable Biorobotics Lab. 

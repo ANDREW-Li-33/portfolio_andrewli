@@ -4,8 +4,8 @@ import { useDocMeta } from '../hooks/useDocMeta';
 
 export default function Contact() {
   useDocMeta({
-    title: 'Contact — Andrew Li',
-    description: 'Get in touch with Andrew Li — GitHub, LinkedIn, YouTube, email.',
+    title: 'Contact: Andrew Li',
+    description: 'Get in touch with Andrew Li: GitHub, LinkedIn, YouTube, email.',
     path: '/contact',
   });
 

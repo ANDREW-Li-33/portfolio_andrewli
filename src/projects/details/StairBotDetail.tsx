@@ -13,7 +13,7 @@ const CONCEPT_MEDIA: LightboxMedia[] = [
   {
     src: img('shenzhen1_x7oajg-min_ul9mcv'),
     alt: 'Shenzhen skyline',
-    caption: 'Shenzhen — where the project happened',
+    caption: 'Shenzhen: where the project happened',
   },
 ];
 
@@ -174,7 +174,7 @@ export default function StairBotDetail() {
         <div>
           <div className="label">Lessons learned</div>
           <ul>
-            <li>The robot wasn't fully autonomous in the end — driving was tricky</li>
+            <li>The robot wasn't fully autonomous in the end: driving was tricky</li>
             <li>We didn't have enough time to test on a real staircase</li>
             <li>Given more time, I'd redesign the scissor lift for speed</li>
             <li>And add more sensors + stronger motors with encoder/limit-switch feedback</li>

@@ -48,7 +48,7 @@ export default function ProjectDetail({ project, onBack }: Props) {
   const Body = DETAILS[project.id];
 
   useDocMeta({
-    title: `${project.title} — Andrew Li`,
+    title: `${project.title}: Andrew Li`,
     description: project.description,
     path: `/projects/${project.id}`,
   });

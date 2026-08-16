@@ -58,6 +58,14 @@ export const PRINTS: ProjectCard[] = [
     tags: ['Fusion 360', '3D print'],
   },
   {
+    id: 'toiletry-holder',
+    title: 'Toiletry Holder',
+    description: 'Countertop holders for contact lens and skincare essentials.',
+    image: '/images/toiletry-holder/toiletry_holder_result.jpg',
+    date: 'May 2025',
+    tags: ['Fusion 360', '3D print'],
+  },
+  {
     id: 'printer-upgrades',
     title: '3D printer upgrades',
     description: 'Upgrades for my Ender 3.',

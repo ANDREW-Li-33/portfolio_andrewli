@@ -1925,6 +1925,26 @@ button.text-link:hover {
   filter: var(--photo-filter);
 }
 
+/* Click-to-expand trigger — same button-reset + hover-zoom affordance
+   as the .image-grid lightbox triggers, adapted for this page's bespoke
+   flex-column layout instead of the standard grid. */
+.about-photos button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+.about-photos button img { transition: transform 0.2s, filter 0.2s; }
+.about-photos button:hover img {
+  transform: scale(1.03);
+  filter: var(--photo-filter) brightness(0.92);
+}
+
 @media (max-width: 640px) {
   .about-photos { flex-direction: column; }
 }

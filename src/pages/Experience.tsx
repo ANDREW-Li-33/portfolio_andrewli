@@ -66,9 +66,9 @@ const ARSENAL_IMAGES: LightboxMedia[] = [
  */
 export default function Experience() {
   useDocMeta({
-    title: 'Experience — Andrew Li',
+    title: 'Experience: Andrew Li',
     description:
-      "Andrew Li's work and competition experience — Sandia National Labs, Invention Studio, GT RoboWrestling, VEX Robotics.",
+      "Andrew Li's work and competition experience: Sandia National Labs, Invention Studio, GT RoboWrestling, VEX Robotics.",
     path: '/experience',
   });
 
@@ -91,7 +91,7 @@ export default function Experience() {
           <div>
             <h2>Sandia National Laboratories</h2>
             <div className="role-eyebrow">Internship</div>
-            <div className="meta"> May 2025 — present · Albuquerque, NM</div>
+            <div className="meta"> May 2025 - present · Albuquerque, NM</div>
             <p>
               At Sandia, I work as a year-round intern in the AI for Autonomy group. Currently, 
               I'm working on a modular flight-logging device for drones, including the mechanical design, assembly, and firmware.
@@ -163,7 +163,7 @@ export default function Experience() {
           <div>
             <h2>Humanoid Robotics @ GT</h2>
             <div className="role-eyebrow">Georgia Tech Club</div>
-            <div className="meta">Software Lead · Jan 2026 — present</div>
+            <div className="meta">Software Lead · Jan 2026 - present</div>
             <p>
               As a new club at Georgia Tech, we aim to develop humanoid robots that can participate in 
               humanoid soccer competitions. 
@@ -193,7 +193,7 @@ export default function Experience() {
           <div>
             <h2>Flowers Invention Studio</h2>
             <div className="role-eyebrow">Georgia Tech Club</div>
-            <div className="meta">Prototyping Instructor · Mar 2024 — Feb 2025</div>
+            <div className="meta">Prototyping Instructor · Mar 2024 - Feb 2025</div>
             <p>
               Flowers Invention Studio is Georgia Tech's largest student-run
               makerspace, including all kinds of machinery, from industrial waterjets to laser cutters to 3D
@@ -216,7 +216,7 @@ export default function Experience() {
           <div>
             <h2>Georgia Tech RoboWrestling</h2>
             <div className="role-eyebrow">Georgia Tech Club</div>
-            <div className="meta">Software Mentor · Sep 2023 — Feb 2025</div>
+            <div className="meta">Software Mentor · Sep 2023 - Feb 2025</div>
             <p>
               GT RoboWrestling is Georgia Tech's robot sumo team, building robots for the
               500g and 3kg classes, competing at Robogames and in-house events.
@@ -244,7 +244,7 @@ export default function Experience() {
           <div>
             <h2>Vex Robotics Competition</h2>
             <div className="role-eyebrow">High School</div>
-            <div className="meta">Team 55645X Arsenal · 2019 — 2023</div>
+            <div className="meta">Team 55645X Arsenal · 2019 - 2023</div>
             <p>
               Starting freshman year of high school, my two best friends and I
               formed a team to compete in the Vex Robotics Competition. After

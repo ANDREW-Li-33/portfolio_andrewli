@@ -16,9 +16,9 @@ interface ResumeProps {
 
 export default function Resume({ onNavToSection, onNavToProject }: ResumeProps) {
   useDocMeta({
-    title: 'Resume — Andrew Li',
+    title: 'Resume: Andrew Li',
     description:
-      "Andrew Li's resume — B.S./M.S. Computer Science at Georgia Tech, AI for autonomy at Sandia National Labs, robotics research and software engineering experience.",
+      "Andrew Li's resume: B.S./M.S. Computer Science at Georgia Tech, AI for autonomy at Sandia National Labs, robotics research and software engineering experience.",
     path: '/resume',
   });
 
@@ -87,7 +87,7 @@ export default function Resume({ onNavToSection, onNavToProject }: ResumeProps) 
             name="Georgia Institute of Technology"
             logo='/images/logos/gatech.png'
             location="Atlanta, GA"
-            dates="Aug 2023 — May 2027"
+            dates="Aug 2023 - May 2027"
             role="B.S./M.S. Computer Science · Undergraduate GPA: 3.74"
             bullets={[
               <>
@@ -109,7 +109,7 @@ export default function Resume({ onNavToSection, onNavToProject }: ResumeProps) 
             onClickName={go('research', 'lunar-lab')}
             customClickLabel="View research"
             location="Atlanta, GA"
-            dates="Apr 2026 — Present"
+            dates="Apr 2026 - Present"
             role="Research Assistant"
             bullets={[
               <>
@@ -138,7 +138,7 @@ export default function Resume({ onNavToSection, onNavToProject }: ResumeProps) 
             logo='/images/logos/sandia.jpg'
             onClickName={go('experience', 'sandia')}
             location="Albuquerque, NM (On-site → Remote)"
-            dates="May 2025 — Present"
+            dates="May 2025 - Present"
             role="Year-Round AI for Autonomy Intern"
             bullets={[
               <>
@@ -172,7 +172,7 @@ export default function Resume({ onNavToSection, onNavToProject }: ResumeProps) 
             logo='/images/logos/humanoid.png'
             onClickName={go('experience', 'humanoid')}
             location="Atlanta, GA"
-            dates="Jan 2026 — Present"
+            dates="Jan 2026 - Present"
             role="Software Lead"
             bullets={[
               <>
@@ -189,7 +189,7 @@ export default function Resume({ onNavToSection, onNavToProject }: ResumeProps) 
             logo='/images/logos/robojackets.png'
             onClickName={go('experience', 'robowrestling')}
             location="Atlanta, GA"
-            dates="Sep 2023 — Feb 2025"
+            dates="Sep 2023 - Feb 2025"
             role="Software Mentor"
             bullets={[
               <>
@@ -209,7 +209,7 @@ export default function Resume({ onNavToSection, onNavToProject }: ResumeProps) 
             onClickName={go('research', 'boston-university')}
             customClickLabel="View research"
             location="Boston, MA"
-            dates="Jun 2022 — Aug 2022"
+            dates="Jun 2022 - Aug 2022"
             role="Research Assistant"
             bullets={[
               <>
@@ -230,7 +230,7 @@ export default function Resume({ onNavToSection, onNavToProject }: ResumeProps) 
             logo='/images/john-stockbot/bot_image_1.png'
             onClickName={() => onNavToProject('john-stockbot')}
             location=""
-            dates="Sep 2025 — Present"
+            dates="Sep 2025 - Present"
             role="Personal project"
             bullets={[
               <>

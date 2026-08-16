@@ -25,7 +25,7 @@ export default function VexGuiDetail() {
             <li>Touchscreen navigation via a dropdown menu</li>
           </ul>
           <a className="link" href="https://github.com/ANDREW-Li-33/joyboy" target="_blank" rel="noopener noreferrer">
-            GitHub — ANDREW-Li-33/joyboy →
+            GitHub: ANDREW-Li-33/joyboy →
           </a>
         </div>
         <div>

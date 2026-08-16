@@ -31,9 +31,9 @@ export default function Projects({ selectedId, setSelectedId }: ProjectsProps) {
 
 function ProjectsGrid({ setSelectedId }: { setSelectedId: (id: string | null) => void }) {
   useDocMeta({
-    title: 'Projects — Andrew Li',
+    title: 'Projects: Andrew Li',
     description:
-      'Robotics and software projects by Andrew Li — basketball rebounding robot, 3D printer upgrades, stair-climbing robot, telemetry GUI.',
+      'Robotics and software projects by Andrew Li: basketball rebounding robot, 3D printer upgrades, stair-climbing robot, telemetry GUI.',
     path: '/projects',
   });
 

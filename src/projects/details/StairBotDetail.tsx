@@ -1,7 +1,92 @@
+import { useState } from 'react';
+import Lightbox, { type LightboxMedia } from '../../components/Lightbox';
+import GalleryGrid from '../../components/GalleryGrid';
 import DownloadList from '../../components/DownloadList';
 import { img } from '../../data/media';
 
+const CONCEPT_MEDIA: LightboxMedia[] = [
+  {
+    src: img('init_idea_tbtcpx-min_l2wc8p'),
+    alt: 'Initial concept sketches',
+    caption: 'Early concept sketches',
+  },
+  {
+    src: img('shenzhen1_x7oajg-min_ul9mcv'),
+    alt: 'Shenzhen skyline',
+    caption: 'Shenzhen — where the project happened',
+  },
+];
+
+const SCISSOR_LIFT_MEDIA: LightboxMedia[] = [
+  {
+    src: img('CAD_lift_af7sbe'),
+    alt: 'Scissor lift CAD',
+    caption: 'CAD model',
+  },
+  {
+    kind: 'video',
+    src: '/videos/stairbot/testing_lift.mp4',
+    alt: 'Scissor lift bench test video',
+    caption: 'Bench-testing the lift',
+  },
+];
+
+const LINEAR_RAIL_MEDIA: LightboxMedia[] = [
+  {
+    src: img('rail_systemCAD_l7i6ll'),
+    alt: 'Linear rail CAD',
+    caption: 'Linear rail CAD',
+  },
+  {
+    src: img('rail_system_completed_vqzsyh-min_bnwenf'),
+    alt: 'Linear rail assembled',
+    caption: 'Assembled rail system',
+  },
+];
+
+const DRIVETRAIN_MEDIA: LightboxMedia[] = [
+  {
+    src: img('drivetrain_CAD_zfpgr2'),
+    alt: 'Drivetrain CAD',
+    caption: 'Drivetrain CAD',
+  },
+  {
+    src: img('putting_tg3_six4xr-min_hdpnay'),
+    alt: 'Assembling drivetrain',
+    caption: 'Assembling the drivetrain',
+  },
+];
+
+const FINAL_ASSEMBLY_MEDIA: LightboxMedia[] = [
+  {
+    src: img('completed_chassis_uti0xi'),
+    alt: 'Final CAD',
+    caption: 'Final CAD',
+  },
+  {
+    kind: 'video',
+    src: '/videos/stairbot/testing_bot.mp4',
+    alt: 'Stair-climbing robot test video',
+    caption: 'Testing the robot',
+  },
+  {
+    src: img('putting_together_oaibuk-min_o00cai'),
+    alt: 'Final assembled robot',
+    caption: 'Completed stair climber',
+  },
+];
+
+const LESSONS_MEDIA: LightboxMedia[] = [
+  {
+    src: img('putting_tg_2_m28i3z-min_ff53ow'),
+    alt: 'Final assembled robot',
+  },
+];
+
 export default function StairBotDetail() {
+  const [lightbox, setLightbox] = useState<{ media: LightboxMedia[]; index: number } | null>(null);
+  const openGallery = (media: LightboxMedia[]) => (index: number) => setLightbox({ media, index });
+
   return (
     <>
       <section className="subsection">
@@ -29,16 +114,7 @@ export default function StairBotDetail() {
             <li>Mecanum wheels for high maneuverability</li>
           </ul>
         </div>
-        <div className="image-grid">
-          <figure>
-            <img src={img('init_idea_tbtcpx-min_l2wc8p')} alt="Initial concept sketches" />
-            <figcaption>Early concept sketches</figcaption>
-          </figure>
-          <figure>
-            <img src={img('shenzhen1_x7oajg-min_ul9mcv')} alt="Shenzhen skyline" />
-            <figcaption>Shenzhen — where the project happened</figcaption>
-          </figure>
-        </div>
+        <GalleryGrid media={CONCEPT_MEDIA} onOpen={openGallery(CONCEPT_MEDIA)} />
       </section>
 
       <hr className="divider" />
@@ -52,31 +128,13 @@ export default function StairBotDetail() {
             and reaches stair heights up to ~15 cm.
           </p>
         </div>
-        <div className="image-grid">
-          <figure>
-            <img src={img('CAD_lift_af7sbe')} alt="Scissor lift CAD" />
-            <figcaption>CAD model</figcaption>
-          </figure>
-          <figure>
-            <video src="/videos/stairbot/testing_lift.mp4" autoPlay loop muted playsInline />
-            <figcaption>Bench-testing the lift</figcaption>
-          </figure>
-        </div>
+        <GalleryGrid media={SCISSOR_LIFT_MEDIA} onOpen={openGallery(SCISSOR_LIFT_MEDIA)} />
       </section>
 
       <hr className="divider" />
 
       <section className="subsection reverse">
-        <div className="image-grid">
-          <figure>
-            <img src={img('rail_systemCAD_l7i6ll')} alt="Linear rail CAD" />
-            <figcaption>Linear rail CAD</figcaption>
-          </figure>
-          <figure>
-            <img src={img('rail_system_completed_vqzsyh-min_bnwenf')} alt="Linear rail assembled" />
-            <figcaption>Assembled rail system</figcaption>
-          </figure>
-        </div>
+        <GalleryGrid media={LINEAR_RAIL_MEDIA} onOpen={openGallery(LINEAR_RAIL_MEDIA)} />
         <div>
           <div className="label">Linear rail</div>
           <p>
@@ -100,36 +158,14 @@ export default function StairBotDetail() {
             <li>Independent motor control for precise teleoperated turning</li>
           </ul>
         </div>
-        <div className="image-grid">
-          <figure>
-            <img src={img('drivetrain_CAD_zfpgr2')} alt="Drivetrain CAD" />
-            <figcaption>Drivetrain CAD</figcaption>
-          </figure>
-          <figure>
-            <img src={img('putting_tg3_six4xr-min_hdpnay')} alt="Assembling drivetrain" />
-            <figcaption>Assembling the drivetrain</figcaption>
-          </figure>
-        </div>
+        <GalleryGrid media={DRIVETRAIN_MEDIA} onOpen={openGallery(DRIVETRAIN_MEDIA)} />
       </section>
 
       <hr className="divider" />
 
       <section>
         <h2 className="detail-h2">Final assembly</h2>
-        <div className="image-grid cols-3">
-          <figure>
-            <img src={img('completed_chassis_uti0xi')} alt="Final CAD" />
-            <figcaption>Final CAD</figcaption>
-          </figure>
-          <figure>
-            <video src="/videos/stairbot/testing_bot.mp4" autoPlay loop muted playsInline />
-            <figcaption>Testing the robot</figcaption>
-          </figure>
-          <figure>
-            <img src={img('putting_together_oaibuk-min_o00cai')} alt="Final assembled robot" />
-            <figcaption>Completed stair climber</figcaption>
-          </figure>
-        </div>
+        <GalleryGrid media={FINAL_ASSEMBLY_MEDIA} onOpen={openGallery(FINAL_ASSEMBLY_MEDIA)} variant="cols-3" />
       </section>
 
       <hr className="divider" />
@@ -144,9 +180,7 @@ export default function StairBotDetail() {
             <li>And add more sensors + stronger motors with encoder/limit-switch feedback</li>
           </ul>
         </div>
-        <figure className="image-grid cols-1">
-          <img src={img('putting_tg_2_m28i3z-min_ff53ow')} alt="Final assembled robot" />
-        </figure>
+        <GalleryGrid media={LESSONS_MEDIA} onOpen={openGallery(LESSONS_MEDIA)} variant="cols-1" />
       </section>
 
       <hr className="divider" />
@@ -166,6 +200,13 @@ export default function StairBotDetail() {
           { label: 'Bearing mount v1', href: '/downloadables/stairbot/screw bearing holder v1.stl', sub: 'Lead-screw bearing (STL)' },
         ]} />
       </section>
+
+      <Lightbox
+        media={lightbox?.media ?? []}
+        index={lightbox?.index ?? null}
+        onClose={() => setLightbox(null)}
+        onNavigate={(index) => setLightbox((lb) => (lb ? { ...lb, index } : lb))}
+      />
     </>
   );
 }

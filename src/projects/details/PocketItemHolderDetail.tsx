@@ -1,6 +1,32 @@
+import { useState } from 'react';
+import Lightbox, { type LightboxMedia } from '../../components/Lightbox';
+import GalleryGrid from '../../components/GalleryGrid';
 import DownloadList from '../../components/DownloadList';
 
+const CAD_MEDIA: LightboxMedia[] = [
+  {
+    kind: 'video',
+    src: '/videos/pocket-item-holder/pocket_item_holder_cad.mp4',
+    alt: '',
+    caption: 'CAD model in Fusion 360',
+  },
+];
+
+const RESULT_MEDIA: LightboxMedia[] = [
+  {
+    src: '/images/pocket-item-holder/pocket_item_holder_close.jpg',
+    alt: 'Wallet, AirPods, chapstick, and keys sitting in the shelf-mounted holder',
+  },
+  {
+    src: '/images/pocket-item-holder/pocket_item_holder_far.jpg',
+    alt: 'The holder mounted on the corner shelf next to the 3D printer',
+  },
+];
+
 export default function PocketItemHolderDetail() {
+  const [lightbox, setLightbox] = useState<{ media: LightboxMedia[]; index: number } | null>(null);
+  const openGallery = (media: LightboxMedia[]) => (index: number) => setLightbox({ media, index });
+
   return (
     <>
       <section>
@@ -20,12 +46,7 @@ export default function PocketItemHolderDetail() {
               file is free to download below.
             </p>
           </div>
-          <div className="image-grid cols-1">
-            <figure>
-              <video src="/videos/pocket-item-holder/pocket_item_holder_cad.mp4" autoPlay loop muted playsInline />
-              <figcaption>CAD model in Fusion 360</figcaption>
-            </figure>
-          </div>
+          <GalleryGrid media={CAD_MEDIA} onOpen={openGallery(CAD_MEDIA)} variant="cols-1" />
         </div>
 
         <div className="label">Downloads</div>
@@ -38,15 +59,15 @@ export default function PocketItemHolderDetail() {
 
       <section>
         <div className="label">Results!</div>
-        <div className="image-grid">
-          <figure>
-            <img src="/images/pocket-item-holder/pocket_item_holder_close.jpg" alt="Wallet, AirPods, chapstick, and keys sitting in the shelf-mounted holder" />
-          </figure>
-          <figure>
-            <img src="/images/pocket-item-holder/pocket_item_holder_far.jpg" alt="The holder mounted on the corner shelf next to the 3D printer" />
-          </figure>
-        </div>
+        <GalleryGrid media={RESULT_MEDIA} onOpen={openGallery(RESULT_MEDIA)} />
       </section>
+
+      <Lightbox
+        media={lightbox?.media ?? []}
+        index={lightbox?.index ?? null}
+        onClose={() => setLightbox(null)}
+        onNavigate={(index) => setLightbox((lb) => (lb ? { ...lb, index } : lb))}
+      />
     </>
   );
 }

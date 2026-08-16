@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import Lightbox, { type LightboxMedia } from '../../components/Lightbox';
+import GalleryGrid from '../../components/GalleryGrid';
 import { img } from '../../data/media';
 
 interface Upgrade {
@@ -46,7 +49,40 @@ const UPGRADES: Upgrade[] = [
   },
 ];
 
+// One thumbnail per upgrade — derived from UPGRADES so src/alt stay in
+// sync with the data above. Each upgrade's grid only ever shows its own
+// single image, so the click-to-expand lightbox is opened with a
+// one-item slice of this array (matching the original single-image,
+// non-gallery behavior of each row).
+const UPGRADE_MEDIA: LightboxMedia[] = UPGRADES.map((u) => ({
+  src: img(u.img),
+  alt: u.title,
+}));
+
+const FINAL_RESULTS_MEDIA: LightboxMedia[] = [
+  {
+    src: img('final_cat_vbixl1'),
+    alt: '3D-printed cat benchmark',
+    caption: 'Cat benchmark print',
+  },
+  {
+    kind: 'video',
+    src: '/videos/printer/final_results.mp4',
+    alt: '',
+    caption: 'Printing with the new setup!',
+  },
+  {
+    kind: 'video',
+    src: '/videos/printer/metal extruder.mp4',
+    alt: '',
+    caption: 'Metal extruder installation',
+  },
+];
+
 export default function PrinterUpgradesDetail() {
+  const [lightbox, setLightbox] = useState<{ media: LightboxMedia[]; index: number } | null>(null);
+  const openGallery = (media: LightboxMedia[]) => (index: number) => setLightbox({ media, index });
+
   return (
     <>
       <section className="subsection">
@@ -79,9 +115,11 @@ export default function PrinterUpgradesDetail() {
                   {u.linkLabel} →
                 </a>
               </div>
-              <figure className="image-grid cols-1">
-                <img src={img(u.img)} alt={u.title} />
-              </figure>
+              <GalleryGrid
+                media={[UPGRADE_MEDIA[i]]}
+                onOpen={openGallery([UPGRADE_MEDIA[i]])}
+                variant="cols-1"
+              />
             </div>
             {i < UPGRADES.length - 1 && <hr className="divider divider-tight" />}
           </div>
@@ -95,21 +133,15 @@ export default function PrinterUpgradesDetail() {
         <p className="detail-lede">
           There's room for improvement, but I'm really happy with how it turned out!
         </p>
-        <div className="image-grid cols-3">
-          <figure>
-            <img src={img('final_cat_vbixl1')} alt="3D-printed cat benchmark" />
-            <figcaption>Cat benchmark print</figcaption>
-          </figure>
-          <figure>
-            <video src="/videos/printer/final_results.mp4" autoPlay loop muted playsInline />
-            <figcaption>Printing with the new setup!</figcaption>
-          </figure>
-          <figure>
-            <video src="/videos/printer/metal extruder.mp4" autoPlay loop muted playsInline />
-            <figcaption>Metal extruder installation</figcaption>
-          </figure>
-        </div>
+        <GalleryGrid media={FINAL_RESULTS_MEDIA} onOpen={openGallery(FINAL_RESULTS_MEDIA)} variant="cols-3" />
       </section>
+
+      <Lightbox
+        media={lightbox?.media ?? []}
+        index={lightbox?.index ?? null}
+        onClose={() => setLightbox(null)}
+        onNavigate={(index) => setLightbox((lb) => (lb ? { ...lb, index } : lb))}
+      />
     </>
   );
 }

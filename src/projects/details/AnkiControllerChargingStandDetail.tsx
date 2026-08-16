@@ -1,6 +1,41 @@
+import { useState } from 'react';
+import Lightbox, { type LightboxMedia } from '../../components/Lightbox';
+import GalleryGrid from '../../components/GalleryGrid';
 import DownloadList from '../../components/DownloadList';
 
+const CAD_MEDIA: LightboxMedia[] = [
+  {
+    src: '/images/anki-controller-charging-stand/anki_controller_charging_stand_cad.jpg',
+    alt: 'CAD render of the case, engraved with MAGGIE',
+    caption: 'CAD model in Fusion 360',
+  },
+  {
+    kind: 'video',
+    src: '/videos/anki-controller-charging-stand/anki_controller_charging_stand_cad.mp4',
+    alt: '',
+    caption: 'CAD presentation',
+  },
+];
+
+const RESULTS_MEDIA: LightboxMedia[] = [
+  {
+    kind: 'video',
+    src: '/videos/anki-controller-charging-stand/anki_controller_charging_stand_demo.mp4',
+    alt: '',
+    caption: 'Feature walkthrough',
+  },
+  {
+    kind: 'video',
+    src: '/videos/anki-controller-charging-stand/anki_controller_charging_stand_pan.mp4',
+    alt: '',
+    caption: '360 view',
+  },
+];
+
 export default function AnkiControllerChargingStandDetail() {
+  const [lightbox, setLightbox] = useState<{ media: LightboxMedia[]; index: number } | null>(null);
+  const openGallery = (media: LightboxMedia[]) => (index: number) => setLightbox({ media, index });
+
   return (
     <>
       <section className="subsection">
@@ -24,32 +59,14 @@ export default function AnkiControllerChargingStandDetail() {
           For future versions, I will include a recessed area in the stand that can be used to store the cable so one can wrap the cable in that area rather than around the drawer knob.
           </p>
         </div>
-        <div className="image-grid cols-1">
-          <figure>
-            <img src="/images/anki-controller-charging-stand/anki_controller_charging_stand_cad.jpg" alt="CAD render of the case, engraved with MAGGIE" />
-            <figcaption>CAD model in Fusion 360</figcaption>
-          </figure>
-          <figure>
-            <video src="/videos/anki-controller-charging-stand/anki_controller_charging_stand_cad.mp4" autoPlay loop muted playsInline />
-            <figcaption>CAD presentation</figcaption>
-          </figure>
-        </div>
+        <GalleryGrid media={CAD_MEDIA} onOpen={openGallery(CAD_MEDIA)} variant="cols-1" />
       </section>
 
       <hr className="divider" />
 
       <section>
         <div className="label">Results!</div>
-        <div className="image-grid">
-          <figure>
-            <video src="/videos/anki-controller-charging-stand/anki_controller_charging_stand_demo.mp4" autoPlay loop muted playsInline />
-            <figcaption>Feature walkthrough</figcaption>
-          </figure>
-          <figure>
-            <video src="/videos/anki-controller-charging-stand/anki_controller_charging_stand_pan.mp4" autoPlay loop muted playsInline />
-            <figcaption>360 view</figcaption>
-          </figure>
-        </div>
+        <GalleryGrid media={RESULTS_MEDIA} onOpen={openGallery(RESULTS_MEDIA)} />
       </section>
 
       <hr className="divider" />
@@ -62,6 +79,13 @@ export default function AnkiControllerChargingStandDetail() {
           { label: 'Top',    href: '/downloadables/anki_controller_charging_stand_top.stl',    sub: '.stl' },
         ]} />
       </section>
+
+      <Lightbox
+        media={lightbox?.media ?? []}
+        index={lightbox?.index ?? null}
+        onClose={() => setLightbox(null)}
+        onNavigate={(index) => setLightbox((lb) => (lb ? { ...lb, index } : lb))}
+      />
     </>
   );
 }

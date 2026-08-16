@@ -1,8 +1,80 @@
+import { useState } from 'react';
+import Lightbox, { type LightboxMedia } from '../../components/Lightbox';
+import GalleryGrid from '../../components/GalleryGrid';
 import Embed from '../../components/Embed';
 import { GithubIcon } from '../../components/Icons';
 
+const OVERVIEW_IMAGES: LightboxMedia[] = [
+  { src: '/images/john-stockbot/bot_image_1.png', alt: '' },
+  { src: '/images/john-stockbot/bot_image_3.png', alt: '' },
+];
+
+const DRIVETRAIN_MEDIA: LightboxMedia[] = [
+  {
+    src: '/images/john-stockbot/drivetrain_cad.png',
+    alt: 'Drivetrain CAD render',
+    caption: 'Drivetrain CAD render',
+  },
+  {
+    src: '/images/john-stockbot/drivetrain_only.png',
+    alt: 'X-drive assembly',
+    caption: 'X-drive assembly',
+  },
+];
+
+const FLYWHEEL_MEDIA: LightboxMedia[] = [
+  {
+    src: '/images/john-stockbot/flywheel_cad.png',
+    alt: 'Flywheel CAD render',
+    caption: 'Flywheel CAD render',
+  },
+  {
+    src: '/images/john-stockbot/test_firing.jpg',
+    alt: 'Test firing',
+    caption: 'Test firing',
+  },
+];
+
+const STAGING_MEDIA: LightboxMedia[] = [
+  {
+    src: '/images/john-stockbot/staging_cad.png',
+    alt: 'Staging mechanism CAD',
+    caption: 'Staging mechanism CAD',
+  },
+  {
+    src: '/images/john-stockbot/servo_real_closeup.png',
+    alt: 'Staging mechanism assembly',
+    caption: 'Staging mechanism assembly',
+  },
+];
+
+const ELECTRONICS_MEDIA: LightboxMedia[] = [
+  {
+    src: '/images/john-stockbot/power_block_diagram.png',
+    alt: 'Power block diagram',
+    caption: 'Original Power block diagram, does not include fuse box',
+  },
+  {
+    src: '/images/john-stockbot/logic_block_diagram.png',
+    alt: 'Logic block diagram',
+    caption: 'Logic block diagram',
+  },
+  {
+    src: '/images/john-stockbot/fuse_box_wiring.png',
+    alt: 'Fuse box wiring',
+    caption: 'Fuse box wiring',
+  },
+  {
+    src: '/images/john-stockbot/CAN_communication_block_diagram.png',
+    alt: 'CAN communication wiring for one motor',
+    caption: 'CAN communication wiring',
+  },
+];
 
 export default function JohnStockbotDetail() {
+  const [lightbox, setLightbox] = useState<{ media: LightboxMedia[]; index: number } | null>(null);
+  const openGallery = (media: LightboxMedia[]) => (index: number) => setLightbox({ media, index });
+
   return (
     <>
       <section>
@@ -63,10 +135,7 @@ export default function JohnStockbotDetail() {
         </ul>
 
 
-        <div className="image-grid contain">
-          <img src="/images/john-stockbot/bot_image_1.png" alt="" />
-          <img src="/images/john-stockbot/bot_image_3.png" alt="" />
-        </div>
+        <GalleryGrid media={OVERVIEW_IMAGES} onOpen={openGallery(OVERVIEW_IMAGES)} variant="contain" />
 
         <div className="label">Parts</div>
         <ul>
@@ -183,16 +252,7 @@ export default function JohnStockbotDetail() {
             description in the right (reverse swaps the 1.4fr/1fr
             template so the text column is the wider one). */}
         <div className="subsection reverse">
-          <div className="image-grid contain">
-            <figure>
-              <img src="/images/john-stockbot/drivetrain_cad.png" alt="Drivetrain CAD render" />
-              <figcaption>Drivetrain CAD render</figcaption>
-            </figure>
-            <figure>
-              <img src="/images/john-stockbot/drivetrain_only.png" alt="X-drive assembly" />
-              <figcaption>X-drive assembly</figcaption>
-            </figure>
-          </div>
+          <GalleryGrid media={DRIVETRAIN_MEDIA} onOpen={openGallery(DRIVETRAIN_MEDIA)} variant="contain" />
           <div>
             <div className="label">Drivetrain</div>
             <p>
@@ -219,16 +279,7 @@ export default function JohnStockbotDetail() {
               Each flywheel runs on a separate Flipsky VESC, meaning there can be variable speeds between the top and bottom flywheels.
             </p>
           </div>
-          <div className="image-grid contain">
-            <figure>
-              <img src="/images/john-stockbot/flywheel_cad.png" alt="Flywheel CAD render" />
-              <figcaption>Flywheel CAD render</figcaption>
-            </figure>
-            <figure>
-              <img src="/images/john-stockbot/test_firing.jpg" alt="Test firing" />
-              <figcaption>Test firing</figcaption>
-            </figure>
-          </div>
+          <GalleryGrid media={FLYWHEEL_MEDIA} onOpen={openGallery(FLYWHEEL_MEDIA)} variant="contain" />
         </div>
 
         <hr className="divider divider-tight" />
@@ -237,16 +288,7 @@ export default function JohnStockbotDetail() {
             description in the right (reverse template, matching the
             Drivetrain layout above). */}
         <div className="subsection reverse">
-          <div className="image-grid contain">
-            <figure>
-              <img src="/images/john-stockbot/staging_cad.png" alt="Staging mechanism CAD" />
-              <figcaption>Staging mechanism CAD</figcaption>
-            </figure>
-            <figure>
-              <img src="/images/john-stockbot/servo_real_closeup.png" alt="Staging mechanism assembly" />
-              <figcaption>Staging mechanism assembly</figcaption>
-            </figure>
-          </div>
+          <GalleryGrid media={STAGING_MEDIA} onOpen={openGallery(STAGING_MEDIA)} variant="contain" />
           <div>
             <div className="label">Staging + gate</div>
             <p>
@@ -266,34 +308,17 @@ export default function JohnStockbotDetail() {
 
         <div className="label">Electronics + power</div>
         <p>
-          A 22.2 V LiPo Battery goes into bus bars, which safely distribute power for the entire robot. 
+          A 22.2 V LiPo Battery goes into bus bars, which safely distribute power for the entire robot.
           The bus bars provide high voltage / amperage to the VESCs. These VESCs are connected to their respective BLDC motors.
           I use one of the VESC's BECs (Battery Eliminator Circuit) to provide a safe 5V 1A to the Teensy 4.1.
           The Teensy communicates with the VESCs using CAN communication using a custom packet protocol using the FlexCAN_T4 library. These packets are sent over a physically wired bus that attaches to the Teensy through a CAN transceiver.
-          The Teensy then provides 3.3V logic power to several other components, including the break beam sensors, IR receiver, stepper motor drivers, and the CAN transceiver. 
+          The Teensy then provides 3.3V logic power to several other components, including the break beam sensors, IR receiver, stepper motor drivers, and the CAN transceiver.
 
           The bus bar is also connected to a fuse box, which provides power to several other components while ensuring that the components will be electrically protected
           in case of a spike in current. The fuse box provides power to the stepper motor drivers (power for the motors), the UBEC converter (which powers the servo motor), and the buck converter,
            which converts 22.2V to a steady clean 19V for the Jetson Orin Nano.
         </p>
-        <div className="image-grid contain">
-          <figure>
-            <img src="/images/john-stockbot/power_block_diagram.png" alt="Power block diagram" />
-            <figcaption>Original Power block diagram, does not include fuse box</figcaption>
-          </figure>
-          <figure>
-            <img src="/images/john-stockbot/logic_block_diagram.png" alt="Logic block diagram" />
-            <figcaption>Logic block diagram</figcaption>
-          </figure>
-          <figure>
-            <img src="/images/john-stockbot/fuse_box_wiring.png" alt="Fuse box wiring" />
-            <figcaption>Fuse box wiring</figcaption>
-          </figure>
-          <figure>
-            <img src="/images/john-stockbot/CAN_communication_block_diagram.png" alt="CAN communication wiring for one motor" />
-            <figcaption>CAN communication wiring</figcaption>
-          </figure>
-        </div>
+        <GalleryGrid media={ELECTRONICS_MEDIA} onOpen={openGallery(ELECTRONICS_MEDIA)} variant="contain" />
       </section>
 
       <hr className="divider" />
@@ -304,7 +329,7 @@ export default function JohnStockbotDetail() {
           In progress!
         </p>
 
-       
+
       </section>
 
       <hr className="divider" />
@@ -329,6 +354,13 @@ export default function JohnStockbotDetail() {
           </a>
         </p>
       </section>
+
+      <Lightbox
+        media={lightbox?.media ?? []}
+        index={lightbox?.index ?? null}
+        onClose={() => setLightbox(null)}
+        onNavigate={(index) => setLightbox((lb) => (lb ? { ...lb, index } : lb))}
+      />
     </>
   );
 }

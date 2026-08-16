@@ -1785,6 +1785,10 @@ button.resume-entry-name-link:hover {
 .image-grid.cols-1 { grid-template-columns: 1fr; }
 .image-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
 
+/* Caps a full-width single-item grid to a smaller, centered figure —
+   e.g. a standalone result photo that doesn't need the full section width. */
+.image-grid.narrow { max-width: 480px; margin-left: auto; margin-right: auto; }
+
 /* tighter divider used between upgrade items */
 .divider.divider-tight { margin: var(--space-6) 0; }
 

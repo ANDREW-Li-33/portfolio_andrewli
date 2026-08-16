@@ -1,6 +1,32 @@
+import { useState } from 'react';
+import Lightbox, { type LightboxMedia } from '../../components/Lightbox';
+import GalleryGrid from '../../components/GalleryGrid';
 import DownloadList from '../../components/DownloadList';
 
+const CAD_MEDIA: LightboxMedia[] = [
+  {
+    kind: 'video',
+    src: '/videos/marker-holder/marker_holder_cad.mp4',
+    alt: 'CAD model in Fusion 360',
+    caption: 'CAD model in Fusion 360',
+  },
+];
+
+const RESULT_IMAGES: LightboxMedia[] = [
+  {
+    src: '/images/marker-holder/marker_holder_flat.jpg',
+    alt: 'Marker holder with markers sliding in at an angle',
+  },
+  {
+    src: '/images/marker-holder/marker_holder_upright.jpg',
+    alt: 'Marker holder with markers standing upright',
+  },
+];
+
 export default function MarkerHolderDetail() {
+  const [lightbox, setLightbox] = useState<{ media: LightboxMedia[]; index: number } | null>(null);
+  const openGallery = (media: LightboxMedia[]) => (index: number) => setLightbox({ media, index });
+
   return (
     <>
       <section>
@@ -26,12 +52,7 @@ export default function MarkerHolderDetail() {
               </a>, which are roughly 15mm in diameter)
             </p>
           </div>
-          <div className="image-grid cols-1">
-            <figure>
-              <video src="/videos/marker-holder/marker_holder_cad.mp4" autoPlay loop muted playsInline />
-              <figcaption>CAD model in Fusion 360</figcaption>
-            </figure>
-          </div>
+          <GalleryGrid media={CAD_MEDIA} onOpen={openGallery(CAD_MEDIA)} variant="cols-1" />
         </div>
 
         <div className="label">Downloads</div>
@@ -44,15 +65,15 @@ export default function MarkerHolderDetail() {
 
       <section>
         <div className="label">Results!</div>
-        <div className="image-grid">
-          <figure>
-            <img src="/images/marker-holder/marker_holder_flat.jpg" alt="Marker holder with markers sliding in at an angle" />
-          </figure>
-          <figure>
-            <img src="/images/marker-holder/marker_holder_upright.jpg" alt="Marker holder with markers standing upright" />
-          </figure>
-        </div>
+        <GalleryGrid media={RESULT_IMAGES} onOpen={openGallery(RESULT_IMAGES)} />
       </section>
+
+      <Lightbox
+        media={lightbox?.media ?? []}
+        index={lightbox?.index ?? null}
+        onClose={() => setLightbox(null)}
+        onNavigate={(index) => setLightbox((lb) => (lb ? { ...lb, index } : lb))}
+      />
     </>
   );
 }

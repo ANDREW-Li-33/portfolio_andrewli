@@ -114,7 +114,7 @@ export default function Research() {
               </h2>
               <div className="meta">Research Assistant · Georgia Tech Lunar Lab · PI Lu Gan</div>
               <p>
-                For a brief introduction to this project, view <strong><a href="https://gtvault-my.sharepoint.com/:p:/r/personal/ali497_gatech_edu/_layouts/15/Doc.aspx?sourcedoc=%7BC995A0CC-1562-4478-8F61-AF17ED0846E4%7D&file=Real2Sim%20Project%20introduction.pptx&action=edit&mobileredirect=true&wdOrigin=APPHOME-WEB.DIRECT%2CAPPHOME-WEB.UNAUTH%2CAPPHOME-WEB.SHELL.SIGNIN%2CAPPHOME-WEB.FILEBROWSER.RECENT&wdPreviousSession=32ac4c15-f481-41d2-8622-f78fb23d9f38&wdPreviousSessionSrc=AppHomeWeb&ct=1787545617400" target='_blank' rel='noopener noreferrer' style={{ textDecoration: 'underline' }}>these slides</a></strong>.
+                For a brief introduction to this project, view <strong><a href="/downloadables/real2sim_project_introduction.pptx" target='_blank' rel='noopener noreferrer' style={{ textDecoration: 'underline' }}>these slides</a></strong>.
               </p>
               <p>
                 Under the guidance of PI Lu Gan and PhD student Lingjun Zhao, I'm

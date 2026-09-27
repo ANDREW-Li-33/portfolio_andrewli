@@ -168,9 +168,18 @@ body {
   cursor: pointer;
   display: inline-flex;
   align-items: center;
+  gap: 10px;
 }
 
 .brand:hover { color: var(--accent); }
+
+/* Red "ANDY" seal stamp to the left of the name. Transparent PNG, so the
+   paper texture takes on whichever theme background sits behind it. */
+.brand-mark {
+  height: 32px;
+  width: auto;
+  display: block;
+}
 
 .nav-links {
   display: flex;
@@ -1667,7 +1676,8 @@ button.resume-entry-name-link:hover {
 
   /* Tighter nav header on phones */
   .nav-container { padding: var(--space-2) var(--space-4); }
-  .brand { font-size: 16px; }
+  .brand { font-size: 16px; gap: 8px; }
+  .brand-mark { height: 28px; }
 
   /* Sections — pull padding in, smaller titles */
   .section { padding: var(--space-7) var(--space-4); }

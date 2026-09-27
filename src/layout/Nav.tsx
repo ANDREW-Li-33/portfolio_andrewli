@@ -51,6 +51,7 @@ export default function Nav({ tab, setTab, theme, toggleTheme }: NavProps) {
       <nav className="nav">
         <div className="nav-container">
           <button className="brand" onClick={() => goTo('home')}>
+            <img className="brand-mark" src="/images/brand/andy_stamp.png" alt="" aria-hidden width={18} height={32} />
             <span className="brand-text">Andrew Li</span>
           </button>
 

@@ -186,6 +186,7 @@ export default function Resume({ onNavToSection, onNavToProject }: ResumeProps) 
 
           <ResumeEntry
             name="AGATHA: Automated Self-Driving Hazard Detection and Scenario Mining"
+            href="https://github.com/ANDREW-Li-33/AGATHA"
             location=""
             dates="Oct 2026 - Present"
             role="Personal project"
@@ -210,6 +211,7 @@ export default function Resume({ onNavToSection, onNavToProject }: ResumeProps) 
 
           <ResumeEntry
             name="HARPOR: Video to Physics-Ready Simulation Assets"
+            href="https://github.com/lunarlab-gatech/HARPOR"
             location=""
             dates="Aug 2026 - Present"
             role="Personal project"
@@ -290,6 +292,8 @@ export default function Resume({ onNavToSection, onNavToProject }: ResumeProps) 
 interface ResumeEntryProps {
   name: string;
   onClickName?: () => void;
+  /** External link (e.g. a GitHub repo). Used when there is no onClickName. */
+  href?: string;
   location: string;
   dates: string;
   role: string;
@@ -301,6 +305,7 @@ interface ResumeEntryProps {
 function ResumeEntry({
   name,
   onClickName,
+  href,
   location,
   dates,
   role,
@@ -329,6 +334,15 @@ function ResumeEntry({
             >
               {name}
             </button>
+          ) : href ? (
+            <a
+              className="resume-entry-name resume-entry-name-link"
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {name}
+            </a>
           ) : (
             <span className="resume-entry-name">{name}</span>
           )}
@@ -350,6 +364,16 @@ function ResumeEntry({
           >
             {customClickLabel ?? 'View experience'} <span className="arrow">→</span>
           </button>
+        )}
+        {!onClickName && href && (
+          <a
+            className="resume-entry-cta"
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {customClickLabel ?? 'View on GitHub'} <span className="arrow">↗</span>
+          </a>
         )}
       </div>
     </div>
